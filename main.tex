@@ -1,0 +1,186 @@
+% mnras_template.tex
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+\documentclass[a4paper,fleqn,usenatbib]{mnras}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[Short title, max. 45 characters]{Preliminary Data Access Center : User Report}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[K. Suberlak et al. ]{
+Krzysztof Suberlak $^{1}$\thanks{E-mail: suberlak@uw.edu (KS)}
+\v{Z}eljko Ivezi\'c, $^{1}$
+\\
+% List of institutions
+$^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2017}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+A report on user experience of  the Preliminary Data Access Center (PDAC).  Employing the SDSS and GAIA datasets we test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+% XXX  :  these are made up.  Remove this for now ...
+%\begin{keywords}
+%SUIT,  PDAC,  data access
+%\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+This is a document to report on the user experience testing of the Preliminary Data Access Center.  The Large Scale Synoptic Telescope (LSST)  will  produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detail description of  such online user-interface called Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)  and LDM-492  (SUIT Vision).  
+An idea of having an interface to the data is not new : there exists Aladin,  SDSS CAS jobs,  IPAC  IRSA,  Mikulsky NASA Archive, NED, and many other archives. These allow a user to query for data (either via SQL query, or interface), returning the data table. Some user interfaces (eg. IRSA) have some rudimentary plotting capabilities.  There have been ideas of a new  interface, that would not only eg. plot the lightcurve and display the spectrum,  but also allow the user to run some machine learning algorithms, or simple models that can help narrow down the query, or obtain science results in the browser.  Namely, Victor Pankratius, from MIT, in his talk   "Computer-Aided Discovery: Towards Scientific Insight Generation with Machine Support"  outlined the idea of an ipython notebook - access to data, which lives in the cloud, is allocated some CPU  share and memory,  and allows one to upload / download the data and run the model in real time, which is especially helpful to geoscientists doing fieldwork, where new data acquisition conditions their next step.  
+
+Indeed, astronomers may find that quick look into the data, finding eg. all stars that exhibit RR Lyr variability and have been observed in a certain region of the sky, is very helpful.  
+
+Here we outline the user experience of PDAC (see PDAC technical description on \footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}} 
+
+Currently, the PDAC v1, under tab 'LSST Data' in the upper-left corner of the interface (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data, hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The reprocessing included: 
+\begin{itemize}
+\item coadding the data from all epochs in each of the ugriz SDSS filters. Measurements on coadds (per object) are available as  \verb|RunDeepSource| table, accessible via Catalogs -->   'DeepSource' .  The single-band coadded images with MariaDB metadata are available as \verb|DeepCoadd| table, accessibla via Images -->  'DeepCoadd' . 
+\item using i-band detections to seed forced photometry on all epochs in all bands. The results of photometry are available as \verb|RunDeepForcedSource| table, accessible via  Catalogs --> 'Deep Forced Source' .  
+\item For reference , the individual calibrated single epoch images are available as \verb|Science_Ccd_Exposure| table, accessible via Images --> 'Science CCD Exposure'   
+\end{itemize}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{1_PDAC_interface}
+\caption{The main user interface of PDAC ver. 1 }
+\label{fig:PDAC_interface}
+\end{figure*}
+
+
+
+
+
+Details of  the S82 LSST reprocessing can be found in the PDAC document \url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}. 
+
+PDAC v1 under tab 'External Catalogs' also provides access to  all NASA/IPAC Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, etc. (see Fig.~\ref{fig:PDAC_external_cat}). These are stored at Infrared Processing and Analysis Center (IPAC) \url{http://www.ipac.caltech.edu/project/lsst}.
+
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{2_PDAC_externals}
+\caption{IPAC- hosted catalogs , accessible via IRSA. }
+\label{fig:PDAC_external_cat}
+\end{figure}
+
+
+
+\section{Methods}
+
+We perform single-object tests and statistical tests on an ensemble of objects . 
+
+First, we study in detail a particular source - we consider examples of variable objects, confirmed by previous studies (eg. RR Lyrae from Sesar+2010, Table 1). We download these from the S82 dataset on PDAC, run Lomb-Scargle periodogram to find period, and plot the phased lightcurve.
+
+Second, we query the S82 database against a small subset of a given S82 patch (few degrees), downloading lightcurves for $\sim100 000 $ objects in that area of the sky. We plot color-color diagrams, as in Sesar+2007, Fig.3 ,4. 
+
+
+
+\section{Results}
+
+\section{Conclusions}
+
+\section*{Acknowledgements}
+Thank you ! 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{apj}
+\bibliography{references} % if your bibtex file is called example.bib
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Some extra material}
+
+If you want to present additional material which would interrupt the flow of the main paper,
+it can be placed in an Appendix which appears after the list of references.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex
