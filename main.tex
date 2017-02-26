@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Basic setup. Most papers should leave these options alone.
-\documentclass[a4paper,fleqn,usenatbib]{mnras}
+\documentclass[fleqn,usenatbib]{mnras} % a4paper,
 
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
@@ -36,6 +36,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{ae,aecompl}
 
+\usepackage{natbib}
 
 %%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
 
@@ -58,7 +59,7 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[Short title, max. 45 characters]{Preliminary Data Access Center : User Report}
+\title[PDAC report]{Preliminary Data Access Center : User Report}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
@@ -107,12 +108,13 @@ Indeed, astronomers may find that quick look into the data, finding eg. all star
 
 Here we outline the user experience of PDAC (see PDAC technical description on \footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}} 
 
-Currently, the PDAC v1, under tab 'LSST Data' in the upper-left corner of the interface (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data, hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The reprocessing included: 
+Currently, PDAC v1, under tab 'LSST Data' in the upper-left corner of the interface (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data, hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The reprocessing included: 
 \begin{itemize}
 \item coadding the data from all epochs in each of the ugriz SDSS filters. Measurements on coadds (per object) are available as  \verb|RunDeepSource| table, accessible via Catalogs -->   'DeepSource' .  The single-band coadded images with MariaDB metadata are available as \verb|DeepCoadd| table, accessibla via Images -->  'DeepCoadd' . 
 \item using i-band detections to seed forced photometry on all epochs in all bands. The results of photometry are available as \verb|RunDeepForcedSource| table, accessible via  Catalogs --> 'Deep Forced Source' .  
 \item For reference , the individual calibrated single epoch images are available as \verb|Science_Ccd_Exposure| table, accessible via Images --> 'Science CCD Exposure'   
 \end{itemize}
+
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{1_PDAC_interface}
@@ -124,7 +126,7 @@ Currently, the PDAC v1, under tab 'LSST Data' in the upper-left corner of the in
 
 
 
-Details of  the S82 LSST reprocessing can be found in the PDAC document \url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}. 
+Details of  the S82 LSST reprocessing can be found in the PDAC document \url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}. Additional details of the schema are also outlined in the LSST Data Challenge Report [Shaw, Juric, Becker, Krughoff et al. 2013], and the LSST Database Schema Browser~\footnote{\url{https://lsst-web.ncsa.illinois.edu/schema/index.php?t=DeepForcedSource&sVer=S12_lsstsim}}. 
 
 PDAC v1 under tab 'External Catalogs' also provides access to  all NASA/IPAC Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, etc. (see Fig.~\ref{fig:PDAC_external_cat}). These are stored at Infrared Processing and Analysis Center (IPAC) \url{http://www.ipac.caltech.edu/project/lsst}.
 
@@ -141,9 +143,66 @@ PDAC v1 under tab 'External Catalogs' also provides access to  all NASA/IPAC Inf
 
 We perform single-object tests and statistical tests on an ensemble of objects . 
 
-First, we study in detail a particular source - we consider examples of variable objects, confirmed by previous studies (eg. RR Lyrae from Sesar+2010, Table 1). We download these from the S82 dataset on PDAC, run Lomb-Scargle periodogram to find period, and plot the phased lightcurve.
+First, we study in detail a particular source - we consider examples of variable objects, confirmed by previous studies (eg. RR Lyrae from Sesar+2010, Table 1). We download these from the S82 dataset on PDAC, run Lomb-Scargle periodogram to find period, and plot the phased lightcurve. \cite{sesar2010}  performed lightcurve template fits to 483 RR Lyrae lightcurves from SDSS (see Fig.\ref{fig:RRLyr_distribution}. Both fit parameters and lightcurves are publicly accessible in the online version of the journal%\footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}. 
 
-Second, we query the S82 database against a small subset of a given S82 patch (few degrees), downloading lightcurves for $\sim100 000 $ objects in that area of the sky. We plot color-color diagrams, as in Sesar+2007, Fig.3 ,4. 
+\begin{figure}
+\includegraphics[width=\columnwidth]{Fig_1_Sesar_2010_RRLyr}
+\caption{ Distribution of RR Lyrae periods  for 483 objects in \citep{sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep{sesar2010}).}
+\label{fig:RRLyr_distribution}
+\end{figure}
+% why using cite here throws 
+
+Comparing the S82 data stored at PDAC to the data from \cite{sesar2010},  we want to treat the latter as 'ground truth', but as a sanity check we perform Lomb Scargle periodogram testing to confirm the more detailed analysis of \cite{sesar2010}. Using {\it astroML} python module \citep{astroML}, we sample the uniformly spaced frequency grid with N=5000 samples span between the smallest and the largest frequency reported in Table 1 of \cite{sesar2010} $\pm 10\%$, i.e. $\omega_{min} = 0.9 ( 2 \pi / P_{min})$, $\omega_{max} = 1.1 ( 2 \pi / P_{min})$. We use the default {\it astroML} Lomb Scargle periodogram settings, namely generalized LS (see Eq.20 in \cite{zechmeister2009}, and Section 10.3.2 in \cite{ivezic2014}).   
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_13350_g}
+\caption{ An example of the  {\it astroML} Lomb Scargle periodogram performance,  calculated for RR Lyr ID=13350  in SDSS g band (following Table 2 in \citep{sesar2010}). It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw  SDSS lightcurve data. The upper right panel shows the phased lightcurve constructed with a cited period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram, where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega_{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days,  corresponding to the highest peak, $P_{fit} = 2 \pi / \omega_{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$  significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url{http://www.astroml.org/book\_figures/chapter10/index.html}) }
+\label{fig:RRLyr_periodogram_good}
+\end{figure*}
+%
+
+
+Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle periodograms, and determine the best-fit period from the highest frequency peak (see Fig.~\ref{fig:RRLyr_period_ratios}).  We find that for about half of the lightcurves the Lomb-Scargle periodogram fitting single-term Fourier Series  is sufficient to find the right period (note middle group  centered on 1 on Fig.~\ref{fig:RRLyr_period_ratios}, and an example on Fig.~\ref{fig:RRLyr_periodogram_good} ). However, there are many cases  where the naive single sinusoid is insufficient to correctly fit the period (groups outside of 1 on Fig.~\ref{fig:RRLyr_periodogram_good})
+
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Fig_3_RRLyr_omega_ratio}
+\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$. Where the Lomb Scargle highest peak frequency is not the same as that reported in \citep{sesar2010}, it may be because the naive single-term sinusoid is insufficient to describe the variability pattern (as in Fig.10.18, \citep{ivezic2014}). }
+\label{fig:RRLyr_period_ratios}
+\end{figure}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_4099_g}
+\caption{ A failure of naive single Lomb Scargle periodogram performance - here the ratio of $\omega_{true}$ to $\omega_{fit}$ equals 0.437. Top-left : the raw  SDSS lightcurve data for RR Lyr ID=4099 in g band. Top-right : the phased lightcurve constructed with a cited period of 0.641754 days ('$P_{true}$'). Bottom-left: the Lomb Scargle periodogram on  a uniform frequency grid (5000 bins), with the orange and magenta vertical lines marking the location of the highest periodogram peak, and the frequency based on the reported period ($\omega_{true} = 2 \pi / P_{true}$). Note that $\omega_{fit}$ and $\omega_{true}$ significantly differ for this RR Lyr,  and the 'true' frequency, backed-up by the full lightcurve fitting of \citep{sesar2010}, appears as only one of insignificant periodogram peaks. As on Fig.~\ref{fig:RRLyr_periodogram_good},  the horizontal red and green lines mark the $5\%$ and $1\%$  significance levels for the highest peak, as found from 500 bootstrap resamplings.  Bottom-right : the phased constructed with the $P_{fit}$ of  0.280827 days. }
+\label{fig:RRLyr_periodogram_fail1}
+\end{figure*}
+%
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_470994_g}
+\caption{Same as Fig.~\ref{fig:RRLyr_periodogram_fail1}, with $\omega_{true} / \omega_{fit} = 1.53$. Here  RR Lyr ID=470994 has a cited period of 0.346794  days ('$P_{true}$'), whereas period derived from the Lomb-Scargle periodogram is 0.531667.}
+\label{fig:RRLyr_periodogram_fail2}
+\end{figure*}
+
+Using the Ra, dec for the RR Lyrae we positionally query the PDAC  \verb|RunDeepForcedSource| database to find objects within 2 arcsec radius. For these, we obtain calibrated g-magnitude lightcurves querying the \verb|RunDeepForcedSource| and \verb|Science_Ccd_Exposure| for the zero point magnitudes per exposure. Exactly as for \cite{sesar2010} SDSS lightcurves considered before, for PDAC S82 lightcurves we also calculate Lomb-Scargle periodogram and find the most-significant frequency (fit the best period). 
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC}
+\caption{ The same object as Fig.~\ref{RRLyr_periodogram_good}, but using data downloaded using PDAC. Using PDAC data, the RR Lyr ID=13350 has a best-fit period of 0.547969 days, almost identical to the period found by \citep{sesar2010} of 0.547969 days. Top-right panel shows the phased PDAC data lightcurve folded on the 'true' period, and top-right : on the 'best-fit' period. Everything else as on Fig.~\ref{RRLyr_periodogram_good}}
+\label{fig:RRLyr_periodogram_PDAC}
+\end{figure*}
+
+
+
+
+Second, we query the S82 database against a small subset of a given S82 patch (few degrees), downloading lightcurves for $\sim100 000 $ objects in that area of the sky. We plot color-color diagrams, as in \cite{sesar2007}, Fig.3 ,4, and color - magnitude diagrams to show the morphology of the Sgr dSph tidal stream \citep{sesar2010}.  
+
+
 
 
 

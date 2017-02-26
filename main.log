@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  22 FEB 2017 13:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  26 FEB 2017 12:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -10,9 +10,6 @@ Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/mnras/mnras.cls
 Document Class: mnras 2015/05/22\ v3.0\ LaTeX2e MNRAS document class
 MNRAS document style v3.0, released 2015/05/22
-
-Package mnras Warning: Unknown option `a4paper' on input line 113.
-
 (/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
@@ -737,46 +734,46 @@ LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 80.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 80
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 81.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 81
 .
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 80.
-LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 80
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 81.
+LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 81
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 80.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 81.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 81.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -821,7 +818,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 144.
 )
-Package hyperref Info: Link coloring ON on input line 80.
+Package hyperref Info: Link coloring ON on input line 81.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -831,9 +828,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count116
 )
-LaTeX Info: Redefining \ref on input line 80.
-LaTeX Info: Redefining \pageref on input line 80.
-LaTeX Info: Redefining \nameref on input line 80.
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -871,78 +868,78 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 8
-3.
+4.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 83.
+(Font)              scaled to size 14.4pt on input line 84.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 83.
+(Font)              scaled to size 10.5pt on input line 84.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.9pt on input line 83.
+(Font)              scaled to size 7.9pt on input line 84.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 83.
+(Font)              size <10.95> substituted on input line 84.
 
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 83.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 84.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 83.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 84.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 83.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 84.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 83.
+LaTeX Font Info:    Try loading font information for U+msa on input line 84.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 83.
+LaTeX Font Info:    Try loading font information for U+msb on input line 84.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 8
-3.
+4.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/t1ntxsups.fd
 File: t1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 14.4pt on input line 83.
+(Font)              scaled to size 14.4pt on input line 84.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 83.
+(Font)              scaled to size 8.0pt on input line 84.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 83.
+(Font)              scaled to size 6.2pt on input line 84.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 83.
+(Font)              scaled to size 5.5pt on input line 84.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 83.
+(Font)              size <5> substituted on input line 84.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 108.
+(Font)              scaled to size 9.0pt on input line 109.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 108.
-LaTeX Font Info:    Try loading font information for T1+aett on input line 108.
+(Font)              scaled to size 7.3pt on input line 109.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 109.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 108--108
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
 $[]$ [][][][]$\T1/aett/m/n/8 https : / / confluence . lsstcorp . org / display 
 / DM / Guide + to +
  []
@@ -951,28 +948,37 @@ $[]$ [][][][]$\T1/aett/m/n/8 https : / / confluence . lsstcorp . org / display
 File: 1_PDAC_interface.png Graphic file (type png)
 
 <use 1_PDAC_interface.png>
-Package pdftex.def Info: 1_PDAC_interface.png used on input line 118.
+Package pdftex.def Info: 1_PDAC_interface.png used on input line 120.
 (pdftex.def)             Requested size: 504.0pt x 307.06651pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+$[]$ [][][][]$\T1/aett/m/n/8 https : / / lsst-[]web . ncsa . illinois . edu / s
+chema / index . php ? t =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 \T1/aett/m/n/9 display / DM / Properties + of + the + 2013 + SDSS + Stripe + 82
  +
  []
 
-<2_PDAC_externals.png, id=33, 334.24875pt x 382.42876pt>
+<2_PDAC_externals.png, id=35, 334.24875pt x 382.42876pt>
 File: 2_PDAC_externals.png Graphic file (type png)
 
 <use 2_PDAC_externals.png>
-Package pdftex.def Info: 2_PDAC_externals.png used on input line 133.
+Package pdftex.def Info: 2_PDAC_externals.png used on input line 135.
 (pdftex.def)             Requested size: 240.0pt x 274.60155pt.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 147.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 147.
+Underfull \vbox (badness 5787) has occurred while \output is active []
+
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 146.
+
+LaTeX Font Info:    No file TS1aer.fd. on input line 146.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 147.
+(Font)              for symbol `textcopyright' on input line 146.
 
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -981,26 +987,142 @@ LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-No file main.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 184.
-[2pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
+<Fig_1_Sesar_2010_RRLyr.png, id=72, 433.62pt x 289.08pt>
+File: Fig_1_Sesar_2010_RRLyr.png Graphic file (type png)
+
+<use Fig_1_Sesar_2010_RRLyr.png>
+Package pdftex.def Info: Fig_1_Sesar_2010_RRLyr.png used on input line 149.
+(pdftex.def)             Requested size: 240.0pt x 160.00018pt.
+
+<Fig_2_RRLyr_LS_periodogram_ID_13350_g.png, id=93, 1011.78pt x 578.16pt>
+File: Fig_2_RRLyr_LS_periodogram_ID_13350_g.png Graphic file (type png)
+
+<use Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>
+Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_13350_g.png used on inpu
+t line 160.
+(pdftex.def)             Requested size: 504.0pt x 288.003pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.184 \end{document}
+l.168 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.168 
+       <./1_PDAC_interface.png> <./2_PDAC_externals.png>]
+<Fig_3_RRLyr_omega_ratio.png, id=125, 578.16pt x 289.08pt>
+File: Fig_3_RRLyr_omega_ratio.png Graphic file (type png)
+
+<use Fig_3_RRLyr_omega_ratio.png>
+Package pdftex.def Info: Fig_3_RRLyr_omega_ratio.png used on input line 171.
+(pdftex.def)             Requested size: 240.0pt x 119.99683pt.
+
+<Fig_2_RRLyr_LS_periodogram_ID_4099_g.png, id=134, 1011.78pt x 578.16pt>
+File: Fig_2_RRLyr_LS_periodogram_ID_4099_g.png Graphic file (type png)
+
+<use Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>
+Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_4099_g.png used on input
+ line 178.
+(pdftex.def)             Requested size: 504.0pt x 288.003pt.
+
+<Fig_2_RRLyr_LS_periodogram_ID_470994_g.png, id=141, 1011.78pt x 578.16pt>
+File: Fig_2_RRLyr_LS_periodogram_ID_470994_g.png Graphic file (type png)
+
+<use Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>
+Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_470994_g.png used on inp
+ut line 185.
+(pdftex.def)             Requested size: 504.0pt x 288.003pt.
+
+<Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=146, 1011.78pt x 578.16pt>
+File: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png Graphic file (type png)
+
+<use Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>
+Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png used on 
+input line 195.
+(pdftex.def)             Requested size: 504.0pt x 288.003pt.
+
+
+LaTeX Warning: Reference `RRLyr_periodogram_good' on page 3 undefined on input 
+line 196.
+
+
+LaTeX Warning: Reference `RRLyr_periodogram_good' on page 3 undefined on input 
+line 196.
+
+
+LaTeX Warning: Reference `RRLyr_periodogram_good' on page 3 undefined on input 
+line 196.
+
+
+LaTeX Warning: Reference `RRLyr_periodogram_good' on page 3 undefined on input 
+line 196.
+
+(./main.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 243.
+ [3pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.243 \end{document}
+                     <./Fig_1_Sesar_2010_RRLyr.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.243 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier
- (name{figure.2}) has been already used, duplicate ignored
+ (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.184 \end{document}
-                     <./1_PDAC_interface.png> <./2_PDAC_externals.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 184.
+l.243 \end{document}
+                    
+
+ <./Fig_2_RRLyr_LS_periodogram_ID_13350_g.png> <./Fig_3_RRLyr_omega_ratio.png>]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.243 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.243 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7pdfTeX warning (ext4): destination with the same identifier (name{figure.8})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.243 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 243.
 
 (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 184.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 184.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 243.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 243.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CB673037A19FBDADAEAFA4DECC9E98A1;232.
 
@@ -1011,42 +1133,55 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 184.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 243.
  ) 
 Here is how much of TeX's memory you used:
- 9501 strings out of 493014
- 132942 string characters out of 6133351
- 222078 words of memory out of 5000000
- 12796 multiletter control sequences out of 15000+600000
- 78942 words of font info for 174 fonts, out of 8000000 for 9000
+ 9607 strings out of 493014
+ 134991 string characters out of 6133351
+ 233072 words of memory out of 5000000
+ 12842 multiletter control sequences out of 15000+600000
+ 93353 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,1087b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,35p,1201b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
 
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{
-/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-di
-st/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
-/public/txfonts/txsy.pfb>
-Output written on main.pdf (2 pages, 474888 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/tex
+live/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texl
+ive/2016/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/local/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
+blic/tex-gyre/qtmr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/n
+ewtx/rntxmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/r
+ntxmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxmi
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (7 pages, 743388 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 12 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
