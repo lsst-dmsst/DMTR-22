@@ -169,7 +169,7 @@ Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle peri
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{Fig_3_RRLyr_omega_ratio}
-\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$. Where the Lomb Scargle highest peak frequency is not the same as that reported in \citep{sesar2010}, it may be because the naive single-term sinusoid is insufficient to describe the variability pattern (as in Fig.10.18, \citep{ivezic2014}). }
+\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$, where $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in Table 2 of \citep{sesar2010}. We take the same SDSS data from the paper (Table 1 in \citep{sesar2010}), and calculate the Lomb-Scargle single-term generalized periodogram. The frequency corresponding to the highest peak is  $\omega_{fit}$. Thus, wherever  this ratio is approximately equal to 1, this means that the naive  LS approach is able to recover the 'true' period.  However,  where the highest  frequency peak is not the same as $\omega_{true}$, the ratio will be smaller or bigger from 1. This may be caused by the inherent simplicity of the simple single-term Fourier Series fitting. Indeed, some RR Lyrae lightcurves may have shapes that are insufficiently described by a single sinusoid (as on Fig.10.18  in \citep{ivezic2014}). }
 \label{fig:RRLyr_period_ratios}
 \end{figure}
 
@@ -187,7 +187,7 @@ Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle peri
 \label{fig:RRLyr_periodogram_fail2}
 \end{figure*}
 
-Using the Ra, dec for the RR Lyrae we positionally query the PDAC  \verb|RunDeepForcedSource| database to find objects within 2 arcsec radius. For these, we obtain calibrated g-magnitude lightcurves querying the \verb|RunDeepForcedSource| and \verb|Science_Ccd_Exposure| for the zero point magnitudes per exposure. Exactly as for \cite{sesar2010} SDSS lightcurves considered before, for PDAC S82 lightcurves we also calculate Lomb-Scargle periodogram and find the most-significant frequency (fit the best period). 
+Using the Ra, dec for the RR Lyrae we positionally query the PDAC  \verb|RunDeepForcedSource| database to find objects within 2 arcsec radius. For these, we obtain calibrated g-magnitude lightcurves querying the \verb|RunDeepForcedSource| and \verb|Science_Ccd_Exposure| for the zero point magnitudes per exposure. Exactly as for \cite{sesar2010} SDSS lightcurves considered before, for PDAC S82 lightcurves we also calculate Lomb-Scargle periodogram and find the most-significant frequency (fit the best period). On Fig.~\ref{fig:RRLyr_period_ratios_PDAC} we consider the ratio of  $\omega_{PDAC}$ to $\omega_{true}$, analoguosly to Fig.~\ref{fig:RRLyr_period_ratios}
 
 
 
@@ -198,6 +198,12 @@ Using the Ra, dec for the RR Lyrae we positionally query the PDAC  \verb|RunDeep
 \end{figure*}
 
 
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{Fig_4_RRLyr_omega_ratio_PDAC}
+\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{PDAC}$.  $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in the Table 2 of \citep{sesar2010}, that used SDSS data for S82.  We queried positionally against the same objects the PDAC version of SDSS reprocessed forced photometry on S82. We call this dataset 'PDAC'. For each RR Lyr star we obtained calibrated g-band  lightcurves, that were used to calculate the Lomb-Scargle periodogram, on an identical frequency grid to that used previously on SDSS data from Table 1 in \citep{sesar2010}. Based on the highest peak in each periodogram we found the best-fit frequency, $\omega_{PDAC}$.  The ratio of $\omega_{true}$ to $\omega_{PDAC}$,  analoguously to $\omega_{true}$ to $\omega_{fit}$, represents how well can naive Lomb-Scargle approach reproduce periods found by \citep{sesar2010} by more sophisticated lightcurve template-fitting methods. [NOTE : this is an incomplete dataset! not all RR Lyr LCs are available from PDAC --> some RA, Dec have no matching PDAC object within 2 arcsecs ! ]}
+\label{fig:RRLyr_period_ratios_PDAC}
+\end{figure}
 
 
 Second, we query the S82 database against a small subset of a given S82 patch (few degrees), downloading lightcurves for $\sim100 000 $ objects in that area of the sky. We plot color-color diagrams, as in \cite{sesar2007}, Fig.3 ,4, and color - magnitude diagrams to show the morphology of the Sgr dSph tidal stream \citep{sesar2010}.  
