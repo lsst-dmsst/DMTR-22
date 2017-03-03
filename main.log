@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 MAR 2017 15:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 MAR 2017 15:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1062,56 +1062,63 @@ Package pdftex.def Info: missing_and_recovered_RR_Lyr_PDAC.png used on input li
 ne 197.
 (pdftex.def)             Requested size: 240.0pt x 144.0015pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=188, 1011.78pt x 578.16pt>
+<Sesar_vs_PDAC_lc_4099.png, id=188, 578.16pt x 289.08pt>
+File: Sesar_vs_PDAC_lc_4099.png Graphic file (type png)
+
+<use Sesar_vs_PDAC_lc_4099.png>
+Package pdftex.def Info: Sesar_vs_PDAC_lc_4099.png used on input line 203.
+(pdftex.def)             Requested size: 240.0pt x 119.99683pt.
+
+<Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=193, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png used on 
-input line 204.
+input line 212.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=197, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=202, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png used on i
-nput line 210.
+nput line 218.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=210, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=215, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png used on
- input line 218.
+ input line 226.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 230--230
+Underfull \hbox (badness 10000) in paragraph at lines 238--238
 $[]$ [][]\T1/aer/m/n/8 http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/n
 ph-
  []
 
-<Exoplanet_archive_periodogram.png, id=226, 854.19125pt x 718.685pt>
+<Exoplanet_archive_periodogram.png, id=231, 854.19125pt x 718.685pt>
 File: Exoplanet_archive_periodogram.png Graphic file (type png)
 
 <use Exoplanet_archive_periodogram.png>
 Package pdftex.def Info: Exoplanet_archive_periodogram.png used on input line 2
-33.
+41.
 (pdftex.def)             Requested size: 504.0pt x 424.0424pt.
  (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 294.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
  [3pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{table.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                      <./Fig_1_Sesar_2010_RRLyr.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1120,7 +1127,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                      <./Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1129,7 +1136,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                      <./Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1138,7 +1145,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                      <./Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1147,57 +1154,53 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier
  (name{figure.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
-                    
+l.302 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier
+ (name{figure.9}) has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.302 \end{document}
+                     <./Fig_3_RRLyr_omega_ratio.png> <./missing_and_recovered_R
+R_Lyr_PDAC.png> <./Sesar_vs_PDAC_lc_4099.png>] [8pdfTeX warning (ext4): destina
+tion with the same identifier (name{figure.10}) has been already used, duplicat
+e ignored
 
- <./Fig_3_RRLyr_omega_ratio.png> <./missing_and_recovered_RR_Lyr_PDAC.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.302 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.11})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+l.302 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>] [10pdfTe
+X warning (ext4): destination with the same identifier (name{figure.12}) has be
+en already used, duplicate ignored
 
- [9pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.302 \end{document}
+                     <./Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.13}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.294 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.11
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.294 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11pdfTeX warning (ext4): destination with the same identifier (name{figure.12
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.294 \end{document}
+l.302 \end{document}
                      <./Exoplanet_archive_periodogram.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 294.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 302.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 294.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 294.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 302.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 5654B8C721E34924DB1BED8F87B3C872;342.
 
@@ -1211,13 +1214,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 294.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
  ) 
 Here is how much of TeX's memory you used:
- 9646 strings out of 493014
- 136058 string characters out of 6133351
- 257850 words of memory out of 5000000
- 12865 multiletter control sequences out of 15000+600000
+ 9653 strings out of 493014
+ 136237 string characters out of 6133351
+ 258669 words of memory out of 5000000
+ 12870 multiletter control sequences out of 15000+600000
  93353 words of font info for 209 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,15n,35p,1365b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1250,10 +1253,10 @@ al/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local
 /texlive/2016/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (11 pages, 1414843 bytes).
+Output written on main.pdf (11 pages, 1431115 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
- 308 compressed objects within 4 object streams
- 41 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 437 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
