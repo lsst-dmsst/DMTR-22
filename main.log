@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  4 MAR 2017 18:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  8 MAR 2017 11:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -190,6 +190,55 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@table=\count98
 \c@figure=\count99
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count100
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count101
+\lst@gtempboxa=\box26
+\lst@token=\toks17
+\lst@length=\count102
+\lst@currlwidth=\dimen115
+\lst@column=\count103
+\lst@pos=\count104
+\lst@lostspace=\dimen116
+\lst@width=\dimen117
+\lst@newlines=\count105
+\lst@lineno=\count106
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\lst@maxwidth=\dimen118
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count107
+\lst@skipnumbers=\count108
+\lst@framebox=\box27
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/newtxtext.sty
 Package: newtxtext 2016/03/27 v1.466
 
@@ -202,22 +251,22 @@ LaTeX Info: Redefining \itshape on input line 31.
 LaTeX Info: Redefining \slshape on input line 33.
 LaTeX Info: Redefining \scshape on input line 37.
 )
-\ntx@fs=\dimen115
+\ntx@fs=\dimen119
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/local/texlive/2016/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks17
-\XKV@tempa@toks=\toks18
+\XKV@toks=\toks18
+\XKV@tempa@toks=\toks19
 )
-\XKV@depth=\count100
+\XKV@depth=\count109
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2016/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count101
+\etb@tempcnta=\count110
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
@@ -324,7 +373,7 @@ Package: newtxmath 2016/03/27 v1.466
 `newtxmath' v1.466, 2016/03/27 Math macros based on txfonts (msharpe)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/10 v2.15b AMS math features
-\@mathmargin=\skip49
+\@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -332,56 +381,56 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen116
+\@emptytoks=\toks20
+\ex@=\dimen120
 ))
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen117
+\pmbraise@=\dimen121
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count102
+\inf@bad=\count111
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count103
-\leftroot@=\count104
+\uproot@=\count112
+\leftroot@=\count113
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count105
-\DOTSCASE@=\count106
+\classnum@=\count114
+\DOTSCASE@=\count115
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
-\big@size=\dimen118
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen122
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count107
-\c@MaxMatrixCols=\count108
+\macc@depth=\count116
+\c@MaxMatrixCols=\count117
 \dotsspace@=\muskip11
-\c@parentequation=\count109
-\dspbrk@lvl=\count110
-\tag@help=\toks20
-\row@=\count111
-\column@=\count112
-\maxfields@=\count113
-\andhelp@=\toks21
-\eqnshift@=\dimen119
-\alignsep@=\dimen120
-\tagshift@=\dimen121
-\tagwidth@=\dimen122
-\totwidth@=\dimen123
-\lineht@=\dimen124
-\@envbody=\toks22
-\multlinegap=\skip50
-\multlinetaggap=\skip51
-\mathdisplay@stack=\toks23
+\c@parentequation=\count118
+\dspbrk@lvl=\count119
+\tag@help=\toks21
+\row@=\count120
+\column@=\count121
+\maxfields@=\count122
+\andhelp@=\toks22
+\eqnshift@=\dimen123
+\alignsep@=\dimen124
+\tagshift@=\dimen125
+\tagwidth@=\dimen126
+\totwidth@=\dimen127
+\lineht@=\dimen128
+\@envbody=\toks23
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/kastrup/binhex.tex)
-\tx@Isdigit=\count114
+\tx@Isdigit=\count123
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 137.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/ntxtlf/m/n on input line 137.
@@ -495,13 +544,9 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 96.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count115
-))
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
+)
+\Gin@req@height=\dimen129
+\Gin@req@width=\dimen130
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -734,46 +779,46 @@ LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 81.
-LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 81
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 84.
+LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 84
 .
  (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 81
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 84.
+LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 84
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 81.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 84.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 84.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -809,50 +854,43 @@ LaTeX Font Info:    ... okay on input line 81.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box28
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/05/09 v1.1c Standard LaTeX Color (DPC)
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 144.
-)
-Package hyperref Info: Link coloring ON on input line 81.
-
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring ON on input line 84.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count116
+\c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 84.
+LaTeX Info: Redefining \pageref on input line 84.
+LaTeX Info: Redefining \nameref on input line 84.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-\c@mv@tabular=\count117
-\c@mv@boldtabular=\count118
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
-\scratchdimen=\dimen127
-\scratchbox=\box29
-\nofMPsegments=\count120
-\nofMParguments=\count121
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count122
-\MPscratchDim=\dimen128
-\MPnumerator=\count123
-\makeMPintoPDFobject=\count124
-\everyMPtoPDFconversion=\toks25
-) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+\scratchcounter=\count125
+\scratchdimen=\dimen131
+\scratchbox=\box31
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen132
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks26
+)
+\c@lstlisting=\count131
+\c@mv@tabular=\count132
+\c@mv@boldtabular=\count133
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -868,117 +906,117 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Try loading font information for OT1+ntxtlf on input line 8
-4.
+7.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/ot1ntxtlf.fd
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 84.
+(Font)              scaled to size 14.4pt on input line 87.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.5pt on input line 84.
+(Font)              scaled to size 10.5pt on input line 87.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.9pt on input line 84.
+(Font)              scaled to size 7.9pt on input line 87.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 84.
+(Font)              size <10.95> substituted on input line 87.
 
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 84.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 87.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 84.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 87.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 84.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 87.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 84.
+LaTeX Font Info:    Try loading font information for U+msa on input line 87.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 84.
+LaTeX Font Info:    Try loading font information for U+msb on input line 87.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for T1+ntxsups on input line 8
-4.
+7.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/newtx/t1ntxsups.fd
 File: t1ntxsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 14.4pt on input line 84.
+(Font)              scaled to size 14.4pt on input line 87.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 84.
+(Font)              scaled to size 8.0pt on input line 87.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 84.
+(Font)              scaled to size 6.2pt on input line 87.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.5pt on input line 84.
+(Font)              scaled to size 5.5pt on input line 87.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 84.
+(Font)              size <5> substituted on input line 87.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 109.
+(Font)              scaled to size 9.0pt on input line 112.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.3pt on input line 109.
-LaTeX Font Info:    Try loading font information for T1+aett on input line 109.
+(Font)              scaled to size 7.3pt on input line 112.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 112.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 109--109
+Underfull \hbox (badness 10000) in paragraph at lines 112--112
 $[]$ [][][][]$\T1/aett/m/n/8 https : / / confluence . lsstcorp . org / display 
 / DM / Guide + to +
  []
 
-<1_PDAC_interface.png, id=36, 1171.37625pt x 713.66624pt>
+<1_PDAC_interface.png, id=44, 1171.37625pt x 713.66624pt>
 File: 1_PDAC_interface.png Graphic file (type png)
 
 <use 1_PDAC_interface.png>
-Package pdftex.def Info: 1_PDAC_interface.png used on input line 120.
+Package pdftex.def Info: 1_PDAC_interface.png used on input line 123.
 (pdftex.def)             Requested size: 504.0pt x 307.06651pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--127
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
 $[]$ [][][][]$\T1/aett/m/n/8 https : / / lsst-[]web . ncsa . illinois . edu / s
 chema / index . php ? t =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 \T1/aett/m/n/9 display / DM / Properties + of + the + 2013 + SDSS + Stripe + 82
  +
  []
 
-<2_PDAC_externals.png, id=43, 334.24875pt x 382.42876pt>
+<2_PDAC_externals.png, id=51, 334.24875pt x 382.42876pt>
 File: 2_PDAC_externals.png Graphic file (type png)
 
 <use 2_PDAC_externals.png>
-Package pdftex.def Info: 2_PDAC_externals.png used on input line 133.
+Package pdftex.def Info: 2_PDAC_externals.png used on input line 136.
 (pdftex.def)             Requested size: 240.0pt x 274.60155pt.
 
 Underfull \vbox (badness 5787) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 144.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 147.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 144.
+LaTeX Font Info:    No file TS1aer.fd. on input line 147.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textcopyright' on input line 144.
+(Font)              for symbol `textcopyright' on input line 147.
 
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -987,146 +1025,144 @@ LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-<Fig_1_Sesar_2010_RRLyr.png, id=81, 433.62pt x 289.08pt>
+<Fig_1_Sesar_2010_RRLyr.png, id=90, 433.62pt x 289.08pt>
 File: Fig_1_Sesar_2010_RRLyr.png Graphic file (type png)
 
 <use Fig_1_Sesar_2010_RRLyr.png>
-Package pdftex.def Info: Fig_1_Sesar_2010_RRLyr.png used on input line 149.
+Package pdftex.def Info: Fig_1_Sesar_2010_RRLyr.png used on input line 152.
 (pdftex.def)             Requested size: 240.0pt x 160.00018pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_13350_g.png, id=102, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_13350_g.png, id=111, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_13350_g.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_13350_g.png used on inpu
-t line 160.
+t line 163.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
  [2pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.163 \end{figure*}
+l.166 \end{figure*}
                    pdfTeX warning (ext4): destination with the same identifier 
 (name{figure.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.163 \end{figure*}
+l.166 \end{figure*}
                     <./1_PDAC_interface.png> <./2_PDAC_externals.png>]
-<Fig_2_RRLyr_LS_periodogram_ID_4099_g.png, id=133, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_4099_g.png, id=142, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_4099_g.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_4099_g.png used on input
- line 168.
+ line 171.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_470994_g.png, id=150, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_470994_g.png, id=159, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_470994_g.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_470994_g.png used on inp
-ut line 175.
+ut line 178.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_3_RRLyr_omega_ratio.png, id=167, 578.16pt x 289.08pt>
+<Fig_3_RRLyr_omega_ratio.png, id=176, 578.16pt x 289.08pt>
 File: Fig_3_RRLyr_omega_ratio.png Graphic file (type png)
 
 <use Fig_3_RRLyr_omega_ratio.png>
-Package pdftex.def Info: Fig_3_RRLyr_omega_ratio.png used on input line 185.
+Package pdftex.def Info: Fig_3_RRLyr_omega_ratio.png used on input line 188.
 (pdftex.def)             Requested size: 240.0pt x 119.99683pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 []\T1/aer/m/n/9 Using the $[]\OML/ntxmi/m/it/9 ; []$ \T1/aer/m/n/9 for the RR L
 yrae from
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 193--194
+Underfull \hbox (badness 1748) in paragraph at lines 196--197
 [][]\T1/aer/m/n/9 Sesar et al.[][] ([][]2010[][]) we po-si-tion-ally query the 
 PDAC
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 193--194
+Underfull \hbox (badness 1552) in paragraph at lines 196--197
 []\T1/aett/m/n/9 RunDeepForcedSource \T1/aer/m/n/9 database (Cone Search), to f
 ind
  []
 
-<missing_and_recovered_RR_Lyr_PDAC.png, id=183, 722.7pt x 433.62pt>
+<missing_and_recovered_RR_Lyr_PDAC.png, id=192, 722.7pt x 433.62pt>
 File: missing_and_recovered_RR_Lyr_PDAC.png Graphic file (type png)
 
 <use missing_and_recovered_RR_Lyr_PDAC.png>
 Package pdftex.def Info: missing_and_recovered_RR_Lyr_PDAC.png used on input li
-ne 197.
+ne 200.
 (pdftex.def)             Requested size: 240.0pt x 144.0015pt.
 
-<Sesar_vs_PDAC_lc_4099.png, id=188, 578.16pt x 289.08pt>
+<Sesar_vs_PDAC_lc_4099.png, id=197, 578.16pt x 289.08pt>
 File: Sesar_vs_PDAC_lc_4099.png Graphic file (type png)
 
 <use Sesar_vs_PDAC_lc_4099.png>
-Package pdftex.def Info: Sesar_vs_PDAC_lc_4099.png used on input line 203.
+Package pdftex.def Info: Sesar_vs_PDAC_lc_4099.png used on input line 206.
 (pdftex.def)             Requested size: 240.0pt x 119.99683pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=193, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=202, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png used on 
-input line 212.
+input line 215.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=202, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=211, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png used on i
-nput line 218.
+nput line 221.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=215, 1011.78pt x 578.16pt>
+<Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=224, 1011.78pt x 578.16pt>
 File: Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png Graphic file (type png)
 
 <use Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>
 Package pdftex.def Info: Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png used on
- input line 226.
+ input line 229.
 (pdftex.def)             Requested size: 504.0pt x 288.003pt.
 
-<Fig_PDAC_sesar_compare.png, id=228, 867.24pt x 650.43pt>
+<Fig_PDAC_sesar_compare.png, id=237, 867.24pt x 650.43pt>
 File: Fig_PDAC_sesar_compare.png Graphic file (type png)
 
 <use Fig_PDAC_sesar_compare.png>
-Package pdftex.def Info: Fig_PDAC_sesar_compare.png used on input line 233.
+Package pdftex.def Info: Fig_PDAC_sesar_compare.png used on input line 236.
 (pdftex.def)             Requested size: 240.0pt x 179.99525pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
+Underfull \hbox (badness 10000) in paragraph at lines 249--249
 $[]$ [][]\T1/aer/m/n/8 http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/n
 ph-
  []
 
-<Exoplanet_archive_periodogram.png, id=236, 854.19125pt x 718.685pt>
+<Exoplanet_archive_periodogram.png, id=245, 854.19125pt x 718.685pt>
 File: Exoplanet_archive_periodogram.png Graphic file (type png)
 
 <use Exoplanet_archive_periodogram.png>
 Package pdftex.def Info: Exoplanet_archive_periodogram.png used on input line 2
-49.
+52.
 (pdftex.def)             Requested size: 504.0pt x 424.0424pt.
- (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 310.
- [3pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
- has been already used, duplicate ignored
+ (./main.bbl) [3pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{table.1}) has been already used, duplicate ignored
+l.302 \onecolumn
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{table.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_1_Sesar_2010_RRLyr.png>]
+l.302 \onecolumn
+                 <./Fig_1_Sesar_2010_RRLyr.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
@@ -1134,8 +1170,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>]
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
@@ -1143,8 +1179,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6pdfTeX warning (ext4): destination with the same identifier (name{figure.6})
@@ -1152,8 +1188,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>]
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [7pdfTeX warning (ext4): destination with the same identifier (name{figure.7})
@@ -1161,42 +1197,42 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.8}) has been already used, duplicate ignored
+l.302 \onecolumn
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.9}) has been already used, duplicate ignored
+l.302 \onecolumn
+                pdfTeX warning (ext4): destination with the same identifier (na
+me{figure.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_3_RRLyr_omega_ratio.png> <./missing_and_recovered_R
-R_Lyr_PDAC.png> <./Sesar_vs_PDAC_lc_4099.png>] [8pdfTeX warning (ext4): destina
-tion with the same identifier (name{figure.10}) has been already used, duplicat
-e ignored
+l.302 \onecolumn
+                 <./Fig_3_RRLyr_omega_ratio.png> <./missing_and_recovered_RR_Ly
+r_PDAC.png> <./Sesar_vs_PDAC_lc_4099.png>] [8pdfTeX warning (ext4): destination
+ with the same identifier (name{figure.10}) has been already used, duplicate ig
+nored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
-[9pdfTeX warning (ext4): destination with the same identifier (name{figure.11})
- has been already used, duplicate ignored
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>] [9pdfTeX wa
+rning (ext4): destination with the same identifier (name{figure.11}) has been a
+lready used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>] [10pdfTe
-X warning (ext4): destination with the same identifier (name{figure.12}) has be
-en already used, duplicate ignored
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>] [10pdfTeX wa
+rning (ext4): destination with the same identifier (name{figure.12}) has been a
+lready used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
+l.302 \onecolumn
+                 <./Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11pdfTeX warning (ext4): destination with the same identifier (name{figure.13
@@ -1204,8 +1240,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                    
+l.302 \onecolumn
+                
 
 
 
@@ -1217,14 +1253,23 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.310 \end{document}
-                     <./Exoplanet_archive_periodogram.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 310.
- (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 310.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 310.
+l.302 \onecolumn
+                 <./Exoplanet_archive_periodogram.png>]
+(/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 362.
+ [13
+
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 362.
+
+(./main.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 362.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 362.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5654B8C721E34924DB1BED8F87B3C872;342.
+(rerunfilecheck)             Checksum: 7FFA2B3DD252F8DD07A0AC2EF52D81CB;497.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1236,18 +1281,21 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 310.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 362.
  ) 
 Here is how much of TeX's memory you used:
- 9661 strings out of 493014
- 136422 string characters out of 6133351
- 261303 words of memory out of 5000000
- 12875 multiletter control sequences out of 15000+600000
- 93353 words of font info for 209 fonts, out of 8000000 for 9000
+ 11547 strings out of 493014
+ 161979 string characters out of 6133351
+ 293873 words of memory out of 5000000
+ 14717 multiletter control sequences out of 15000+600000
+ 95493 words of font info for 212 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,35p,1365b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,15n,74p,1365b,1283s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{lstnumber.-2.16} has been referenced but does not e
+xist, replaced by a fixed one
 
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/tex
 live/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/texl
@@ -1258,27 +1306,28 @@ ive/2016/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}</usr/local/texlive/2
 exmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pu
-blic/tex-gyre/qtmr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/n
-ewtx/rntxmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/r
-ntxmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxmi
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (12 pages, 1475409 bytes).
+ist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
+c/tex-gyre/qtmr.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newt
+x/rntxmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/rntx
+mi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxmi.pf
+b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (13 pages, 1495432 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 320 compressed objects within 4 object streams
- 44 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 497 PDF objects out of 1000 (max. 8388607)
+ 364 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

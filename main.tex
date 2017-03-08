@@ -23,6 +23,9 @@
 % Basic setup. Most papers should leave these options alone.
 \documentclass[fleqn,usenatbib]{mnras} % a4paper,
 
+% to add SQL queries used in appendix 
+\usepackage{xcolor,listings}
+
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
 % out the following line
@@ -296,10 +299,59 @@ Thank you !
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
-
+\onecolumn
 \appendix
 
-\section{Some extra material}
+\section{SQL queries}
+\subsection{Cone query around given RA, DEC}
+
+To query \verb|RunDeepForcedSource| table, for an object with RA = 0.935679, and DEC=1.115859, search radius 0.00055555 (all in degrees), saving the output of the query to \verb|catalogCone1.json| file:
+
+\begin{lstlisting}[
+           language=SQL,
+           showstringspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+        ]
+curl -o catalogCone1.json -d 'query=SELECT+objectId+FROM+RunDeepForcedSource+WHERE+\
+                qserv_areaspec_circle(0.935679,1.115859,0.00055555);' \
+                http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
+\end{lstlisting}
+
+I perform such queries for each of the 483 objects in \cite{sesar2010}, using search radius of 2 arcsec. 
+
+\subsection{ID query to return lightcurves}
+We find that between 1 to 6 unique detection ID's are found within a search radius of 2 arsec for the 483 RR Lyrae.  Given the IDs corresponding to the sought RA, DEC, location, to obtain the lightcurve in calibrated magnitudes, we need to query \verb|RunDeepForcedSource| Table to provide information about individual exposures ( mjd time of observation: \verb|exposure_time_mid|, flux in a given filter \verb|flux_psf|, flux error \verb|flux_psf_err|, filter code \verb|exposure_filter_id|, with  \verb|0,1,2,3,4| corresponding to  \verb|u,g,r,i,z|, respectively).  We query \verb|scienceCcdExposureId| table to obtain the flux for photometric zero point with assosiated error (\verb|fluxMag0|, \verb|fluxMag0Sigma|)  with  \verb|exposure_id| in \verb|RunDeepForcedSource| corresponding to \verb|scienceCcdExposureId| in \verb|Science_Ccd_Exposure|. We perform a \verb|join| between these two tables, and store the result as   \verb|catalogForced1.json| file. 
+Assuming that IDs that we query against are 3562429887808969, 3562429887812663, the query to obtain \verb|g| magnitudes would be (see  \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#}) :
+
+
+\begin{lstlisting}[
+           language=SQL,
+           showstringspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+           ]
+curl -o catalogForced1.json -d 'query=\
+SELECT \
+  objectId, id, fsrc.exposure_id, fsrc.exposure_time_mid, exp.run, \
+  scisql_dnToAbMag(fsrc.flux_psf,exp.fluxMag0) AS g, \
+  scisql_dnToAbMagSigma(fsrc.flux_psf, fsrc.flux_psf_err, \
+                        exp.fluxMag0, exp.fluxMag0Sigma) AS gErr \
+FROM \
+  RunDeepForcedSource AS fsrc, \
+  Science_Ccd_Exposure AS exp \
+WHERE \
+  exp.scienceCcdExposureId = fsrc.exposure_id \
+  AND fsrc.exposure_filter_id=1 \
+  AND objectId IN (3562429887808969, 3562429887812663)\
+ORDER BY exposure_time_mid' http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
+
+\end{lstlisting}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
