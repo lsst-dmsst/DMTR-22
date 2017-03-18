@@ -1,0 +1,132 @@
+% mnras_template.tex
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+\documentclass[fleqn,usenatbib, onecolumn]{mnras} % a4paper,
+
+% to add SQL queries used in appendix 
+\usepackage{xcolor,listings}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+\usepackage{natbib}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[PDAC progress]{Preliminary Data Access Center : Tests February 2017}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[K. Suberlak et al. ]{
+Krzysztof Suberlak, $^{1}$\thanks{E-mail: suberlak@uw.edu (KS)}
+\v{Z}eljko Ivezi\'c, $^{1}$ and the PDAC team  
+\\
+% List of institutions
+$^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2017}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+A report of progress made in testing the Preliminary Data Access Center user interface, infrastructure, and database ingestion.  We list conducted tests commenting on the outcomes. This will help direct focus of the PDAC development to make it user-friendly and efficient. 
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section*{Introduction}
+\subsection*{Data content}
+PDAC contains NCSA-hosted Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (called 'LSST Data' in the online portal). PDAC also allows access to IPAC-stored datasets (GAIA, WISE, etc.). 
+
+\subsection*{Data access}
+PDAC allows user-interface and SQL queries of various tables. Currently positional query is the available type of query. It allows  selecting a region of the sky and requesting the objects located within that region. The region can be shaped as a cone, ellipse, rectangular box, or a polygon.
+
+\subsection*{Performed tests}
+
+\begin{itemize}
+	\item General navigation of the main 'Search Catalogs' interface. Possible selection  of Catalogs (Deep Source, Deep Forced Source), or Images (Deep Coadd, Science CCD Exposure).  Positional query against Catalogs requires entering 'Name or Position'.  Degrees are resolved into h:m:s and vice-versa.  However, examples suggested underneath the   ‘Name or Position’ dialog box  include objects that are not present in the available dataset.  It would be good to provide examples of names and coordinates of objects that are actually present in the chosen dataset. 'Method Search' has 6 options (Cone,Elliptical, Box, Polygon, Multi-Object, All Sky), of which only 4 are working - Multi-Object search (positional 1-to1 match  against a list of coordinates and search radii) and All Sky search are not operational. 
+	\item When conducting a positional search, the miniature image showing the query region on the sky is not always centered, nor shows the actual region (as compared to SDSS DR13 SkyServer, and CDS Aladin	). The problem persists when using the browser 'back' navigation button to change the query region, instead of reloading the entire PDAC user interface. When increasing the search radius, beyond 1000 arcsec the image does not resemble the SDSS region at all, but is more similar to WISE image of  a different sky region. 
+    \item Comparing data for particular objects - querying positionally against 483 RR Lyrae  from \cite{sesar2010}. Direct calibrated magnitudes are not available. For each object, it is necessary to first query the \verb|RunDeepForcedSource|  to find which objectIds are detected within a search radius, and for these objectIds download lightcurves.  Queries were conducted by  a python script that transfers curl subprocesses to the terminal of a user laptop, communicating with the PDAC database at \url{http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync}
+    To convert raw fluxes to magnitudes one needs to query   \verb|Science_Ccd_Exposure|  table. Of 483 stars,  only 343 stars are present in the PDAC S82 dataset. Those with RA < 320  or RA > 55 degrees are not present in the dataset.  Those that are present have been folded on the period reported by \cite{sesar2010} and can be confirmed to be RR Lyrae.  The lightcurves are not bitwise-identical due to the fact that \cite{sesar2010} used the SDSS DR2 data, whereas PDAC stores reprocessed S82 data from Summer 2013. 
+    % This matches Yusra's dataset, but then why did Branimir have different limits on S82?  Are there multiple definitions of S82?  
+ \end{itemize}   
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{apj}
+\bibliography{references} % if your bibtex file is called example.bib
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex
