@@ -1,9 +1,13 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Methods}{}% 2
-\BOOKMARK [1][-]{section.3}{Positional query}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Area query}{section.3}% 4
-\BOOKMARK [1][-]{section.4}{Results}{}% 5
-\BOOKMARK [1][-]{section.5}{Conclusions}{}% 6
-\BOOKMARK [1][-]{section.A1}{SQL queries}{}% 7
-\BOOKMARK [2][-]{subsection.A1.1}{Cone query around given RA, DEC}{section.A1}% 8
-\BOOKMARK [2][-]{subsection.A1.2}{ID query to return lightcurves}{section.A1}% 9
+\BOOKMARK [1][-]{section.2}{Overview of performed tests}{}% 2
+\BOOKMARK [1][-]{section.3}{User Interface: what we see}{}% 3
+\BOOKMARK [1][-]{section.4}{Infractructure : what is available and how to get it }{}% 4
+\BOOKMARK [1][-]{section.5}{Database Ingestion : is what we get what we expected to get? }{}% 5
+\BOOKMARK [1][-]{section.6}{Methods}{}% 6
+\BOOKMARK [1][-]{section.7}{Positional query}{}% 7
+\BOOKMARK [2][-]{subsection.7.1}{Area query}{section.7}% 8
+\BOOKMARK [1][-]{section.8}{Results}{}% 9
+\BOOKMARK [1][-]{section.9}{Conclusions}{}% 10
+\BOOKMARK [1][-]{section.A1}{SQL queries}{}% 11
+\BOOKMARK [2][-]{subsection.A1.1}{Cone query around given RA, DEC}{section.A1}% 12
+\BOOKMARK [2][-]{subsection.A1.2}{ID query to return lightcurves}{section.A1}% 13

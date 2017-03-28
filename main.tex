@@ -88,7 +88,7 @@ $^{1}$Department of Astronomy, University of Washington, Seattle, WA, United Sta
 
 % Abstract of the paper
 \begin{abstract}
-A report on user experience of  the Preliminary Data Access Center (PDAC).  Employing the SDSS and GAIA datasets we test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
+A report on user experience of  the Preliminary Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -104,52 +104,103 @@ A report on user experience of  the Preliminary Data Access Center (PDAC).  Empl
 
 \section{Introduction}
 
-This is a document to report on the user experience testing of the Preliminary Data Access Center.  The Large Scale Synoptic Telescope (LSST)  will  produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detail description of  such online user-interface called Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)  and LDM-492  (SUIT Vision).  
+This is a document to report on the user experience testing of the Preliminary Data Access Center.  The Large Scale Synoptic Telescope      (LSST)  will  produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detail description of  such online user-interface called Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)  and LDM-492  (SUIT Vision).  
 An idea of having an interface to the data is not new : there exists Aladin,  SDSS CAS jobs,  IPAC  IRSA,  Mikulsky NASA Archive, NED, and many other archives. These allow a user to query for data (either via SQL query, or interface), returning the data table. Some user interfaces (eg. IRSA) have some rudimentary plotting capabilities.  There have been ideas of a new  interface, that would not only eg. plot the lightcurve and display the spectrum,  but also allow the user to run some machine learning algorithms, or simple models that can help narrow down the query, or obtain science results in the browser.  Namely, Victor Pankratius, from MIT, in his talk   "Computer-Aided Discovery: Towards Scientific Insight Generation with Machine Support"  outlined the idea of an ipython notebook - access to data, which lives in the cloud, is allocated some CPU  share and memory,  and allows one to upload / download the data and run the model in real time, which is especially helpful to geoscientists doing fieldwork, where new data acquisition conditions their next step.  
 
-Indeed, astronomers may find that quick look into the data, finding eg. all stars that exhibit RR Lyr variability and have been observed in a certain region of the sky, is very helpful.  
+These requirements and the vision for SUIT have been further described on confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Science+User+Interface+and+Tools}}. Some technical notes about current implementation of SUIT by PDAC are also available via confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}\label{note1}}. 
 
-Here we outline the user experience of PDAC (see PDAC technical description on \footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}} 
 
-Currently, PDAC v1, under tab 'LSST Data' in the upper-left corner of the interface (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data, hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The reprocessing included: 
+\section{Overview of performed tests}
+
+We test a variety of aspects of PDAC : the user interface, infrastructure, and database ingestion.  The user interface is similar to IRSA, which aids the ease of access. In Section~\ref{sec:ui} we describe the functionality available through user interface. It is a work in progress, hence any deficiency outlined may become updated in real-time, whereas some recommendations, if met with approval, may have a longer implementation timescale. In Section~\ref{sec:infra} we describe the structure of  available data : both data that is available directly from NCSA (internal catalogs) , and data that is available from IRSA (external catalogs).  In that section we also provide an overview of query and analysis methods available directly through the User Interface,  as well as through SQL.  Finally, in Section~\ref{sec:dg} we consider the quality of database ingestion, answering the question of how well was a given dataset loaded into PDAC. In particular we compare the S82 forced photometry dataset, an outcome of the Summer 2013 reprocessing, to the same data stored locally at the University of Washington. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{User Interface: what we see}
+\label{sec:ui}
+
+In order to access PDAC we 	follow the directions~\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
+
+
+Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database name \verb|sdss_stripe82_00|) , hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/1_PDAC_interface}
+\caption{The main user interface of PDAC ver. 1 }
+\label{fig:PDAC_interface}
+\end{figure*}
+
+
+The upper-left corner of the interface also leads to 'External Images' and 'External Catalogs'. The Catalogs are all NASA/IPAC\footnote{Infrared Processing and Analysis Center, \url{http://www.ipac.caltech.edu/project/lsst}}  Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, 2MASS, SPITZER, etc. (see Fig.~\ref{fig:PDAC_external_cat}).
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{figs/2_PDAC_externals}
+\caption{IPAC- hosted catalogs , accessible via IRSA. }
+\label{fig:PDAC_external_cat}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Infractructure : what is available and how to get it }
+\label{sec:infra}
+
+
+As we described in Section~\ref{sec:ui}, the main user interface allows access to the internally stored (at NCSA) SDSS Stripe 82 data reprocessed during the Summer 2013~\footnote{\url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}} as part of Data Challange with the continuously developed LSST Stack~\footnote{\url{https://pipelines.lsst.io/index.html}}. 
+
+The reprocessing included: 
 \begin{itemize}
 \item coadding the data from all epochs in each of the ugriz SDSS filters. Measurements on coadds (per object) are available as  \verb|RunDeepSource| table, accessible via Catalogs -->   'DeepSource' .  The single-band coadded images with MariaDB metadata are available as \verb|DeepCoadd| table, accessibla via Images -->  'DeepCoadd' . 
 \item using i-band detections to seed forced photometry on all epochs in all bands. The results of photometry are available as \verb|RunDeepForcedSource| table, accessible via  Catalogs --> 'Deep Forced Source' .  
 \item For reference , the individual calibrated single epoch images are available as \verb|Science_Ccd_Exposure| table, accessible via Images --> 'Science CCD Exposure'   
 \end{itemize}
 
+Additional details of the schema are also outlined in the LSST Data Challenge Report [Shaw, Juric, Becker, Krughoff et al. 2013], and the LSST Database Schema Browser~\footnote{\url{https://lsst-web.ncsa.illinois.edu/schema/index.php?t=DeepForcedSource&sVer=S12_lsstsim}}. 
 
-\begin{figure*}
-\includegraphics[width=\textwidth]{1_PDAC_interface}
-\caption{The main user interface of PDAC ver. 1 }
-\label{fig:PDAC_interface}
-\end{figure*}
-
-
-
-Details of  the S82 LSST reprocessing can be found in the PDAC document \url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}. Additional details of the schema are also outlined in the LSST Data Challenge Report [Shaw, Juric, Becker, Krughoff et al. 2013], and the LSST Database Schema Browser~\footnote{\url{https://lsst-web.ncsa.illinois.edu/schema/index.php?t=DeepForcedSource&sVer=S12_lsstsim}}. 
-
-PDAC v1 under tab 'External Catalogs' also provides access to  all NASA/IPAC Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, etc. (see Fig.~\ref{fig:PDAC_external_cat}). These are stored at Infrared Processing and Analysis Center (IPAC) \url{http://www.ipac.caltech.edu/project/lsst}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{figure}
-\includegraphics[width=\columnwidth]{2_PDAC_externals}
-\caption{IPAC- hosted catalogs , accessible via IRSA. }
-\label{fig:PDAC_external_cat}
-\end{figure}
+\section{Database Ingestion : is what we get what we expected to get? }
+\label{sec:dg}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Methods}
 
 We perform single-object tests and statistical tests on an ensemble of objects . 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Positional query}
 First, we study in detail a particular source type - we consider examples of variable objects, confirmed by previous studies, such as RR Lyrae stars. \cite{sesar2010}  performed lightcurve template fits to 483 RR Lyrae lightcurves from SDSS (see Fig.\ref{fig:RRLyr_distribution}). Both fit parameters and lightcurves are publicly accessible in the online version of the journal. We apply positional  query to PDAC against these objects (see Fig.~\ref{fig:PDAC_query_ra_dec} for object positions), download lightcurves for objectIds  within the search radius (2 arcec by default), run Lomb-Scargle periodogram to find period, and plot the PDAC-pulled data phased on the best-fit period. 
  % \footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Fig_1_Sesar_2010_RRLyr}
+\includegraphics[width=\columnwidth]{figs/Fig_1_Sesar_2010_RRLyr}
 \caption{ Distribution of RR Lyrae periods  for 483 objects in \citep{sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep{sesar2010}).}
 \label{fig:RRLyr_distribution}
 \end{figure}
@@ -160,7 +211,7 @@ Comparing the S82 data stored at PDAC to the data from \cite{sesar2010},  we wan
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_13350_g}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g}
 \caption{ An example of the  {\it astroML} Lomb Scargle periodogram performance,  calculated for RR Lyr ID=13350  in SDSS g band (following Table 2 in \citep{sesar2010}), using the SDSS data from \citep{sesar2010}.  It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw  SDSS lightcurve data. The upper right panel shows the phased lightcurve constructed with a cited period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram on  a uniform frequency grid (5000 bins), where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega_{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days,  corresponding to the highest peak, $P_{fit} = 2 \pi / \omega_{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$  significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url{http://www.astroml.org/book\_figures/chapter10/index.html}). The same object, but pulling the data from PDAC, is shown on Fig.~\ref{fig:RRLyr_13350_PDAC} }
 \label{fig:RRLyr_13350_Sesar}
 \end{figure*}
@@ -168,14 +219,14 @@ Comparing the S82 data stored at PDAC to the data from \cite{sesar2010},  we wan
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_4099_g}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g}
 \caption{A periodogram, raw and folded lightcurve using SDSS data from \citep{sesar2010}  for RR Lyr ID =4099 (the same object with PDAC data is shown on Fig.~\ref{fig:RRLyr_4099_PDAC}). It is an example of a failure of naive single Lomb Scargle periodogram performance -  the ratio of $\omega_{true} / \omega_{fit} = 0.437$.  The 'true' period from \citep{sesar2010} is  0.641754 days, whereas the naive Lomb-Scargle periodogram approach yields the 'fit' period of 0.280827  days.  Note that here $\omega_{fit}$ and $\omega_{true}$ significantly differ for this RR Lyr,  and the 'true' frequency, backed-up by the full lightcurve fitting of \citep{sesar2010}, appears as only one of insignificant periodogram peaks. Everything else as on Fig.~\ref{fig:RRLyr_13350_Sesar}.}
 \label{fig:RRLyr_4099_Sesar}
 \end{figure*}
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_470994_g}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g}
 \caption{Same as Fig.~\ref{fig:RRLyr_4099_Sesar}, using the SDSS data pulled  from \citep{sesar2010}, with $\omega_{true} / \omega_{fit} = 1.53$. Here  RR Lyr ID=470994 has a cited period of 0.346794  days ('$P_{true}$'), whereas period derived from the Lomb-Scargle periodogram is 0.531667. It may be a  good example of aliasing. }
 \label{fig:RRLyr_470994_Sesar}
 \end{figure*}
@@ -185,7 +236,7 @@ Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle peri
 
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Fig_3_RRLyr_omega_ratio}
+\includegraphics[width=\columnwidth]{figs/Fig_3_RRLyr_omega_ratio}
 \caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$, where $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in Table 2 of \citep{sesar2010}. We take the same SDSS data from the paper (Table 1 in \citep{sesar2010}), and calculate the Lomb-Scargle single-term generalized periodogram. The frequency corresponding to the highest peak is  $\omega_{fit}$. Thus, wherever  this ratio is approximately equal to 1, this means that the naive  LS approach is able to recover the 'true' period.  However,  where the highest  frequency peak is not the same as $\omega_{true}$, the ratio will be smaller or bigger from 1. This may be caused by the inherent simplicity of the simple single-term Fourier Series fitting. Indeed, some RR Lyrae lightcurves may have shapes that are insufficiently described by a single sinusoid (as on Fig.10.18  in \citep{ivezic2014}). }
 \label{fig:RRLyr_period_ratios}
 \end{figure}
@@ -197,13 +248,13 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{missing_and_recovered_RR_Lyr_PDAC}
+\includegraphics[width=\columnwidth]{figs/missing_and_recovered_RR_Lyr_PDAC}
 \caption{Results of positional query against 483 RR Lyrae stars from ~\citep{sesar2010}, using their $\mathrm{RA}, \mathrm{Dec}$. Blue dots are 343 stars that have a match in the PDAC S82 dataset within 2 arcsec, and red crosses are 140 stars that did not. Increasing the search radius to 3 arcsec does not alter this result. }
 \label{fig:PDAC_query_ra_dec}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Sesar_vs_PDAC_lc_4099}
+\includegraphics[width=\columnwidth]{figs/Sesar_vs_PDAC_lc_4099}
 \caption{Comparison of RR Lyr ID=4099  from  ~\citep{sesar2010}  (red crosses), and PDAC (blue crosses).  The two lightcurves have different length : 59 vs 162 points, respectively.}
 \label{fig:PDAC_SDSS_compare_LC}
 \end{figure}
@@ -212,13 +263,13 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_13350_Sesar}, but using data downloaded using PDAC. Using PDAC data, the RR Lyr ID=13350 has a best-fit period of 0.547969 days, almost identical to true period of  0.547987 from \citep{sesar2010}. Panels the same as on Fig.~\ref{fig:RRLyr_4099_Sesar}}
 \label{fig:RRLyr_13350_PDAC}
 \end{figure*}
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_4099_Sesar}, but using data downloaded using PDAC. Calculating a naive LS periodogram using PDAC data for RR Lyr ID=4099 we find the  best-fit period (frequency with highest power) of 0.280827 days, almost identical to the period found using LS  periodogram on the SDSS \citep{sesar2010} data of 0.280827 days. Both are discrepant with respect to the 'true' period of 0.641754 days from \citep{sesar2010}. Panels the same as on Fig.~\ref{fig:RRLyr_13350_Sesar}}
 \label{fig:RRLyr_4099_PDAC}
 \end{figure*}
@@ -226,14 +277,14 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_470994_Sesar}, but using data downloaded from PDAC. Calculating a naive LS periodogram using PDAC data for RR Lyr ID=470994 we find the  best-fit period (frequency with highest power) of 0.531667  days, almost twice as high as the 'true'  period of 0.346794 days from  \citep{sesar2010}. For this star we get an identical period if we use LS periodogram on SDSS data from \citep{sesar2010} as opposed to PDAC. Panels the same as on Fig.~\ref{fig:RRLyr_13350_Sesar}}
 \label{fig:RRLyr_470994_PDAC}
 \end{figure*}
 
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{Fig_PDAC_sesar_compare}
+\includegraphics[width=\columnwidth]{figs/Fig_PDAC_sesar_compare}
 \caption{Comparison of the original ~\citep{sesar2010}  lightcurves (green) against data for the same objects  pulled from PDAC (blue). For each of the 383 lightcurves in SDSS $g$-band, without any pre-processing or clipping, we calculated the median, weighted mean, mean, and $chi^{2}_{DOF}$. }
 \label{fig:PDAC_SDSS_comp}
 \end{figure}
@@ -249,7 +300,7 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 We tested the periodogram results for few RR Lyrae using the NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram}. The calculation takes on average  15 seconds (illustrated on Fig.~\ref{fig:exoplanet_archive}, same for for RR Lyr ID=4099 and 470994). See Table ~\ref{tab:periods} for a summary of results. 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{Exoplanet_archive_periodogram}
+\includegraphics[width=\textwidth]{figs/Exoplanet_archive_periodogram}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_13350_Sesar}, and Fig~\ref{fig:RRLyr_13350_PDAC},  using  the SDSS data from \citep{sesar2010}.  The highest significance frequency peak (power 21.58) corresponds to  a period of 0.35365194 days. Only the second in significance peak (power 20.62) corresponds to the 'true' period of 0.547969 \citep{sesar2010}. Note the bottom-left corner : the calculation took 15 secs for one lightcurve (compare to few miliseconds of AstroML code naive single-sinusoid approach that gave the same result for this particular object) }
 \label{fig:exoplanet_archive}
 \end{figure*}
@@ -277,7 +328,11 @@ Second, we query the S82 database against a small subset of a given S82 patch (f
 
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Results}
 

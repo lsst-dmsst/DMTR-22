@@ -18,6 +18,10 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \newlabel{firstpage}{{}{1}{}{Doc-Start}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}}
+\newlabel{note1}{{2}{1}{}{Hfootnote.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Overview of performed tests}{1}{section.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}User Interface: what we see}{1}{section.3}}
+\newlabel{sec:ui}{{3}{1}{User Interface: what we see}{section.3}{}}
 \citation{sesar2010}
 \citation{sesar2010}
 \citation{sesar2010}
@@ -33,12 +37,6 @@
 \citation{sesar2010}
 \citation{sesar2010}
 \citation{sesar2010}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The main user interface of PDAC ver. 1 }}{2}{figure.1}}
-\newlabel{fig:PDAC_interface}{{1}{2}{The main user interface of PDAC ver. 1}{figure.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces IPAC- hosted catalogs , accessible via IRSA. }}{2}{figure.2}}
-\newlabel{fig:PDAC_external_cat}{{2}{2}{IPAC- hosted catalogs , accessible via IRSA}{figure.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{2}{section.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Positional query}{2}{section.3}}
 \citation{sesar2010}
 \citation{sesar2010}
 \citation{sesar2010}
@@ -85,20 +83,30 @@
 \citation{sesar2010}
 \bibstyle{apj}
 \bibdata{references}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Infractructure : what is available and how to get it }{2}{section.4}}
+\newlabel{sec:infra}{{4}{2}{Infractructure : what is available and how to get it}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Database Ingestion : is what we get what we expected to get? }{2}{section.5}}
+\newlabel{sec:dg}{{5}{2}{Database Ingestion : is what we get what we expected to get?}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Methods}{2}{section.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Positional query}{2}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Area query}{2}{subsection.7.1}}
 \bibcite{ivezic2014}{{1}{2014}{{{Ivezi{\'c}} et~al.}}{{{Ivezi{\'c}} et~al.}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The main user interface of PDAC ver. 1 }}{3}{figure.1}}
+\newlabel{fig:PDAC_interface}{{1}{3}{The main user interface of PDAC ver. 1}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces IPAC- hosted catalogs , accessible via IRSA. }}{3}{figure.2}}
+\newlabel{fig:PDAC_external_cat}{{2}{3}{IPAC- hosted catalogs , accessible via IRSA}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Distribution of RR Lyrae periods for 483 objects in \citep  {sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep  {sesar2010}).}}{3}{figure.3}}
+\newlabel{fig:RRLyr_distribution}{{3}{3}{Distribution of RR Lyrae periods for 483 objects in \citep {sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep {sesar2010})}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Results}{3}{section.8}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusions}{3}{section.9}}
 \bibcite{sesar2010}{{2}{2010}{{{Sesar} et~al.}}{{{Sesar} et~al.}}}
 \bibcite{sesar2007}{{3}{2007}{{Sesar et~al.}}{{Sesar et~al.}}}
 \bibcite{astroML}{{4}{2012}{{{Vanderplas} et~al.}}{{{Vanderplas} et~al.}}}
 \bibcite{zechmeister2009}{{5}{2009}{{{Zechmeister} \& {K{\"u}rster}}}{{{Zechmeister} \& {K{\"u}rster}}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Distribution of RR Lyrae periods for 483 objects in \citep  {sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep  {sesar2010}).}}{3}{figure.3}}
-\newlabel{fig:RRLyr_distribution}{{3}{3}{Distribution of RR Lyrae periods for 483 objects in \citep {sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep {sesar2010})}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Area query}{3}{subsection.3.1}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of RR Lyrae periods obtained with different methods. First, P(S) is the 'ground truth' - period resulting from detailed template fitting by \nobreakspace  {}\citep  {sesar2010}. Second, P(LS) is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram (LS) computed on the SDSS lightcurve for a given object pulled from online journal data in \nobreakspace  {}\citep  {sesar2010}. Third, P(EXO) uses the same SDSS data from \nobreakspace  {}\citep  {sesar2010} in g-band, to find the best period with the NASA Exoplanet Archive Periodogram service. Fourth, P(PDAC) uses the data pulled from PDAC, for which we find the best period using LS periodogram (same method as P(LS)).}}{3}{table.1}}
-\newlabel{tab:periods}{{1}{3}{Comparison of RR Lyrae periods obtained with different methods. First, P(S) is the 'ground truth' - period resulting from detailed template fitting by ~\citep {sesar2010}. Second, P(LS) is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram (LS) computed on the SDSS lightcurve for a given object pulled from online journal data in ~\citep {sesar2010}. Third, P(EXO) uses the same SDSS data from ~\citep {sesar2010} in g-band, to find the best period with the NASA Exoplanet Archive Periodogram service. Fourth, P(PDAC) uses the data pulled from PDAC, for which we find the best period using LS periodogram (same method as P(LS))}{table.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{3}{section.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions}{3}{section.5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  An example of the {\it  astroML} Lomb Scargle periodogram performance, calculated for RR Lyr ID=13350 in SDSS g band (following Table 2 in \citep  {sesar2010}), using the SDSS data from \citep  {sesar2010}. It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw SDSS lightcurve data. The upper right panel shows the phased lightcurve constructed with a cited period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram on a uniform frequency grid (5000 bins), where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega _{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days, corresponding to the highest peak, $P_{fit} = 2 \pi / \omega _{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$ significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url  {http://www.astroml.org/book\_figures/chapter10/index.html}). The same object, but pulling the data from PDAC, is shown on Fig.\nobreakspace  {}\ref  {fig:RRLyr_13350_PDAC} }}{4}{figure.4}}
 \newlabel{fig:RRLyr_13350_Sesar}{{4}{4}{An example of the {\it astroML} Lomb Scargle periodogram performance, calculated for RR Lyr ID=13350 in SDSS g band (following Table 2 in \citep {sesar2010}), using the SDSS data from \citep {sesar2010}. It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw SDSS lightcurve data. The upper right panel shows the phased lightcurve constructed with a cited period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram on a uniform frequency grid (5000 bins), where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega _{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days, corresponding to the highest peak, $P_{fit} = 2 \pi / \omega _{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$ significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url {http://www.astroml.org/book\_figures/chapter10/index.html}). The same object, but pulling the data from PDAC, is shown on Fig.~\ref {fig:RRLyr_13350_PDAC}}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of RR Lyrae periods obtained with different methods. First, P(S) is the 'ground truth' - period resulting from detailed template fitting by \nobreakspace  {}\citep  {sesar2010}. Second, P(LS) is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram (LS) computed on the SDSS lightcurve for a given object pulled from online journal data in \nobreakspace  {}\citep  {sesar2010}. Third, P(EXO) uses the same SDSS data from \nobreakspace  {}\citep  {sesar2010} in g-band, to find the best period with the NASA Exoplanet Archive Periodogram service. Fourth, P(PDAC) uses the data pulled from PDAC, for which we find the best period using LS periodogram (same method as P(LS)).}}{4}{table.1}}
+\newlabel{tab:periods}{{1}{4}{Comparison of RR Lyrae periods obtained with different methods. First, P(S) is the 'ground truth' - period resulting from detailed template fitting by ~\citep {sesar2010}. Second, P(LS) is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram (LS) computed on the SDSS lightcurve for a given object pulled from online journal data in ~\citep {sesar2010}. Third, P(EXO) uses the same SDSS data from ~\citep {sesar2010} in g-band, to find the best period with the NASA Exoplanet Archive Periodogram service. Fourth, P(PDAC) uses the data pulled from PDAC, for which we find the best period using LS periodogram (same method as P(LS))}{table.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces A periodogram, raw and folded lightcurve using SDSS data from \citep  {sesar2010} for RR Lyr ID =4099 (the same object with PDAC data is shown on Fig.\nobreakspace  {}\ref  {fig:RRLyr_4099_PDAC}). It is an example of a failure of naive single Lomb Scargle periodogram performance - the ratio of $\omega _{true} / \omega _{fit} = 0.437$. The 'true' period from \citep  {sesar2010} is 0.641754 days, whereas the naive Lomb-Scargle periodogram approach yields the 'fit' period of 0.280827 days. Note that here $\omega _{fit}$ and $\omega _{true}$ significantly differ for this RR Lyr, and the 'true' frequency, backed-up by the full lightcurve fitting of \citep  {sesar2010}, appears as only one of insignificant periodogram peaks. Everything else as on Fig.\nobreakspace  {}\ref  {fig:RRLyr_13350_Sesar}.}}{5}{figure.5}}
 \newlabel{fig:RRLyr_4099_Sesar}{{5}{5}{A periodogram, raw and folded lightcurve using SDSS data from \citep {sesar2010} for RR Lyr ID =4099 (the same object with PDAC data is shown on Fig.~\ref {fig:RRLyr_4099_PDAC}). It is an example of a failure of naive single Lomb Scargle periodogram performance - the ratio of $\omega _{true} / \omega _{fit} = 0.437$. The 'true' period from \citep {sesar2010} is 0.641754 days, whereas the naive Lomb-Scargle periodogram approach yields the 'fit' period of 0.280827 days. Note that here $\omega _{fit}$ and $\omega _{true}$ significantly differ for this RR Lyr, and the 'true' frequency, backed-up by the full lightcurve fitting of \citep {sesar2010}, appears as only one of insignificant periodogram peaks. Everything else as on Fig.~\ref {fig:RRLyr_13350_Sesar}}{figure.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Same as Fig.\nobreakspace  {}\ref  {fig:RRLyr_4099_Sesar}, using the SDSS data pulled from \citep  {sesar2010}, with $\omega _{true} / \omega _{fit} = 1.53$. Here RR Lyr ID=470994 has a cited period of 0.346794 days ('$P_{true}$'), whereas period derived from the Lomb-Scargle periodogram is 0.531667. It may be a good example of aliasing. }}{6}{figure.6}}
