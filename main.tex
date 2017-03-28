@@ -167,6 +167,32 @@ The reprocessing included:
 
 Additional details of the schema are also outlined in the LSST Data Challenge Report [Shaw, Juric, Becker, Krughoff et al. 2013], and the LSST Database Schema Browser~\footnote{\url{https://lsst-web.ncsa.illinois.edu/schema/index.php?t=DeepForcedSource&sVer=S12_lsstsim}}. 
 
+
+Spatial queries that can be directly executed from the PDAC interface, called 'Method Search',  include cone, box, elliptical and polygon (See Fig.~\ref{fig:PDAC_interface}).  Spatial queries allow to choose a certain region of the sky by the object ra,dec coordinates.  
+Cone, elliptical, and box queries  return objects in a region of the sky bound by a geometrical shape centered on given coordinates (ra,dec). Cone is the most useful type of query, allowing to find objects within a certain radius from the coordinate query.  Elliptical search allows to define the shape by an ellipse with a given semi-major axis,  position angle and the axis ratio. A box is a square centered on the query coordinates, with a given side size.  A polygon allows to define the search region by between 3 and 15 coordinate pairs (vertices of the polygon). Note : Multi-object query is listed in the drop-down menu, but has not yet been implemented (March 2017) - in the future it will allow the user to upload a list of ra,dec and search radii,  finding 1-to-1 matches in the existing catalog. An All-Sky option (no spatial constraints) has not been tested given the size of the database.  
+
+Any query returns a list of all objects within the given region (Fig.~\ref{fig:PDAC_cone_DS}).  
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
+\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10 arcseconds from the position ra=352.469872 , dec=-1.171239. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particula feature is described further in Sec.~\ref{sec:miniatures}}
+\label{fig:PDAC_cone_DS}
+\end{figure*}
+
+
+\subsection{Postage Stamp Miniatures }
+\label{sec:miniatures}
+
+
+\subsection{Time Series : periodogram}
+\label{sec:periodogram}
+
+A new . We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram.   
+
+A similar comparison involving downloading the flux-calibrated lightcurves 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,6 +202,12 @@ Additional details of the schema are also outlined in the LSST Data Challenge Re
 
 \section{Database Ingestion : is what we get what we expected to get? }
 \label{sec:dg}
+
+
+\subsection{Positional comparison }
+
+We compare the ra,dec of objects found within  a given region in PDAC S82 to the analoguous data stored at UW (DeepSource tables). Regardless of photometry, for a given objectId, the ra,dec should agree.  
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
