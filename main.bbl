@@ -9,13 +9,18 @@
   et~al.}{2010}]{sesar2010}
 {Sesar}, B., et~al. 2010, \apj, 708, 717
 
-\bibitem[\protect\citeauthoryear{Sesar et~al.}{Sesar et~al.}{2007}]{sesar2007}
-Sesar, B., et~al. 2007, The Astronomical Journal, 134, 2236
-
 \bibitem[\protect\citeauthoryear{{Vanderplas} et~al.}{{Vanderplas}
   et~al.}{2012}]{astroML}
 {Vanderplas}, J., {Connolly}, A., {Ivezi{\'c}}, {\v Z}.,  \& {Gray}, A. 2012,
   in Conference on Intelligent Data Understanding (CIDU), 47
+
+\bibitem[\protect\citeauthoryear{{VanderPlas} \& {Ivezi{\'c}}}{{VanderPlas} \&
+  {Ivezi{\'c}}}{2015}]{vanderplas2015}
+{VanderPlas}, J.,  \& {Ivezi{\'c}}, {\v Z}. 2015, The Astrophysical Journal,
+  812, 18
+
+\bibitem[\protect\citeauthoryear{{VanderPlas}}{{VanderPlas}}{2017}]{vanderplas2017}
+{VanderPlas}, J.~T. 2017, ArXiv e-prints
 
 \bibitem[\protect\citeauthoryear{{Zechmeister} \& {K{\"u}rster}}{{Zechmeister}
   \& {K{\"u}rster}}{2009}]{zechmeister2009}

@@ -5,12 +5,13 @@
 \BOOKMARK [2][-]{subsection.4.1}{Postage Stamp Miniatures }{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{Time Series : periodogram}{section.4}% 6
 \BOOKMARK [1][-]{section.5}{Database Ingestion : is what we get what we expected to get? }{}% 7
-\BOOKMARK [2][-]{subsection.5.1}{Positional comparison }{section.5}% 8
-\BOOKMARK [1][-]{section.6}{Methods}{}% 9
-\BOOKMARK [1][-]{section.7}{Positional query}{}% 10
-\BOOKMARK [2][-]{subsection.7.1}{Area query}{section.7}% 11
-\BOOKMARK [1][-]{section.8}{Results}{}% 12
-\BOOKMARK [1][-]{section.9}{Conclusions}{}% 13
-\BOOKMARK [1][-]{section.A1}{SQL queries}{}% 14
-\BOOKMARK [2][-]{subsection.A1.1}{Cone query around given RA, DEC}{section.A1}% 15
-\BOOKMARK [2][-]{subsection.A1.2}{ID query to return lightcurves}{section.A1}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Positional comparison : box query }{section.5}% 8
+\BOOKMARK [2][-]{subsection.5.2}{Light curve comparison : multiple cone queries }{section.5}% 9
+\BOOKMARK [1][-]{section.6}{Results}{}% 10
+\BOOKMARK [1][-]{section.7}{Conclusions}{}% 11
+\BOOKMARK [1][-]{section.A1}{SQL queries}{}% 12
+\BOOKMARK [2][-]{subsection.A1.1}{Cone query around given RA, DEC}{section.A1}% 13
+\BOOKMARK [2][-]{subsection.A1.2}{ID query to return lightcurves}{section.A1}% 14
+\BOOKMARK [2][-]{subsection.A1.3}{Cone query to return lightcurves}{section.A1}% 15
+\BOOKMARK [2][-]{subsection.A1.4}{Box Query}{section.A1}% 16
+\BOOKMARK [1][-]{section.A2}{Reading JSON files}{}% 17

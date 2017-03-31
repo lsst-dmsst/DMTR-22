@@ -174,24 +174,58 @@ Cone, elliptical, and box queries  return objects in a region of the sky bound b
 Any query returns a list of all objects within the given region (Fig.~\ref{fig:PDAC_cone_DS}).  
 
 
-
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
-\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10 arcseconds from the position ra=352.469872 , dec=-1.171239. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particula feature is described further in Sec.~\ref{sec:miniatures}}
+\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10 arcseconds from the position ra=352.469872 , dec=-1.171239. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particular feature is described further in Sec.~\ref{sec:miniatures}}
 \label{fig:PDAC_cone_DS}
 \end{figure*}
 
 
 \subsection{Postage Stamp Miniatures }
 \label{sec:miniatures}
+We compared the postage stamp miniatures showing the overview of the region against which a given query was performed. We find that the miniature image does not always come from the catalog we query against.  In fact, the "coverage" image comes from IRAS, DSS, 2MASS, or WISE -  the survey is chosen depending on the size of the region needed to be shown [Xiuqin Wu, priv.comm., 2017].  Indeed, as the query region is increased,  the shown image changes unexpectedly from DSS to IRAS or WISE, without issuing a relevant information to the user.  A recommendation is to display information about which sky survey a particular image is coming from.  
+
+As a concrete example, we execute a cone query against the Deep Source table,  expecting to find  a point source: a star at ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878967464526 ,  1.020496777615987 degrees), with search radius of 2, 10, 100 and 1000 arcseconds . We find that the queried region only sometimes has the postage stamp miniature aligned with the query region. 
+
+We also consider a galaxy located at ra,dec =  40.433,  0.449. A 10 arcsec cone query only sometimes is centered on the galaxy. 
 
 
 \subsection{Time Series : periodogram}
 \label{sec:periodogram}
 
-A new . We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram.   
+We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
 
-A similar comparison involving downloading the flux-calibrated lightcurves 
+Consider RR Lyrae star id=13350  (ra, dec = 0.283437, 1.178522 ). A cone query with search radius of 2 arcseconds brings us to a lightcurve view, from where it is possible to open the Time Series view (see Fig.\ref{fig:time_series1})
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series1}
+\caption{A result of cone query against Run Deep Forced Source table ( containing S82 S13 data), with (ra,dec,radius = 0.283437, 1.178522, 0.00055 degrees). We circle the 'View Time Series' button that links to the Time Series UI  shown on Fig.~\ref{fig:time_series2}. }
+\label{fig:time_series1}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series2}
+\caption{Time Series view for an RR Lyrae star at ra, dec = 0.283437, 1.178522 . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
+\label{fig:time_series2}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series3}
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae at  ra, dec = 0.283437, 1.178522 . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). For this particular RR Lyrae we guide our choice of minimum and maximum periods (0.229, 0.998 days) by an educated guess, given that RR Lyrae in ~\citep{sesar2010} sample have periods between  0.254 and 0.907 days. Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
+\label{fig:time_series3}
+\end{figure*}
+
+
+Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram} (see Fig.~\ref{fig:exoplanet_archive}). Using few RR Lyrae PDAC g-band  lightcurves, each calculation is allocated time slot of approximately 15 seconds. Also see Table ~\ref{tab:periods} for a summary of results. 
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Exoplanet_archive_periodogram}
+\caption{ The same object as Fig.~\ref{fig:RRLyr_13350_Sesar}, and Fig~\ref{fig:RRLyr_13350_PDAC},  using  the SDSS data from \citep{sesar2010}.  The highest significance frequency peak (power 21.58) corresponds to  a period of 0.35365194 days. Only the second in significance peak (power 20.62) corresponds to the 'true' period of 0.547969 \citep{sesar2010}. Note the bottom-left corner : the calculation took 15 secs for one lightcurve (compare to few miliseconds of AstroML code naive single-sinusoid approach that gave the same result for this particular object) }
+\label{fig:exoplanet_archive}
+\end{figure*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,31 +238,17 @@ A similar comparison involving downloading the flux-calibrated lightcurves
 \label{sec:dg}
 
 
-\subsection{Positional comparison }
+\subsection{Positional comparison : box query }
 
 We compare the ra,dec of objects found within  a given region in PDAC S82 to the analoguous data stored at UW (DeepSource tables). Regardless of photometry, for a given objectId, the ra,dec should agree.  
 
 
+\subsection{Light curve comparison : multiple cone queries }
+\label{sec:rr_lyrae}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We perform multiple cone queries given known coordinates of well-classified sources.  We take as ground truth  484 RR Lyrae stars from   \cite{sesar2010} , which were identified by color cuts, Lomb-Scargle periodogram and then confirmed by template fitting.  Thus the periods from that work are considered to be reliable (see  RR Lyrae 'ground truth'  period distribution on Fig.\ref{fig:RRLyr_distribution}). Both fit parameters and  SDSS lightcurves used in ~\cite{sesar2010}  are publicly accessible in the online version of the journal.
 
-\section{Methods}
-
-We perform single-object tests and statistical tests on an ensemble of objects . 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Positional query}
-First, we study in detail a particular source type - we consider examples of variable objects, confirmed by previous studies, such as RR Lyrae stars. \cite{sesar2010}  performed lightcurve template fits to 483 RR Lyrae lightcurves from SDSS (see Fig.\ref{fig:RRLyr_distribution}). Both fit parameters and lightcurves are publicly accessible in the online version of the journal. We apply positional  query to PDAC against these objects (see Fig.~\ref{fig:PDAC_query_ra_dec} for object positions), download lightcurves for objectIds  within the search radius (2 arcec by default), run Lomb-Scargle periodogram to find period, and plot the PDAC-pulled data phased on the best-fit period. 
+We perform individual SQL  cone queries  against PDAC for each RR Lyrae, allowing a generous 2 arcsec search radius (see Appendix A). Location of these RR Lyrae on the sky is shown on Fig.~\ref{fig:PDAC_query_ra_dec}. 
  % \footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}
 
 \begin{figure}
@@ -237,8 +257,22 @@ First, we study in detail a particular source type - we consider examples of var
 \label{fig:RRLyr_distribution}
 \end{figure}
 
+Lomb-Scargle periodogram does not always find the 'true' period - it is subject to non-uniform sampling,  aliasing,  and necessity of choosing well the frequency sample on which periodogram powers are evaluated (see ~\cite{vanderplas2017} for a recent overview). We nevertheless perform few simple sanity checks : 
+\begin{enumerate}
+	\item  Does the PDAC lightcurve folded on 'true' period look real? 
+	\item  Using naive Lomb-Scargle, do we find the same period with the S82 Summer 2013 locally-stored data, and PDAC-hosted equivalent dataset?  
+	\item  Using naive Lomb-Scargle, do we find the same period with the \cite{sesar2010} data and PDAC data?
+	
+\end{enumerate}
 
-Comparing the S82 data stored at PDAC to the data from \cite{sesar2010},  we want to treat the latter as 'ground truth', but as a sanity check we perform Lomb Scargle periodogram testing to confirm the more detailed analysis of \cite{sesar2010}. Using {\it astroML} python module \citep{astroML}, we sample the uniformly spaced frequency grid with N=5000 samples span between the smallest and the largest frequency reported in Table 1 of \cite{sesar2010} $\pm 10\%$, i.e. $\omega_{min} = 0.9 ( 2 \pi / P_{min})$, $\omega_{max} = 1.1 ( 2 \pi / P_{min})$. We use the default {\it astroML} Lomb Scargle periodogram settings, namely generalized LS (see Eq.20 in \cite{zechmeister2009}, and Section 10.3.2 in \cite{ivezic2014}).   
+
+Question 3 is less direct than  questions 1 and 2 , since \cite{sesar2010} used an earlier SDSS Data Release than what was used to create the S82 S13 reprocessed dataset.  However,  question 1 test solely  whether the same object is stored in PDAC as we would assume (since it is unlikely that a random object would be well-represented by an RR Lyrae period). Similarly, Question 2 employs datasets that should be identical, and therefore we would assume that Lomb-Scargle tests would yield identical periodograms.  
+
+Assuming that the periods for the 483 RR Lyrae  in \cite{sesar2010} are correct, we attempt to download PDAC data for these objects, compute periodograms, and fold them on the true periods.  This serves both to confirm that the periods are correct, and that the objects themselves are indeed RR Lyrae (see Sec. ~\ref{sec:rr_lyrae})
+
+
+
+ Using {\it astroML} python module \citep{astroML}, we sample the uniformly spaced frequency grid with N=5000 samples span between the smallest and the largest frequency reported in Table 1 of \cite{sesar2010} $\pm 10\%$, i.e. $\omega_{min} = 0.9 ( 2 \pi / P_{min})$, $\omega_{max} = 1.1 ( 2 \pi / P_{min})$. We use the default {\it astroML} Lomb Scargle periodogram settings, namely generalized LS (see Eq.20 in \cite{zechmeister2009}, and Section 10.3.2 in \cite{ivezic2014}).   
 
 
 
@@ -322,21 +356,6 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 \end{figure}
 
 
-%\begin{figure}
-%\includegraphics[width=\columnwidth]{Fig_4_RRLyr_omega_ratio_PDAC}
-%\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{PDAC}$.  $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in the Table 2 of \citep{sesar2010}, that used SDSS data for S82.  We queried positionally against the same objects the PDAC version of SDSS reprocessed forced photometry on S82. We call this dataset 'PDAC'. For each RR Lyr star we obtained calibrated g-band  lightcurves, that were used to calculate the Lomb-Scargle periodogram, on an identical frequency grid to that used previously on SDSS data from Table 1 in \citep{sesar2010}. Based on the highest peak in each periodogram we found the best-fit frequency, $\omega_{PDAC}$.  The ratio of $\omega_{true}$ to $\omega_{PDAC}$,  analoguously to $\omega_{true}$ to $\omega_{fit}$, represents how well can naive Lomb-Scargle approach reproduce periods found by \citep{sesar2010} by more sophisticated lightcurve template-fitting methods. [NOTE : this is an incomplete dataset! not all RR Lyr LCs are available from PDAC --> some RA, Dec have no matching PDAC object within 2 arcsecs ! ]}
-%\label{fig:RRLyr_period_ratios_PDAC}
-%\end{figure}
-
-
-We tested the periodogram results for few RR Lyrae using the NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram}. The calculation takes on average  15 seconds (illustrated on Fig.~\ref{fig:exoplanet_archive}, same for for RR Lyr ID=4099 and 470994). See Table ~\ref{tab:periods} for a summary of results. 
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/Exoplanet_archive_periodogram}
-\caption{ The same object as Fig.~\ref{fig:RRLyr_13350_Sesar}, and Fig~\ref{fig:RRLyr_13350_PDAC},  using  the SDSS data from \citep{sesar2010}.  The highest significance frequency peak (power 21.58) corresponds to  a period of 0.35365194 days. Only the second in significance peak (power 20.62) corresponds to the 'true' period of 0.547969 \citep{sesar2010}. Note the bottom-left corner : the calculation took 15 secs for one lightcurve (compare to few miliseconds of AstroML code naive single-sinusoid approach that gave the same result for this particular object) }
-\label{fig:exoplanet_archive}
-\end{figure*}
-
 
 
 \begin{table}
@@ -354,9 +373,6 @@ We tested the periodogram results for few RR Lyrae using the NASA Exoplanet Arch
 \end{table}
 
 
-\subsection{Area query}
-
-Second, we query the S82 database against a small subset of a given S82 patch (few degrees), downloading lightcurves for $\sim100 000 $ objects in that area of the sky. We plot color-color diagrams, as in \cite{sesar2007}, Fig.3 ,4, and color - magnitude diagrams to show the morphology of the Sgr dSph tidal stream \citep{sesar2010}.  
 
 
 
@@ -390,9 +406,11 @@ Thank you !
 \appendix
 
 \section{SQL queries}
+To obtain lightcurves for objects with given RA,DEC,  we would first query the RunDeepSource table to find out which objectIds are within the search radius, and then query the RunDeepForcedSource table against these objectIds.  The two can be combined, querying for all lightcurves within a certain search radius. 
+
 \subsection{Cone query around given RA, DEC}
 
-To query \verb|RunDeepForcedSource| table, for an object with RA = 0.935679, and DEC=1.115859, search radius 0.00055555 (all in degrees), saving the output of the query to \verb|catalogCone1.json| file:
+To query \verb|RunDeepSource| table, for an object with RA = 0.935679, and DEC=1.115859, search radius 0.00055555 (all in degrees), saving the output of the query to \verb|catalogCone1.json| file:
 
 \begin{lstlisting}[
            language=SQL,
@@ -402,7 +420,7 @@ To query \verb|RunDeepForcedSource| table, for an object with RA = 0.935679, and
            numberstyle=\tiny,
            commentstyle=\color{gray}
         ]
-curl -o catalogCone1.json -d 'query=SELECT+objectId+FROM+RunDeepForcedSource+WHERE+\
+curl -o catalogCone1.json -d 'query=SELECT+objectId+FROM+RunDeepSource+WHERE+\
                 qserv_areaspec_circle(0.935679,1.115859,0.00055555);' \
                 http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
 \end{lstlisting}
@@ -438,6 +456,89 @@ WHERE \
 ORDER BY exposure_time_mid' http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
 
 \end{lstlisting}
+
+\subsection{Cone query to return lightcurves}
+We can combine the two steps above by querying positionally against the RunDeepForcedSource table : 
+
+\begin{lstlisting}[
+           language=SQL,
+           showstringspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+           ]
+curl -o catalogForced2.json -d 'query=\
+SELECT \
+  objectId, id, fsrc.exposure_id, fsrc.exposure_time_mid, exp.run, \
+  scisql_dnToAbMag(fsrc.flux_psf,exp.fluxMag0) AS g, \
+  scisql_dnToAbMagSigma(fsrc.flux_psf, fsrc.flux_psf_err, \
+                        exp.fluxMag0, exp.fluxMag0Sigma) AS gErr \
+FROM \
+  RunDeepForcedSource AS fsrc, \
+  Science_Ccd_Exposure AS exp \
+WHERE \
+  qserv_areaspec_circle(0.935679,1.115859,0.00055555) \
+  AND exp.scienceCcdExposureId = fsrc.exposure_id \
+  AND fsrc.exposure_filter_id=1 \
+ORDER BY exposure_time_mid' http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
+
+\end{lstlisting}
+
+\subsection{Box Query}
+We performed box query to compare ra,dec , objectId  of all sources from a small region:
+
+
+\begin{lstlisting}[
+           language=SQL,
+           showstringspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+           ]
+
+curl -o catalogBox0.json -d 'query=\
+SELECT \
+  * \
+FROM \
+  RunDeepSource \
+WHERE \ 
+  qserv_areaspec_box(325,0,325.1,0.1);' \
+  http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
+
+\end{lstlisting}
+
+
+
+\section{Reading JSON files}
+We used Python to read JSON files into AstroPy tables: 
+
+\begin{lstlisting}[
+           language=Python,
+           showstringspaces=false,
+           basicstyle=\ttfamily,
+           numbers=left,
+           numberstyle=\tiny,
+           commentstyle=\color{gray}
+           ]
+import json
+from astropy.table import Table
+
+json_file = 'catalogForced1.json'
+tab = json.loads(open(json_file).read())
+meta = tab['result']['table']['metadata']['elements']
+data = tab['result']['table']['data']
+dataT = np.transpose(data)
+
+# initialize a new AstroPy Table 
+t = Table()
+
+# iterate over columns to add them to the Table ...
+for k in range(len(dataT)):
+    t.add_column(Column(dataT[k], name=meta[k]['name']), index=0)
+
+ \end{lstlisting}   
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
