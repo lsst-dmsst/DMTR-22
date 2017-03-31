@@ -47,7 +47,7 @@
 \usepackage{graphicx}	% Including figure files
 \usepackage{amsmath}	% Advanced maths commands
 \usepackage{amssymb}	% Extra maths symbols
-
+\usepackage{gensymb}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
@@ -62,7 +62,7 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[PDAC progress]{Preliminary Data Access Center : Tests February 2017}
+\title[PDAC progress]{PDAC Tests: February 2017}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
@@ -88,7 +88,7 @@ $^{1}$Department of Astronomy, University of Washington, Seattle, WA, United Sta
 
 % Abstract of the paper
 \begin{abstract}
-A report of progress made in testing the Preliminary Data Access Center user interface, infrastructure, and database ingestion.  We list conducted tests commenting on the outcomes. This will help direct focus of the PDAC development to make it user-friendly and efficient. 
+A report of progress made in testing the Preliminary Data Access Center user interface, infrastructure, and database ingestion.  We list conducted tests commenting on the outcomes. This will help direct the focus of the PDAC development to make it user-friendly and efficient. 
 \end{abstract}
 
 
@@ -97,20 +97,20 @@ A report of progress made in testing the Preliminary Data Access Center user int
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \section*{Introduction}
-\subsection*{Data content}
-PDAC contains NCSA-hosted Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (called 'LSST Data' in the online portal). PDAC also allows access to IPAC-stored datasets (GAIA, WISE, etc.). 
 
-\subsection*{Data access}
-PDAC allows user-interface and SQL queries of various tables. Currently positional query is the available type of query. It allows  selecting a region of the sky and requesting the objects located within that region. The region can be shaped as a cone, ellipse, rectangular box, or a polygon.
+\subsection*{Data overview}
+PDAC contains NCSA-hosted Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (called 'LSST Data' in the online portal). PDAC supports online User Interface queries, as well as direct  qserv-dax SQL queries. Concrete examples of tests outlined below are available in the full PDAC report.  
 
 \subsection*{Performed tests}
 
 \begin{itemize}
-	\item General navigation of the main 'Search Catalogs' interface. Possible selection  of Catalogs (Deep Source, Deep Forced Source), or Images (Deep Coadd, Science CCD Exposure).  Positional query against Catalogs requires entering 'Name or Position'.  Degrees are resolved into h:m:s and vice-versa.  However, examples suggested underneath the   ‘Name or Position’ dialog box  include objects that are not present in the available dataset.  It would be good to provide examples of names and coordinates of objects that are actually present in the chosen dataset. 'Method Search' has 6 options (Cone,Elliptical, Box, Polygon, Multi-Object, All Sky), of which only 4 are working - Multi-Object search (positional 1-to1 match  against a list of coordinates and search radii) and All Sky search are not operational. 
-	\item When conducting a positional search, the miniature image showing the query region on the sky is not always centered, nor shows the actual region (as compared to SDSS DR13 SkyServer, and CDS Aladin	). The problem persists when using the browser 'back' navigation button to change the query region, instead of reloading the entire PDAC user interface. When increasing the search radius, beyond 1000 arcsec the image does not resemble the SDSS region at all, but is more similar to WISE image of  a different sky region. 
-    \item Comparing data for particular objects - querying positionally against 483 RR Lyrae  from \cite{sesar2010}. Direct calibrated magnitudes are not available. For each object, it is necessary to first query the \verb|RunDeepForcedSource|  to find which objectIds are detected within a search radius, and for these objectIds download lightcurves.  Queries were conducted by  a python script that transfers curl subprocesses to the terminal of a user laptop, communicating with the PDAC database at \url{http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync}
-    To convert raw fluxes to magnitudes one needs to query   \verb|Science_Ccd_Exposure|  table. Of 483 stars,  only 343 stars are present in the PDAC S82 dataset. Those with RA < 320  or RA > 55 degrees are not present in the dataset.  Those that are present have been folded on the period reported by \cite{sesar2010} and can be confirmed to be RR Lyrae.  The lightcurves are not bitwise-identical due to the fact that \cite{sesar2010} used the SDSS DR2 data, whereas PDAC stores reprocessed S82 data from Summer 2013. 
-    % This matches Yusra's dataset, but then why did Branimir have different limits on S82?  Are there multiple definitions of S82?  
+	\item Tested navigation within the main User Interface (UI). The front page allows access to Catalogs (Deep Source, Deep Forced Source), or Images (Deep Coadd, Science CCD Exposure). Any query can be restricted to a certain region on the sky, that can be defined as a geometrical shape. There are four shapes available under  'Method Search' menu :  cone - 'cone' method,  square - 'box' method,  ellipse - 'elliptical' method, polygon - 'polygon' method.  There are two other search methods : one that would perform a cone query against multiple objects - 'Multi-Object' method, and  another  that would search an entire available dataset without spatial constraints  - 'All Sky'. The latter two are not yet implemented. The four geometrical methods work as expected, restricting the search region to a cone, square, ellipse or polygon, centered on chosen position.  The position on which search region is centered can be entered as (ra,dec), or NED-resolvable name. Currently examples of queries underneath the 'position' box represent regions not present in the available dataset (eg. 'm81' 'ngc 13' '12.34 34.89' '46.53, -0.251 gal'  '19h17m32s 11d58m02s equ j2000' '12.3, 8.5 b1950'). The (ra,dec) allowed by the UI are only within  $(0-360, -90,90 \degree)$ range, but the SQL query against QSERV  accepts (ra,dec) within $(-360,360 \degree)$ range, with a built-in ability to interpret negative right ascenscion.
+
+	\item Tested the query result interface. It displays the coverage : a postage stamp miniature image of the searched region, a table view of the queried catalog, and a two-dimensional plot of two chosen columns. The postage  stamp image is not always centered on the queried image (as compared to eg. Aladin or SDSS DR13 SkyServer ), nor does it display the underlying S82 S13 images. Instead, the underlying algorithm uses images  from IRAS, DSS, 2MASS, or WISE, depending on the size of the region. In particular, beyond search radius of  approximately 1000 arcsec the postage stamp miniature shifts from SDSS-like DSS to more blurry WISE, 2MASS or IRAS.  Currently there is no information displayed about which sky survey the postage stamp image originates. The problem with image centering persists when navigating back in the web browser and entering new search coordinates or changing the search radius. The postage stamp coverage image is centered correctly if the main page of the UI is refreshed. 
+
+	
+    \item Tested the database ingestion. The S82 Summer 2013 LSST-Stack reprocessed dataset is stored at NCSA, with a local copy at the University of Washington.  The PDAC-stored dataset should be identical. We downloaded light curves for individual objects. First approach was to fold the g-band light curves of selected RR Lyrae stars on the known period.  We assumed as ground truth the periods from \cite{sesar2010}.  We found that of 343  RR Lyrae stars from \cite{sesar2010} that were within PDAC database,  all were well represented by the 'true' period.  The process of obtaining calibrated light curves was not straightforward  - following a detailed guide on PDAC Sample Queries confluence page, it was necessary to  make a join between \verb|RunDeepForcedSource| and \verb|Science_CCD_Exposure| catalogs, to calculate magnitudes from fluxes (uncorrected for extinction).  Queries were conducted by  a python script that transfers curl subprocesses to the terminal of a user laptop, communicating with the qserv  at \url{http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync}
+
  \end{itemize}   
 
 
