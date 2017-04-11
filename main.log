@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  11 APR 2017 15:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  11 APR 2017 16:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -695,7 +695,7 @@ erthousand on input line 38.
 LaTeX Info: Redefining \ohm on input line 38.
 Package gensymb Info: Using \textohm for \ohm on input line 38.
 Package gensymb Info: Using \textmu for \micro on input line 38.
-<lsst_logo_notext.png, id=48, 250.9375pt x 71.26625pt>
+<lsst_logo_notext.png, id=56, 250.9375pt x 71.26625pt>
 File: lsst_logo_notext.png Graphic file (type png)
 
 <use lsst_logo_notext.png>
@@ -726,7 +726,7 @@ LaTeX Font Info:    Try loading font information for TS1+fos on input line 43.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/opensans/ts1fos.fd
 File: ts1fos.fd 2011/11/11 Fontinst v1.927 font definitions for TS1/fos.
 )
-<lsstscopegrey.png, id=50, 542.9886pt x 520.8258pt>
+<lsstscopegrey.png, id=58, 542.9886pt x 520.8258pt>
 File: lsstscopegrey.png Graphic file (type png)
  <use lsstscopegrey.png>
 Package pdftex.def Info: lsstscopegrey.png used on input line 43.
@@ -802,18 +802,18 @@ Overfull \hbox (72.27pt too wide) has occurred while \output is active
 [3
 
 ]
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 50.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 52.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2014/06/22 T1/zi4 (Inconsolata)
 )
-Overfull \hbox (4.89146pt too wide) in paragraph at lines 50--51
+Overfull \hbox (4.89146pt too wide) in paragraph at lines 52--53
 []\T1/fos/m/n/10.95 These re-quire-ments and the vi-sion for SUIT have been fur
 -ther de-scribed on con-flu-ence pages[][][].
  []
 
 File: lsst_logo_notext.png Graphic file (type png)
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 57.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 59.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
@@ -824,41 +824,49 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.57 
+l.59 
       [1
 
 ]
+LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <12> not available
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 69.
+
 Overfull \hbox (26.53046pt too wide) in paragraph at lines 72--73
 \T1/fos/m/n/10.95 in-cludes the Sum-mer 2013 DM-stack re-pro-cessed SDSS Stripe
  82 data (database []\T1/zi4/m/n/10.95 sdss_stripe82_00\T1/fos/m/n/10.95 ),
  []
 
-<figs/1_PDAC_interface.png, id=109, 1171.37625pt x 713.66624pt>
-File: figs/1_PDAC_interface.png Graphic file (type png)
-
-<use figs/1_PDAC_interface.png>
-Package pdftex.def Info: figs/1_PDAC_interface.png used on input line 78.
-(pdftex.def)             Requested size: 469.75499pt x 286.20193pt.
-
-<figs/2_PDAC_externals.png, id=113, 334.24875pt x 382.42876pt>
-File: figs/2_PDAC_externals.png Graphic file (type png)
-
-<use figs/2_PDAC_externals.png>
-Package pdftex.def Info: figs/2_PDAC_externals.png used on input line 88.
-(pdftex.def)             Requested size: 234.87749pt x 268.74283pt.
 File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 107.
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 76.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[2]
+[2] <figs/1_PDAC_interface.png, id=127, 1171.37625pt x 713.66624pt>
+File: figs/1_PDAC_interface.png Graphic file (type png)
+
+<use figs/1_PDAC_interface.png>
+Package pdftex.def Info: figs/1_PDAC_interface.png used on input line 79.
+(pdftex.def)             Requested size: 469.75499pt x 286.20193pt.
+
+<figs/2_PDAC_externals.png, id=128, 334.24875pt x 382.42876pt>
+File: figs/2_PDAC_externals.png Graphic file (type png)
+
+<use figs/2_PDAC_externals.png>
+Package pdftex.def Info: figs/2_PDAC_externals.png used on input line 86.
+(pdftex.def)             Requested size: 234.87749pt x 268.74283pt.
+
+Overfull \hbox (38.25572pt too wide) in paragraph at lines 100--101
+\T1/fos/m/n/10.95 tion : (ra,dec)=(352.469872 , -1.171239) . Fi-nally we use an
+ ob-jec-tId = 216471849679198456,
+ []
+
 File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 107.
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 101.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
@@ -866,14 +874,14 @@ Overfull \hbox (72.27pt too wide) has occurred while \output is active
  []
 
 [3 <./figs/1_PDAC_interface.png>]
-Overfull \hbox (47.9755pt too wide) in paragraph at lines 112--113
-[]\T1/fos/m/n/10.95 For ref-er-ence , the in-di-vid-ual cal-i-brated sin-gle ep
-och im-ages are avail-able as []\T1/zi4/m/n/10.95 Science_Ccd_Exposure
+Overfull \hbox (69.53526pt too wide) in paragraph at lines 107--108
+\T1/fos/m/n/10.95 turns an er-ror 'Fail to load ta-ble. Er-ror: edu.caltech.ipa
+c.firefly.server.query.DataAccessException:
  []
 
 File: lsst_logo_notext.png Graphic file (type png)
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 113.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 108.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
@@ -881,307 +889,367 @@ Overfull \hbox (72.27pt too wide) has occurred while \output is active
  []
 
 [4 <./figs/2_PDAC_externals.png>]
-<figs/3_PDAC_cone_DeepSource.png, id=144, 1420.30624pt x 731.73375pt>
+<figs/1_PDAC_interface_a.png, id=147, 1126.2075pt x 331.2375pt>
+File: figs/1_PDAC_interface_a.png Graphic file (type png)
+
+<use figs/1_PDAC_interface_a.png>
+Package pdftex.def Info: figs/1_PDAC_interface_a.png used on input line 112.
+(pdftex.def)             Requested size: 469.75499pt x 138.16353pt.
+File: lsst_logo_notext.png Graphic file (type png)
+ <use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 135.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[5 <./figs/1_PDAC_interface_a.png>]
+Overfull \hbox (47.9755pt too wide) in paragraph at lines 135--136
+[]\T1/fos/m/n/10.95 For ref-er-ence , the in-di-vid-ual cal-i-brated sin-gle ep
+och im-ages are avail-able as []\T1/zi4/m/n/10.95 Science_Ccd_Exposure
+ []
+
+<figs/3_PDAC_cone_DeepSource.png, id=166, 1420.30624pt x 731.73375pt>
 File: figs/3_PDAC_cone_DeepSource.png Graphic file (type png)
 
 <use figs/3_PDAC_cone_DeepSource.png>
-Package pdftex.def Info: figs/3_PDAC_cone_DeepSource.png used on input line 125
+Package pdftex.def Info: figs/3_PDAC_cone_DeepSource.png used on input line 148
 .
 (pdftex.def)             Requested size: 469.75499pt x 242.00882pt.
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 131.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 154.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[5] <figs/4_PDAC_cone_DeepForcedSource.png, id=157, 1127.21124pt x 702.625pt>
+[6] <figs/4_PDAC_cone_DeepForcedSource.png, id=178, 1127.21124pt x 702.625pt>
 File: figs/4_PDAC_cone_DeepForcedSource.png Graphic file (type png)
 
 <use figs/4_PDAC_cone_DeepForcedSource.png>
 Package pdftex.def Info: figs/4_PDAC_cone_DeepForcedSource.png used on input li
-ne 133.
+ne 156.
 (pdftex.def)             Requested size: 469.75499pt x 292.81686pt.
-LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <12> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 142.
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 147.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 168.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[6 <./figs/3_PDAC_cone_DeepSource.png>]
+[7 <./figs/3_PDAC_cone_DeepSource.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 147.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 168.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[7 <./figs/4_PDAC_cone_DeepForcedSource.png>]
+[8 <./figs/4_PDAC_cone_DeepForcedSource.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 163.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 186.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[8] <figs/PDAC_time_series1.png, id=190, 1424.32124pt x 430.60875pt>
+[9] <figs/PDAC_time_series1.png, id=209, 1424.32124pt x 430.60875pt>
 File: figs/PDAC_time_series1.png Graphic file (type png)
 
 <use figs/PDAC_time_series1.png>
-Package pdftex.def Info: figs/PDAC_time_series1.png used on input line 167.
+Package pdftex.def Info: figs/PDAC_time_series1.png used on input line 190.
 (pdftex.def)             Requested size: 469.75499pt x 142.0159pt.
 
-<figs/PDAC_time_series2.png, id=193, 1427.3325pt x 727.71875pt>
+<figs/PDAC_time_series2.png, id=212, 1427.3325pt x 727.71875pt>
 File: figs/PDAC_time_series2.png Graphic file (type png)
 
 <use figs/PDAC_time_series2.png>
-Package pdftex.def Info: figs/PDAC_time_series2.png used on input line 173.
+Package pdftex.def Info: figs/PDAC_time_series2.png used on input line 196.
 (pdftex.def)             Requested size: 469.75499pt x 239.50389pt.
 
-<figs/PDAC_time_series3.png, id=198, 1426.32875pt x 691.58376pt>
+<figs/PDAC_time_series3.png, id=217, 1426.32875pt x 691.58376pt>
 File: figs/PDAC_time_series3.png Graphic file (type png)
 
 <use figs/PDAC_time_series3.png>
-Package pdftex.def Info: figs/PDAC_time_series3.png used on input line 180.
+Package pdftex.def Info: figs/PDAC_time_series3.png used on input line 203.
 (pdftex.def)             Requested size: 469.75499pt x 227.76958pt.
 
-<figs/PDAC_time_series4_fail.png, id=207, 1275.76625pt x 678.535pt>
+<figs/PDAC_time_series4_fail.png, id=226, 1275.76625pt x 678.535pt>
 File: figs/PDAC_time_series4_fail.png Graphic file (type png)
 
 <use figs/PDAC_time_series4_fail.png>
-Package pdftex.def Info: figs/PDAC_time_series4_fail.png used on input line 187
+Package pdftex.def Info: figs/PDAC_time_series4_fail.png used on input line 210
 .
 (pdftex.def)             Requested size: 469.75499pt x 249.84265pt.
 
-<figs/PDAC_time_series4_good.png, id=208, 1288.815pt x 730.73pt>
+<figs/PDAC_time_series4_good.png, id=227, 1288.815pt x 730.73pt>
 File: figs/PDAC_time_series4_good.png Graphic file (type png)
 
 <use figs/PDAC_time_series4_good.png>
-Package pdftex.def Info: figs/PDAC_time_series4_good.png used on input line 194
+Package pdftex.def Info: figs/PDAC_time_series4_good.png used on input line 217
 .
 (pdftex.def)             Requested size: 469.75499pt x 266.3407pt.
 
-<figs/PDAC_time_series5.png, id=213, 1290.8225pt x 738.76pt>
+<figs/PDAC_time_series5.png, id=232, 1290.8225pt x 738.76pt>
 File: figs/PDAC_time_series5.png Graphic file (type png)
 
 <use figs/PDAC_time_series5.png>
-Package pdftex.def Info: figs/PDAC_time_series5.png used on input line 202.
+Package pdftex.def Info: figs/PDAC_time_series5.png used on input line 225.
 (pdftex.def)             Requested size: 469.75499pt x 268.83916pt.
 
-<figs/PDAC_time_series6.png, id=216, 1283.79625pt x 734.745pt>
+<figs/PDAC_time_series6.png, id=235, 1283.79625pt x 734.745pt>
 File: figs/PDAC_time_series6.png Graphic file (type png)
 
 <use figs/PDAC_time_series6.png>
-Package pdftex.def Info: figs/PDAC_time_series6.png used on input line 209.
+Package pdftex.def Info: figs/PDAC_time_series6.png used on input line 232.
 (pdftex.def)             Requested size: 469.75499pt x 268.84676pt.
-File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 216.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[9 <./figs/PDAC_time_series1.png> <./figs/PDAC_time_series2.png>]
-File: lsst_logo_notext.png Graphic file (type png)
-
-<use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 216.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[10 <./figs/PDAC_time_series3.png>]
-<figs/Exoplanet_archive_periodogram.png, id=237, 854.19125pt x 718.685pt>
+<figs/Exoplanet_archive_periodogram.png, id=239, 854.19125pt x 718.685pt>
 File: figs/Exoplanet_archive_periodogram.png Graphic file (type png)
 
 <use figs/Exoplanet_archive_periodogram.png>
 Package pdftex.def Info: figs/Exoplanet_archive_periodogram.png used on input l
-ine 218.
+ine 241.
 (pdftex.def)             Requested size: 469.75499pt x 395.2341pt.
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 245.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 268.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[11 <./figs/PDAC_time_series4_fail.png>]
+[10 <./figs/PDAC_time_series1.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 245.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 268.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[12 <./figs/PDAC_time_series4_good.png>]
+[11 <./figs/PDAC_time_series2.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 245.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 268.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[13 <./figs/PDAC_time_series5.png>]
-File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 245.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[14 <./figs/PDAC_time_series6.png>]
-File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 245.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[15 <./figs/Exoplanet_archive_periodogram.png>]
-<figs/Fig_1_Sesar_2010_RRLyr.png, id=283, 433.62pt x 289.08pt>
+[12 <./figs/PDAC_time_series3.png>]
+<figs/Fig_1_Sesar_2010_RRLyr.png, id=277, 433.62pt x 289.08pt>
 File: figs/Fig_1_Sesar_2010_RRLyr.png Graphic file (type png)
 
 <use figs/Fig_1_Sesar_2010_RRLyr.png>
-Package pdftex.def Info: figs/Fig_1_Sesar_2010_RRLyr.png used on input line 250
+Package pdftex.def Info: figs/Fig_1_Sesar_2010_RRLyr.png used on input line 273
 .
 (pdftex.def)             Requested size: 328.82706pt x 219.22668pt.
 
-Overfull \hbox (3.81857pt too wide) in paragraph at lines 255--256
+Overfull \hbox (3.81857pt too wide) in paragraph at lines 278--279
 \T1/fos/m/n/10.95 sam-pling, alias-ing, and ne-ces-sity of choos-ing well the f
 re-quency sam-ple on which pe-ri-odogram
  []
 
 File: lsst_logo_notext.png Graphic file (type png)
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 259.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 281.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[16 <./figs/Fig_1_Sesar_2010_RRLyr.png>]
-Overfull \hbox (3.5399pt too wide) in paragraph at lines 270--271
+[13 <./figs/PDAC_time_series4_fail.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+ <use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 281.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[14 <./figs/PDAC_time_series4_good.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+ <use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 281.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[15 <./figs/PDAC_time_series5.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+ <use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 281.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[16 <./figs/PDAC_time_series6.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+ <use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 281.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[17 <./figs/Exoplanet_archive_periodogram.png>]
+Overfull \hbox (3.5399pt too wide) in paragraph at lines 293--294
 []\T1/fos/m/n/10.95 Using \T1/fos/m/it/10.95 as-troML \T1/fos/m/n/10.95 python 
 mod-ule [[]], we sam-ple the uni-formly spaced fre-quency grid with N=5000
  []
 
+File: lsst_logo_notext.png Graphic file (type png)
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 294.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png, id=307, 1011.78pt x 578.16pt>
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[18 <./figs/Fig_1_Sesar_2010_RRLyr.png>]
+<figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png, id=336, 1011.78pt x 578.16pt>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png Graphic file (type png)
 
 <use figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png used on
- input line 275.
+ input line 298.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png, id=316, 1011.78pt x 578.16pt>
+<figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png, id=345, 1011.78pt x 578.16pt>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png Graphic file (type png)
 
 <use figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png used on 
-input line 283.
+input line 306.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png, id=327, 1011.78pt x 578.16pt>
+<figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png, id=356, 1011.78pt x 578.16pt>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png Graphic file (type png)
 <use figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png used o
-n input line 290.
+n input line 313.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
+File: lsst_logo_notext.png Graphic file (type png)
 
-<figs/Fig_3_RRLyr_omega_ratio.png, id=341, 578.16pt x 289.08pt>
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 320.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[19 <./figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 320.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[20 <./figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
+File: lsst_logo_notext.png Graphic file (type png)
+
+<use lsst_logo_notext.png>
+Package pdftex.def Info: lsst_logo_notext.png used on input line 320.
+(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
+
+Overfull \hbox (72.27pt too wide) has occurred while \output is active
+[]$[]$ 
+ []
+
+[21 <./figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png>]
+<figs/Fig_3_RRLyr_omega_ratio.png, id=392, 578.16pt x 289.08pt>
 File: figs/Fig_3_RRLyr_omega_ratio.png Graphic file (type png)
 
 <use figs/Fig_3_RRLyr_omega_ratio.png>
-Package pdftex.def Info: figs/Fig_3_RRLyr_omega_ratio.png used on input line 30
-1.
+Package pdftex.def Info: figs/Fig_3_RRLyr_omega_ratio.png used on input line 32
+4.
 (pdftex.def)             Requested size: 234.87749pt x 117.43845pt.
 
-Overfull \hbox (7.21767pt too wide) in paragraph at lines 310--311
+Overfull \hbox (7.21767pt too wide) in paragraph at lines 333--334
 []\T1/fos/m/n/10.95 Using the $[]\OML/cmm/m/it/10.95 ; []$ \T1/fos/m/n/10.95 fo
 r the RR Lyrae from [[]] we po-si-tion-ally query the PDAC []\T1/zi4/m/n/10.95 
 RunDeepForcedSource
  []
 
-<figs/missing_and_recovered_RR_Lyr_PDAC.png, id=350, 722.7pt x 433.62pt>
+<figs/missing_and_recovered_RR_Lyr_PDAC.png, id=401, 722.7pt x 433.62pt>
 File: figs/missing_and_recovered_RR_Lyr_PDAC.png Graphic file (type png)
 
 <use figs/missing_and_recovered_RR_Lyr_PDAC.png>
 Package pdftex.def Info: figs/missing_and_recovered_RR_Lyr_PDAC.png used on inp
-ut line 314.
+ut line 337.
 (pdftex.def)             Requested size: 469.75499pt x 281.85628pt.
 
-<figs/Sesar_vs_PDAC_lc_4099.png, id=353, 578.16pt x 289.08pt>
+<figs/Sesar_vs_PDAC_lc_4099.png, id=404, 578.16pt x 289.08pt>
 File: figs/Sesar_vs_PDAC_lc_4099.png Graphic file (type png)
 
 <use figs/Sesar_vs_PDAC_lc_4099.png>
-Package pdftex.def Info: figs/Sesar_vs_PDAC_lc_4099.png used on input line 320.
+Package pdftex.def Info: figs/Sesar_vs_PDAC_lc_4099.png used on input line 343.
 
 (pdftex.def)             Requested size: 469.75499pt x 234.8769pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=356, 1011.78pt x 578.16
+<figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png, id=407, 1011.78pt x 578.16
 pt>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png Graphic file (type png
 )
  <use figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png use
-d on input line 329.
+d on input line 352.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=363, 1011.78pt x 578.16p
+<figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png, id=414, 1011.78pt x 578.16p
 t>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png Graphic file (type png)
 
  <use figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png used
- on input line 335.
+ on input line 358.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
 
-<figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=372, 1011.78pt x 578.1
+<figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png, id=423, 1011.78pt x 578.1
 6pt>
 File: figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png Graphic file (type pn
 g)
  <use figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>
 Package pdftex.def Info: figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png us
-ed on input line 343.
+ed on input line 366.
 (pdftex.def)             Requested size: 469.75499pt x 268.4358pt.
 
-<figs/Fig_PDAC_sesar_compare.png, id=381, 867.24pt x 650.43pt>
+<figs/Fig_PDAC_sesar_compare.png, id=432, 867.24pt x 650.43pt>
 File: figs/Fig_PDAC_sesar_compare.png Graphic file (type png)
 
 <use figs/Fig_PDAC_sesar_compare.png>
-Package pdftex.def Info: figs/Fig_PDAC_sesar_compare.png used on input line 350
+Package pdftex.def Info: figs/Fig_PDAC_sesar_compare.png used on input line 373
 .
 (pdftex.def)             Requested size: 469.75499pt x 352.31868pt.
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
@@ -1189,127 +1257,90 @@ Overfull \hbox (72.27pt too wide) has occurred while \output is active
  []
 
 LaTeX Font Info:    Font shape `T1/fos/bx/n' in size <142.26378> not available
-(Font)              Font shape `T1/fos/b/n' tried instead on input line 384.
-[17]
+(Font)              Font shape `T1/fos/b/n' tried instead on input line 409.
+[22 <./figs/Fig_3_RRLyr_omega_ratio.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[18 <./figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g.png>]
-File: lsst_logo_notext.png Graphic file (type png)
-
-<use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[19 <./figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g.png>]
-File: lsst_logo_notext.png Graphic file (type png)
-
-<use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[20 <./figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g.png> <./figs/Fig_3_RRLyr_ome
-ga_ratio.png>]
-File: lsst_logo_notext.png Graphic file (type png)
- <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
-(pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
-
-Overfull \hbox (72.27pt too wide) has occurred while \output is active
-[]$[]$ 
- []
-
-[21 <./figs/missing_and_recovered_RR_Lyr_PDAC.png> <./figs/Sesar_vs_PDAC_lc_409
+[23 <./figs/missing_and_recovered_RR_Lyr_PDAC.png> <./figs/Sesar_vs_PDAC_lc_409
 9.png>]
 File: lsst_logo_notext.png Graphic file (type png)
  <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[22 <./figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
+[24 <./figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC.png>]
 File: lsst_logo_notext.png Graphic file (type png)
 
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[23 <./figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>]
+[25 <./figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC.png>]
 File: lsst_logo_notext.png Graphic file (type png)
 
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[24 <./figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
+[26 <./figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC.png>]
 File: lsst_logo_notext.png Graphic file (type png)
 
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 384.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 409.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[25 <./figs/Fig_PDAC_sesar_compare.png>] (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 395.
+[27 <./figs/Fig_PDAC_sesar_compare.png>] (./main.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 418.
 File: lsst_logo_notext.png Graphic file (type png)
 
 <use lsst_logo_notext.png>
-Package pdftex.def Info: lsst_logo_notext.png used on input line 395.
+Package pdftex.def Info: lsst_logo_notext.png used on input line 418.
 (pdftex.def)             Requested size: 250.93687pt x 71.26605pt.
 
 Overfull \hbox (72.27pt too wide) has occurred while \output is active
 []$[]$ 
  []
 
-[26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 395.
+[28]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 418.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 395.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 395.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 418.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 418.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 55F22178844A3A2559C1DDF263888268;775.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
+(rerunfilecheck)             Checksum: 8EC599A125752960E26B38FC2A3F718E;902.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 418.
  ) 
 Here is how much of TeX's memory you used:
- 11976 strings out of 493014
- 172783 string characters out of 6133351
- 325529 words of memory out of 5000000
- 15106 multiletter control sequences out of 15000+600000
+ 11991 strings out of 493014
+ 173043 string characters out of 6133351
+ 312986 words of memory out of 5000000
+ 15113 multiletter control sequences out of 15000+600000
  111053 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,22n,50p,1630b,637s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,22n,47p,1630b,706s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/opensans/opensans-01.enc}
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/opensans/opensans-02.enc}{/
 usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}{/usr
@@ -1326,10 +1357,10 @@ mmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
 pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb>
-Output written on main.pdf (30 pages, 5998753 bytes).
+Output written on main.pdf (32 pages, 6194540 bytes).
 PDF statistics:
- 522 PDF objects out of 1000 (max. 8388607)
- 378 compressed objects within 4 object streams
- 87 named destinations out of 1000 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 550 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 235 words of extra memory for PDF output out of 10000 (max. 10000000)
 

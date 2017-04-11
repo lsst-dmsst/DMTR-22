@@ -44,7 +44,9 @@ A report on user experience of  the Preliminary Data Access Center (PDAC). We te
 
 \section{Introduction}
 
-This is a document to report on the user experience testing of the Preliminary Data Access Center.  The Large Scale Synoptic Telescope      (LSST)  will  produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detail description of  such online user-interface called Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)  and LDM-492  (SUIT Vision).  
+This is a document to report on the user experience testing of the Preliminary Data Access Center  on  macOS Sierra Version 10.12.3 (16D32), using the Safari Version 10.0.3 (12602.4.8).
+
+ The Large Scale Synoptic Telescope (LSST) will produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detail description of  such online user-interface called Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)  and LDM-492  (SUIT Vision).  
 An idea of having an interface to the data is not new : there exists Aladin,  SDSS CAS jobs,  IPAC  IRSA,  Mikulsky NASA Archive, NED, and many other archives. These allow a user to query for data (either via SQL query, or interface), returning the data table. Some user interfaces (eg. IRSA) have some rudimentary plotting capabilities.  There have been ideas of a new  interface, that would not only eg. plot the lightcurve and display the spectrum,  but also allow the user to run some machine learning algorithms, or simple models that can help narrow down the query, or obtain science results in the browser.  Namely, Victor Pankratius, from MIT, in his talk   "Computer-Aided Discovery: Towards Scientific Insight Generation with Machine Support"  outlined the idea of an ipython notebook - access to data, which lives in the cloud, is allocated some CPU  share and memory,  and allows one to upload / download the data and run the model in real time, which is especially helpful to geoscientists doing fieldwork, where new data acquisition conditions their next step.  
 
 These requirements and the vision for SUIT have been further described on confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Science+User+Interface+and+Tools}}. Some technical notes about current implementation of SUIT by PDAC are also available via confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}\label{note1}}. 
@@ -64,24 +66,20 @@ We test a variety of aspects of PDAC : the user interface, infrastructure, and d
 
 \section{User Interface: what we see}
 \label{sec:ui}
-
+\subsection{UI overview}
 In order to access PDAC we 	follow the directions\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
-
-
 
 Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database \verb|sdss_stripe82_00|), hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
 
 
+The upper-left corner of the interface also leads to 'External Images' and 'External Catalogs'. The Catalogs are all NASA/IPAC\footnote{Infrared Processing and Analysis Center, \url{http://www.ipac.caltech.edu/project/lsst}}  Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, 2MASS, SPITZER, etc. (see Fig.~\ref{fig:PDAC_external_cat}).
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/1_PDAC_interface}
-\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not yet available. The 'Name or Postion' only resolves positive RA  (  0<RA<360 ), while using direct SQL query resolves both positive and negative RA ( -180 < RA < 180 ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
+\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not yet available. The 'Name or Position' only resolves positive RA  (  0<RA<360 ), while using direct SQL query resolves both positive and negative RA ( -180 < RA < 180 ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
 \label{fig:PDAC_interface}
 \end{figure*}
-
-
-The upper-left corner of the interface also leads to 'External Images' and 'External Catalogs'. The Catalogs are all NASA/IPAC\footnote{Infrared Processing and Analysis Center, \url{http://www.ipac.caltech.edu/project/lsst}}  Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, 2MASS, SPITZER, etc. (see Fig.~\ref{fig:PDAC_external_cat}).
 
 \begin{figure}
 \begin{centering}
@@ -90,6 +88,31 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
 \label{fig:PDAC_external_cat}
 \end{centering}
 \end{figure}
+
+
+
+\subsection{Tests performed }
+
+\begin{enumerate}
+\item Title : Range of input accepted by 'Name or Position' box  
+   \begin{itemize}
+       \item Description : We  test what is the range of RA, dec values and types of names accepted by the 'Name or Position' box (see Fig.~\ref{fig:PDAC_interface} 
+       \item Input : As input we use a set of coordinates, and names :  first in  -180 <RA< 180 convention (ra,dec) = (-7.530128,-1.171239), then the  same but in   0<RA<360 convention : (ra,dec)=(352.469872 , -1.171239) . Finally we use an objectId  = 216471849679198456, present in the DeepSource table when querying this  location with 2 arcsec radius. We Cone query DeepSource table with 2 arcsec search radius.
+       \item Results : Negative RA is not resolved (Fig.~\ref{fig:PDAC_test1}. Unless we use a name from NED / Simbad, the objectId  is not resolved, even though it is present in the queried table.)
+    \end{itemize}
+ \item Title : Are all search options available in 'Method Search' ? 
+     \begin{itemize}
+     	\item Description: The 'Method Search' dialog box contains 'Cone', 'Elliptical', 'Box', 'Polygon', 'Multi-Object', 'All Sky' options. We test whether each method works with simple input. 
+     	\item Input:  We employ coordinates (ra,dec)=(352.469872 , -1.171239) as search region center.  We use 'Cone' radius 2 arcsec, 'Elliptical' semi-major axis of 2 arcsec, 'Box' side of 2 arcsec, 'Polygon' default vertices (352.48041 -1.18156, 352.45985 -1.18156, 352.45984 -1.16073, 352.48040 -1.16073), 'Multi-Object': a list  of  two  ra, dec submitted as a text file in the format ra, dec : ( 352.469872 , -1.171239  | 342.469872 , -1.101239).  'All Sky' : we add and SQL constraint  id = 216471849679198456.  For all search methods we query DeepSource catalog. 
+     	\item Results: 'Cone', 'Elliptical', 'Box', and 'Polygon' search methods return a list of objects in coadds for a given search region.  'Multi-Object' provided with the radec.txt file  returns an error 'Fail to load table. Error: edu.caltech.ipac.firefly.server.query.DataAccessException: DataAccessException:ERROR:Could not do Multi Object search, internal configuration wrong.: table should be a post search not a get from:unknown'.  It would be more informative if an information about unavailability of this search method was on the main page rather than returning a result after a user uploaded and prepared an radec.txt file.   The 'All Sky' method returns correct output (a list of selected fields where DeepSource.id =216471849679198456). 
+     \end{itemize}
+\end{enumerate}
+
+\begin{figure*}
+\includegraphics[width = \textwidth]{figs/1_PDAC_interface_a}
+\caption{Testing range of input accepted by the 'Name or Position' box. The negative RA is not resolved, even though direct SQL query accepts both positive and negative values.}
+\label{fig:PDAC_test1}
+\end{figure*}
 
 
 
@@ -235,7 +258,7 @@ Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exo
 
 \subsection{Positional comparison : box query }
 
-We compare the ra,dec of objects found within  a given region in PDAC S82 to the analoguous data stored at UW (DeepSource tables). Regardless of photometry, for a given objectId, the ra,dec should agree.  
+We compare the ra,dec of objects found within  a given region in PDAC S82 to the analoguous data stored at UW (DeepSource tables). Regardless of photometry, for a given objectId, the ra,dec should agree. An issue encountered here  
 
 
 \subsection{Light curve comparison : multiple cone queries }
