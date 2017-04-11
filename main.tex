@@ -49,7 +49,7 @@ An idea of having an interface to the data is not new : there exists Aladin,  SD
 
 These requirements and the vision for SUIT have been further described on confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Science+User+Interface+and+Tools}}. Some technical notes about current implementation of SUIT by PDAC are also available via confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}\label{note1}}. 
 
-
+This report details tests and queries employed, including screenshots and data-based plots.  A shorter summary of monthly progress is released every month at the github repository of the LSST System Science Team : \url{https://github.com/lsst-dmsst/PDAC_report}. 
 
 \section{Overview of performed tests}
 
@@ -65,7 +65,8 @@ We test a variety of aspects of PDAC : the user interface, infrastructure, and d
 \section{User Interface: what we see}
 \label{sec:ui}
 
-In order to access PDAC we 	follow the directions~\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
+In order to access PDAC we 	follow the directions\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
+
 
 
 Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database \verb|sdss_stripe82_00|), hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
@@ -75,7 +76,7 @@ Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/1_PDAC_interface}
-\caption{The main user interface of PDAC ver. 1 }
+\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not yet available. The 'Name or Postion' only resolves positive RA  (  0<RA<360 ), while using direct SQL query resolves both positive and negative RA ( -180 < RA < 180 ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
 \label{fig:PDAC_interface}
 \end{figure*}
 
@@ -126,6 +127,17 @@ Any query returns a list of all objects within the given region (Fig.~\ref{fig:P
 \label{fig:PDAC_cone_DS}
 \end{figure*}
 
+A certain limitation of the main UI is inability to resolve id's from the database itself (see Fig.~\ref{fig:PDAC_interface}). Indeed, the only way to find which objects have been detected in a certain small region in DeepSource coadds, and download light curves only for one of them  from DeepForcedSource forced photometry catalog, is  to use an  SQL constraint.   For example,  we performed cone query against DeepSource table for ra,dec = 0.283437, 1.178522, 2 arcsec search radius (this is the RR Lyrae ID=13350 also investigated in Sec.~\ref{sec:periodogram}). Limiting the results to [\verb|id , coord_ra , coord_decl, flux_psf , coadd_id  , coadd_filter_id|], we find that there is a coadd for each filter (denoted with \verb|coadd_filter_id|). The identification in i-band coadd (\verb|coadd_filter_id=3|) is id=3588818166880604.  Note that while DeepSource has a separate id for a coadd in each band, only id's for  i-band coadd are inherited by DeepForcedSource  catalog. The DeepSource.id == DeepForcedSource.objectId,  because  DeepForcedSource.id  stands for forced photometry detection id, which is unique for each epoch. Therefore a single object has one DeepSource.id,  equal to DeepForcedSource.objectId, but  multiple  DeepForcedSource.id  - we recommend to highlight this in the metadata for it is a potential area for confusion. The only way to currently recover a lightcurve for a single object from DeepForcedSource is to  first select the detection id  in DeepSource, and use that as a constraint when using cone query  on DeepForcedSource (see Fig.~\ref{fig:PDAC_cone_DFS})
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/4_PDAC_cone_DeepForcedSource}
+\caption{The correct way to select a light curve for a  particular object from the forced photometry DeepForcedSource catalog.  Here we first queried against the DeepSource catalog to find  id's for objects detected in coadds in a small region within 2 arcsec from ra,dec =  0.283437, 1.178522. For i-band there is only one id :  3588818166880604. Since DeepSource.id =  DeepForcedSource.objectId,  we require objectId to be equal to  3588818166880604. Thus we are able to acces forced photometry for precisely one object.  Otherwise, obtaining a light curve from a direct spatial  query of DeepForcedSource would provide all photometry for all objects detected in coadds within the search radius, which may not be the desired beavior for analysis of Time Series. We recommend that the result of spatial quary against RunDeepForcedSource should contain a summary of which unique objectId's are present,  with an ability to select only one object (with multi-band photometry), if more than one is present in the search region. Otherwise it becomes a long-winded process to first find what id's were detected in coadds (DeepSource), to then select id for i-band coadd, and select only rows corresponding to that objectId in RunDeepForcedSource.}
+\label{fig:PDAC_cone_DFS}
+\end{figure*}
+
+
+% figure with screenshot from Evernote... 
+
 
 \subsection{Postage Stamp Miniatures }
 \label{sec:miniatures}
@@ -141,13 +153,14 @@ We also consider a galaxy located at ra,dec =  40.433,  0.449. A 10 arcsec cone 
 
 We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
 
-As a test case we consider a RR Lyrae star ID=13350, located at  ra, dec = 0.283437, 1.178522 \degree. \cite{sesar2010} did detailed template fitting, finding the period to be 0.547987 days.
+As a test case we consider a RR Lyrae star ID=13350, located at  ra, dec = 0.283437\degree, 1.178522\degree. \cite{sesar2010} did detailed template fitting, finding the period to be 0.547987 days.
 To analyze the light curve of this object, we Cone query the Deep Source catalog to find objectId within this location. 
  A cone query with search radius of 2 arcseconds brings us to a lightcurve view, from where it is possible to open the Time Series view (see Fig.\ref{fig:time_series1}). Figs.~\ref{fig:time_series2} and ~\ref{fig:time_series3} guide through the steps allowed by this UI to calculate the correct period of this RR Lyrae star.  The backend of the periodogram tool is a clone of the NASA Exoplanet Archive [Xiuqin Wu 2017, priv.comm.]. The PDAC implementation has been internally tested to comply with that original toolset, but there are is no documentation about details of the algorithm used to compute the periodogram powers beyond  \url{http://exoplanetarchive.ipac.caltech.edu/docs/pgram/pgram_parameters.html}. We recommend that there would be a link to this page to provide the user of the periodogram information about the content of what is plotted in the UI. 
 
-Using the periodogram tool we find that there are a few glitches awaiting improvement, eg. the period slider ticklabels not adapting well to changing the period limits. Also, setting the Periodogram minimum and maximum period, these are not automatically set in the slider.  
+Using the periodogram tool we find that there are a few glitches awaiting improvement, eg. the period slider ticklabels not adapting well to changing the period limits. Also, setting the Periodogram minimum and maximum period does not automatically set the slider bounds.  
 
-We need to guide the Periodogram tool to find the right period : without judiciously setting the minimum and maximum period (using the default), we fail to recover the correct period  (Fig.~\ref{fig:time_series4f}) .  However, knowing the distribution of periods for RR Lyrae in ~\cite{sesar2010}, we can set bounds on the period (frequency) grid by taking as $P_{min}$ 90 \% of the smallest period, and as $P_{max}$  110 \% of the largest period :  $P_{min} = 0.9 * 0.254 = 0.229 $ and  $P_{max} = 1.1 * 0.907 = 0.998 $ days.  Using these we recover the correct period (see Fig.~\ref{fig:time_series4g})
+To find the correct period for the test case RR Lyrae star we needed to guide the Periodogram tool by entering the minimum and maximum periods - using the defaults we fail to recover the correct period  (Fig.~\ref{fig:time_series4f}) .  We set the periodogram minimum and maximum search period using the known  range of periods for RR Lyrae in ~\cite{sesar2010}.  In this study we set  $P_{min}$ as 90 \% of the smallest period, and $P_{max}$ as 110 \% of the largest period :  $P_{min} = 0.9 * 0.254 = 0.229 $ and  $P_{max} = 1.1 * 0.907 = 0.998 $ days.  Using these bounds we recover the correct period with the Time Series View periodogram tool (see Fig.~\ref{fig:time_series4g}). 
+
 
 
 \begin{figure*}
@@ -158,33 +171,45 @@ We need to guide the Periodogram tool to find the right period : without judicio
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series2}
-\caption{Time Series view for an RR Lyrae ID=13350 star at ra, dec = 0.283437, 1.178522 . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
+\caption{Time Series view for an RR Lyrae ID=13350 star at ra, dec = 0.283437\degree, 1.178522\degree . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
 \label{fig:time_series2}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series3}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350 at  ra, dec = 0.283437, 1.178522 . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). For this particular RR Lyrae we guide our choice of minimum and maximum periods (0.229, 0.998 days) by an educated guess, given that RR Lyrae in ~\citep{sesar2010} sample have periods between  0.254 and 0.907 days. Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350 at  ra, dec = 0.283437\degree, 1.178522\degree . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). If we don't choose anything for maximum and minimum periods, the calculation will proceed with defaults, which for this RR Lyra fail  to detect the true period (Fig.~\ref{fig:time_series4f}). If we choose the minimum and maximum periods knowing what period to expect for a given class of object, we are more likely to detect the true period (~\ref{fig:time_series4g}). For this particular RR Lyrae we chose 0.229, 0.998 days as limits  on period, which corresponds to the range of periodicities in ~\citep{sesar2010} sample of 483 RR Lyrae.   Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
 \label{fig:time_series3}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series4_fail}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437, 1.178522 . Not choosing the minimum and maximum, but letting the backend choose the defaults, does not recover the true underlying period of 0.547987 days. }
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437\degree, 1.178522\degree . Not choosing the minimum and maximum, but letting the backend choose the defaults, does not recover the true underlying period of 0.547987 days. }
 \label{fig:time_series4f}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series4_good}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437, 1.178522 . When we appropriately constrain the periodicities for which the LS power is calculated, we recover the true period of  0.547987 days.  One choice of bounds is to  set $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, which are 90\% of the smallest and 110 \% of the largest RR Lyrae periods in ~\citep{sesar2010} sample. Note that as of April 2017, the minimum and maximum value of a slider allowing to interactively fold the lightcurve on any period does not update to the values used in the Periodogram search.}
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437\degree, 1.178522\degree . When we appropriately constrain the periodicities for which the LS power is calculated, we recover the true period of  0.547987 days.  One choice of bounds is to  set $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, which are 90\% of the smallest and 110 \% of the largest RR Lyrae periods in ~\citep{sesar2010} sample. Note that as of April 2017, the minimum and maximum value of a slider allowing to interactively fold the lightcurve on any period does not update to the values used in the Periodogram search. Clicking 'Accept Period' takes the user to Fig.~\ref{fig:time_series5}}
 \label{fig:time_series4g}
 \end{figure*}
 
 
 
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series5}
+\caption{The result of accepting the period found by limiting the periodogram bounds by $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, for an RR Lyrae ID=13350 (RunDeepForcedSource.objectId = 3588818166880604 ). Note that the image coverage does not show the search region - we recommend improvements in this area. Furthermore, this view shows the light curve folded on u-band data, even though  the period was found using g-band data. We recommend that once period is accepted, the lightcurve should fold on the same band as what was used to calculate the periodogram. A surprising behavior here is that clicking on one of the radio buttons instead of folding the lightcurve in that band  on the accepted period, it displays the raw data for that band (Fig.~\ref{fig:time_series6})  }
+\label{fig:time_series5}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series6}
+\caption{The result of clicking on the radio button for the g-band data. Instead of showing the light curve folded on the accepted period in the g-band, we see the raw g-band data. Clicking the 'Find Period' button does not 'remember' the result of the previous search on the same data. We recommend the parameters used for  periodogram calculation to be remembered within a single object Time Series View.  }
+\label{fig:time_series6}
+\end{figure*}
 
 
 Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram} (see Fig.~\ref{fig:exoplanet_archive}). Using few RR Lyrae PDAC g-band  lightcurves, each calculation is allocated time slot of approximately 15 seconds. Also see Table ~\ref{tab:periods} for a summary of results. 
@@ -222,7 +247,7 @@ We perform individual SQL  cone queries  against PDAC for each RR Lyrae, allowin
  % \footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{figs/Fig_1_Sesar_2010_RRLyr}
+\includegraphics[width=0.7\columnwidth]{figs/Fig_1_Sesar_2010_RRLyr}
 \caption{ Distribution of RR Lyrae periods  for 483 objects in \citep{sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep{sesar2010}).}
 \label{fig:RRLyr_distribution}
 \end{figure}
