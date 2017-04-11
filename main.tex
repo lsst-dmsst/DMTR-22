@@ -1,106 +1,46 @@
-% mnras_template.tex
-%
-% LaTeX template for creating an MNRAS paper
-%
-% v3.0 released 14 May 2015
-% (version numbers match those of mnras.cls)
-%
-% Copyright (C) Royal Astronomical Society 2015
-% Authors:
-% Keith T. Smith (Royal Astronomical Society)
+\documentclass[DM,lsstdraft,toc,usenatbib]{lsstdoc}
 
-% Change log
-%
-% v3.0 May 2015
-%    Renamed to match the new package name
-%    Version number matches mnras.cls
-%    A few minor tweaks to wording
-% v1.0 September 2013
-%    Beta testing only - never publicly released
-%    First version: a simple (ish) template for creating an MNRAS paper
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Basic setup. Most papers should leave these options alone.
-\documentclass[fleqn,usenatbib]{mnras} % a4paper,
-
-% to add SQL queries used in appendix 
-\usepackage{xcolor,listings}
-
-% MNRAS is set in Times font. If you don't have this installed (most LaTeX
-% installations will be fine) or prefer the old Computer Modern fonts, comment
-% out the following line
-\usepackage{newtxtext,newtxmath}
-% Depending on your LaTeX fonts installation, you might get better results with one of these:
-%\usepackage{mathptmx}
-%\usepackage{txfonts}
-
-% Use vector fonts, so it zooms properly in on-screen viewing software
-% Don't change these lines unless you know what you are doing
-\usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
-
-\usepackage{natbib}
-
-%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
-
-% Only include extra packages if you really need them. Common packages are:
-\usepackage{graphicx}	% Including figure files
+% Package imports go here
 \usepackage{amsmath}	% Advanced maths commands
-\usepackage{amssymb}	% Extra maths symbols
-\usepackage{gensymb}   % degree symbol 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{gensymb}  % degree symbol 
+\usepackage{natbib}  % bibliography 
+% Local commands go here
 
-%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+%% Journal abbreviations
+\bibliographystyle{aasjournal}
 
-% Please keep new commands to a minimum, and use \newcommand not \def to avoid
-% overwriting existing commands. Example:
-%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
-
-% Title of the paper, and the short title which is used in the headers.
-% Keep the title short and informative.
 \title[PDAC report]{Preliminary Data Access Center : User Report}
 
-% The list of authors, and the short list which is used in the headers.
-% If you need two or more lines of authors, add an extra line using \newauthor
-\author[K. Suberlak et al. ]{
-Krzysztof Suberlak, $^{1}$\thanks{E-mail: suberlak@uw.edu (KS)}
-\v{Z}eljko Ivezi\'c, $^{1}$ and the PDAC team  
-\\
-% List of institutions
-$^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
+\author{
+K.~Suberlak,
+\v{Z}.~Ivezi\'c,
+and the PDAC team.}
+
+\setDocRef{PDAC-2017}
+\date{\today}
+\setDocRevision{TBD}
+\setDocStatus{draft}
+
+\setDocAbstract{%
+A report on user experience of  the Preliminary Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
 }
 
-% These dates will be filled out by the publisher
-\date{Accepted XXX. Received YYY; in original form ZZZ}
+% Change history defined here. Will be inserted into
+% correct place with \maketitle
+% OLDEST FIRST: VERSION, DATE, DESCRIPTION, OWNER NAME
+\setDocChangeRecord{%
+\addtohist{1}{2017-02-15}{First draft.}{Krzysztof Suberlak}
+\addtohist{2}{2017-03-10}{Reordered sections.}{Krzysztof Suberlak}
+\addtohist{3}{2017-04-03}{Added Time Series UI description.}{Krzysztof Suberlak}
+}
 
-% Enter the current year, for the copyright statements etc.
-\pubyear{2017}
-
-% Don't change these lines
 \begin{document}
-\label{firstpage}
-\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+
+% Create the title page
+% Table of contents will be added automatically if "toc" class option
+% is used.
 \maketitle
-
-% Abstract of the paper
-\begin{abstract}
-A report on user experience of  the Preliminary Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
-\end{abstract}
-
-% Select between one and six entries from the list of approved keywords.
-% Don't make up new ones.
-% XXX  :  these are made up.  Remove this for now ...
-%\begin{keywords}
-%SUIT,  PDAC,  data access
-%\end{keywords}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 
@@ -108,6 +48,7 @@ This is a document to report on the user experience testing of the Preliminary D
 An idea of having an interface to the data is not new : there exists Aladin,  SDSS CAS jobs,  IPAC  IRSA,  Mikulsky NASA Archive, NED, and many other archives. These allow a user to query for data (either via SQL query, or interface), returning the data table. Some user interfaces (eg. IRSA) have some rudimentary plotting capabilities.  There have been ideas of a new  interface, that would not only eg. plot the lightcurve and display the spectrum,  but also allow the user to run some machine learning algorithms, or simple models that can help narrow down the query, or obtain science results in the browser.  Namely, Victor Pankratius, from MIT, in his talk   "Computer-Aided Discovery: Towards Scientific Insight Generation with Machine Support"  outlined the idea of an ipython notebook - access to data, which lives in the cloud, is allocated some CPU  share and memory,  and allows one to upload / download the data and run the model in real time, which is especially helpful to geoscientists doing fieldwork, where new data acquisition conditions their next step.  
 
 These requirements and the vision for SUIT have been further described on confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Science+User+Interface+and+Tools}}. Some technical notes about current implementation of SUIT by PDAC are also available via confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}\label{note1}}. 
+
 
 
 \section{Overview of performed tests}
@@ -120,13 +61,16 @@ We test a variety of aspects of PDAC : the user interface, infrastructure, and d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \section{User Interface: what we see}
 \label{sec:ui}
 
 In order to access PDAC we 	follow the directions~\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
 
 
-Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database name \verb|sdss_stripe82_00|) , hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
+Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database \verb|sdss_stripe82_00|), hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
+
+
 
 
 \begin{figure*}
@@ -139,9 +83,11 @@ Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST 
 The upper-left corner of the interface also leads to 'External Images' and 'External Catalogs'. The Catalogs are all NASA/IPAC\footnote{Infrared Processing and Analysis Center, \url{http://www.ipac.caltech.edu/project/lsst}}  Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, 2MASS, SPITZER, etc. (see Fig.~\ref{fig:PDAC_external_cat}).
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{figs/2_PDAC_externals}
+\begin{centering}
+\includegraphics[width=0.5\columnwidth]{figs/2_PDAC_externals}
 \caption{IPAC- hosted catalogs , accessible via IRSA. }
 \label{fig:PDAC_external_cat}
+\end{centering}
 \end{figure}
 
 
@@ -250,6 +196,7 @@ Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exo
 \end{figure*}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -325,9 +272,11 @@ Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle peri
 
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{figs/Fig_3_RRLyr_omega_ratio}
+\begin{centering}
+\includegraphics[width=0.5\columnwidth]{figs/Fig_3_RRLyr_omega_ratio}
 \caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$, where $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in Table 2 of \citep{sesar2010}. We take the same SDSS data from the paper (Table 1 in \citep{sesar2010}), and calculate the Lomb-Scargle single-term generalized periodogram. The frequency corresponding to the highest peak is  $\omega_{fit}$. Thus, wherever  this ratio is approximately equal to 1, this means that the naive  LS approach is able to recover the 'true' period.  However,  where the highest  frequency peak is not the same as $\omega_{true}$, the ratio will be smaller or bigger from 1. This may be caused by the inherent simplicity of the simple single-term Fourier Series fitting. Indeed, some RR Lyrae lightcurves may have shapes that are insufficiently described by a single sinusoid (as on Fig.10.18  in \citep{ivezic2014}). }
 \label{fig:RRLyr_period_ratios}
+\end{centering}
 \end{figure}
 
 
@@ -405,7 +354,7 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Results}
+\section{More Tests}
 
 \section{Conclusions}
 
@@ -413,163 +362,9 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 Thank you ! 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
-
-% The best way to enter references is to use BibTeX:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{apj}
-\bibliography{references} % if your bibtex file is called example.bib
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
-\onecolumn
-\appendix
-
-\section{SQL queries}
-To obtain lightcurves for objects with given RA,DEC,  we would first query the RunDeepSource table to find out which objectIds are within the search radius, and then query the RunDeepForcedSource table against these objectIds.  The two can be combined, querying for all lightcurves within a certain search radius. 
-
-\subsection{Cone query around given RA, DEC}
-
-To query \verb|RunDeepSource| table, for an object with RA = 0.935679, and DEC=1.115859, search radius 0.00055555 (all in degrees), saving the output of the query to \verb|catalogCone1.json| file:
-
-\begin{lstlisting}[
-           language=SQL,
-           showstringspaces=false,
-           basicstyle=\ttfamily,
-           numbers=left,
-           numberstyle=\tiny,
-           commentstyle=\color{gray}
-        ]
-curl -o catalogCone1.json -d 'query=SELECT+objectId+FROM+RunDeepSource+WHERE+\
-                qserv_areaspec_circle(0.935679,1.115859,0.00055555);' \
-                http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
-\end{lstlisting}
-
-I perform such queries for each of the 483 objects in \cite{sesar2010}, using search radius of 2 arcsec. 
-
-\subsection{ID query to return lightcurves}
-We find that between 1 to 6 unique detection ID's are found within a search radius of 2 arsec for the 483 RR Lyrae.  Given the IDs corresponding to the sought RA, DEC, location, to obtain the lightcurve in calibrated magnitudes, we need to query \verb|RunDeepForcedSource| Table to provide information about individual exposures ( mjd time of observation: \verb|exposure_time_mid|, flux in a given filter \verb|flux_psf|, flux error \verb|flux_psf_err|, filter code \verb|exposure_filter_id|, with  \verb|0,1,2,3,4| corresponding to  \verb|u,g,r,i,z|, respectively).  We query \verb|scienceCcdExposureId| table to obtain the flux for photometric zero point with assosiated error (\verb|fluxMag0|, \verb|fluxMag0Sigma|)  with  \verb|exposure_id| in \verb|RunDeepForcedSource| corresponding to \verb|scienceCcdExposureId| in \verb|Science_Ccd_Exposure|. We perform a \verb|join| between these two tables, and store the result as   \verb|catalogForced1.json| file. 
-Assuming that IDs that we query against are 3562429887808969, 3562429887812663, the query to obtain \verb|g| magnitudes would be (see  \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#}) :
-
-
-\begin{lstlisting}[
-           language=SQL,
-           showstringspaces=false,
-           basicstyle=\ttfamily,
-           numbers=left,
-           numberstyle=\tiny,
-           commentstyle=\color{gray}
-           ]
-curl -o catalogForced1.json -d 'query=\
-SELECT \
-  objectId, id, fsrc.exposure_id, fsrc.exposure_time_mid, exp.run, \
-  scisql_dnToAbMag(fsrc.flux_psf,exp.fluxMag0) AS g, \
-  scisql_dnToAbMagSigma(fsrc.flux_psf, fsrc.flux_psf_err, \
-                        exp.fluxMag0, exp.fluxMag0Sigma) AS gErr \
-FROM \
-  RunDeepForcedSource AS fsrc, \
-  Science_Ccd_Exposure AS exp \
-WHERE \
-  exp.scienceCcdExposureId = fsrc.exposure_id \
-  AND fsrc.exposure_filter_id=1 \
-  AND objectId IN (3562429887808969, 3562429887812663)\
-ORDER BY exposure_time_mid' http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
-
-\end{lstlisting}
-
-\subsection{Cone query to return lightcurves}
-We can combine the two steps above by querying positionally against the RunDeepForcedSource table : 
-
-\begin{lstlisting}[
-           language=SQL,
-           showstringspaces=false,
-           basicstyle=\ttfamily,
-           numbers=left,
-           numberstyle=\tiny,
-           commentstyle=\color{gray}
-           ]
-curl -o catalogForced2.json -d 'query=\
-SELECT \
-  objectId, id, fsrc.exposure_id, fsrc.exposure_time_mid, exp.run, \
-  scisql_dnToAbMag(fsrc.flux_psf,exp.fluxMag0) AS g, \
-  scisql_dnToAbMagSigma(fsrc.flux_psf, fsrc.flux_psf_err, \
-                        exp.fluxMag0, exp.fluxMag0Sigma) AS gErr \
-FROM \
-  RunDeepForcedSource AS fsrc, \
-  Science_Ccd_Exposure AS exp \
-WHERE \
-  qserv_areaspec_circle(0.935679,1.115859,0.00055555) \
-  AND exp.scienceCcdExposureId = fsrc.exposure_id \
-  AND fsrc.exposure_filter_id=1 \
-ORDER BY exposure_time_mid' http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
-
-\end{lstlisting}
-
-\subsection{Box Query}
-We performed box query to compare ra,dec , objectId  of all sources from a small region:
-
-
-\begin{lstlisting}[
-           language=SQL,
-           showstringspaces=false,
-           basicstyle=\ttfamily,
-           numbers=left,
-           numberstyle=\tiny,
-           commentstyle=\color{gray}
-           ]
-
-curl -o catalogBox0.json -d 'query=\
-SELECT \
-  * \
-FROM \
-  RunDeepSource \
-WHERE \ 
-  qserv_areaspec_box(325,0,325.1,0.1);' \
-  http://lsst-qserv-dax01.ncsa.illinois.edu:5000/db/v0/tap/sync
-
-\end{lstlisting}
-
-
-
-\section{Reading JSON files}
-We used Python to read JSON files into AstroPy tables: 
-
-\begin{lstlisting}[
-           language=Python,
-           showstringspaces=false,
-           basicstyle=\ttfamily,
-           numbers=left,
-           numberstyle=\tiny,
-           commentstyle=\color{gray}
-           ]
-import json
-from astropy.table import Table
-
-json_file = 'catalogForced1.json'
-tab = json.loads(open(json_file).read())
-meta = tab['result']['table']['metadata']['elements']
-data = tab['result']['table']['data']
-dataT = np.transpose(data)
-
-# initialize a new AstroPy Table 
-t = Table()
-
-# iterate over columns to add them to the Table ...
-for k in range(len(dataT)):
-    t.add_column(Column(dataT[k], name=meta[k]['name']), index=0)
-
- \end{lstlisting}   
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% Don't change these lines
-\bsp	% typesetting comment
-\label{lastpage}
+\bibliography{references}
 \end{document}
-
-% End of mnras_template.tex

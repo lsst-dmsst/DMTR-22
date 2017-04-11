@@ -1,29 +1,30 @@
 \begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
-\bibitem[\protect\citeauthoryear{{Ivezi{\'c}} et~al.}{{Ivezi{\'c}}
-  et~al.}{2014}]{ivezic2014}
-{Ivezi{\'c}}, {\v Z}., {Connolly}, A.~J., {VanderPlas}, J.~T.,  \& {Gray}, A.
+\bibitem[{{Ivezi{\'c}} {et~al.}(2014){Ivezi{\'c}}, {Connolly}, {VanderPlas}, \&
+  {Gray}}]{ivezic2014}
+{Ivezi{\'c}}, {\v Z}., {Connolly}, A.~J., {VanderPlas}, J.~T., \& {Gray}, A.
   2014, {Statistics, Data Mining, and Machine Learning in Astronomy}
 
-\bibitem[\protect\citeauthoryear{{Sesar} et~al.}{{Sesar}
-  et~al.}{2010}]{sesar2010}
-{Sesar}, B., et~al. 2010, \apj, 708, 717
+\bibitem[{{Sesar} {et~al.}(2010){Sesar}, {Ivezi{\'c}}, {Grammer}, {Morgan},
+  {Becker}, {Juri{\'c}}, {De Lee}, {Annis}, {Beers}, {Fan}, {Lupton}, {Gunn},
+  {Knapp}, {Jiang}, {Jester}, {Johnston}, \& {Lampeitl}}]{sesar2010}
+{Sesar}, B., {Ivezi{\'c}}, {\v Z}., {Grammer}, S.~H., {et~al.} 2010, \apj, 708,
+  717
 
-\bibitem[\protect\citeauthoryear{{Vanderplas} et~al.}{{Vanderplas}
-  et~al.}{2012}]{astroML}
-{Vanderplas}, J., {Connolly}, A., {Ivezi{\'c}}, {\v Z}.,  \& {Gray}, A. 2012,
-  in Conference on Intelligent Data Understanding (CIDU), 47
+\bibitem[{{Vanderplas} {et~al.}(2012){Vanderplas}, {Connolly}, {Ivezi{\'c}}, \&
+  {Gray}}]{astroML}
+{Vanderplas}, J., {Connolly}, A., {Ivezi{\'c}}, {\v Z}., \& {Gray}, A. 2012, in
+  Conference on Intelligent Data Understanding (CIDU), 47 --54
 
-\bibitem[\protect\citeauthoryear{{VanderPlas} \& {Ivezi{\'c}}}{{VanderPlas} \&
-  {Ivezi{\'c}}}{2015}]{vanderplas2015}
-{VanderPlas}, J.,  \& {Ivezi{\'c}}, {\v Z}. 2015, The Astrophysical Journal,
+\bibitem[{{VanderPlas} \& {Ivezi{\'c}}(2015)}]{vanderplas2015}
+{VanderPlas}, J., \& {Ivezi{\'c}}, {\v Z}. 2015, The Astrophysical Journal,
   812, 18
 
-\bibitem[\protect\citeauthoryear{{VanderPlas}}{{VanderPlas}}{2017}]{vanderplas2017}
-{VanderPlas}, J.~T. 2017, ArXiv e-prints
+\bibitem[{{VanderPlas}(2017)}]{vanderplas2017}
+{VanderPlas}, J.~T. 2017, ArXiv e-prints, arXiv:1703.09824
 
-\bibitem[\protect\citeauthoryear{{Zechmeister} \& {K{\"u}rster}}{{Zechmeister}
-  \& {K{\"u}rster}}{2009}]{zechmeister2009}
-{Zechmeister}, M.,  \& {K{\"u}rster}, M. 2009, \aap, 496, 577
+\bibitem[{{Zechmeister} \& {K{\"u}rster}(2009)}]{zechmeister2009}
+{Zechmeister}, M., \& {K{\"u}rster}, M. 2009, \aap, 496, 577
 
 \end{thebibliography}
