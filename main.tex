@@ -47,7 +47,7 @@
 \usepackage{graphicx}	% Including figure files
 \usepackage{amsmath}	% Advanced maths commands
 \usepackage{amssymb}	% Extra maths symbols
-
+\usepackage{gensymb}   % degree symbol 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
@@ -195,7 +195,13 @@ We also consider a galaxy located at ra,dec =  40.433,  0.449. A 10 arcsec cone 
 
 We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
 
-Consider RR Lyrae star id=13350  (ra, dec = 0.283437, 1.178522 ). A cone query with search radius of 2 arcseconds brings us to a lightcurve view, from where it is possible to open the Time Series view (see Fig.\ref{fig:time_series1})
+As a test case we consider a RR Lyrae star ID=13350, located at  ra, dec = 0.283437, 1.178522 \degree. \cite{sesar2010} did detailed template fitting, finding the period to be 0.547987 days.
+To analyze the light curve of this object, we Cone query the Deep Source catalog to find objectId within this location. 
+ A cone query with search radius of 2 arcseconds brings us to a lightcurve view, from where it is possible to open the Time Series view (see Fig.\ref{fig:time_series1}). Figs.~\ref{fig:time_series2} and ~\ref{fig:time_series3} guide through the steps allowed by this UI to calculate the correct period of this RR Lyrae star.  The backend of the periodogram tool is a clone of the NASA Exoplanet Archive [Xiuqin Wu 2017, priv.comm.]. The PDAC implementation has been internally tested to comply with that original toolset, but there are is no documentation about details of the algorithm used to compute the periodogram powers beyond  \url{http://exoplanetarchive.ipac.caltech.edu/docs/pgram/pgram_parameters.html}. We recommend that there would be a link to this page to provide the user of the periodogram information about the content of what is plotted in the UI. 
+
+Using the periodogram tool we find that there are a few glitches awaiting improvement, eg. the period slider ticklabels not adapting well to changing the period limits. Also, setting the Periodogram minimum and maximum period, these are not automatically set in the slider.  
+
+We need to guide the Periodogram tool to find the right period : without judiciously setting the minimum and maximum period (using the default), we fail to recover the correct period  (Fig.~\ref{fig:time_series4f}) .  However, knowing the distribution of periods for RR Lyrae in ~\cite{sesar2010}, we can set bounds on the period (frequency) grid by taking as $P_{min}$ 90 \% of the smallest period, and as $P_{max}$  110 \% of the largest period :  $P_{min} = 0.9 * 0.254 = 0.229 $ and  $P_{max} = 1.1 * 0.907 = 0.998 $ days.  Using these we recover the correct period (see Fig.~\ref{fig:time_series4g})
 
 
 \begin{figure*}
@@ -206,16 +212,33 @@ Consider RR Lyrae star id=13350  (ra, dec = 0.283437, 1.178522 ). A cone query w
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series2}
-\caption{Time Series view for an RR Lyrae star at ra, dec = 0.283437, 1.178522 . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
+\caption{Time Series view for an RR Lyrae ID=13350 star at ra, dec = 0.283437, 1.178522 . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
 \label{fig:time_series2}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/PDAC_time_series3}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae at  ra, dec = 0.283437, 1.178522 . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). For this particular RR Lyrae we guide our choice of minimum and maximum periods (0.229, 0.998 days) by an educated guess, given that RR Lyrae in ~\citep{sesar2010} sample have periods between  0.254 and 0.907 days. Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350 at  ra, dec = 0.283437, 1.178522 . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). For this particular RR Lyrae we guide our choice of minimum and maximum periods (0.229, 0.998 days) by an educated guess, given that RR Lyrae in ~\citep{sesar2010} sample have periods between  0.254 and 0.907 days. Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
 \label{fig:time_series3}
 \end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series4_fail}
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437, 1.178522 . Not choosing the minimum and maximum, but letting the backend choose the defaults, does not recover the true underlying period of 0.547987 days. }
+\label{fig:time_series4f}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_time_series4_good}
+\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437, 1.178522 . When we appropriately constrain the periodicities for which the LS power is calculated, we recover the true period of  0.547987 days.  One choice of bounds is to  set $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, which are 90\% of the smallest and 110 \% of the largest RR Lyrae periods in ~\citep{sesar2010} sample. Note that as of April 2017, the minimum and maximum value of a slider allowing to interactively fold the lightcurve on any period does not update to the values used in the Periodogram search.}
+\label{fig:time_series4g}
+\end{figure*}
+
+
+
 
 
 Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram} (see Fig.~\ref{fig:exoplanet_archive}). Using few RR Lyrae PDAC g-band  lightcurves, each calculation is allocated time slot of approximately 15 seconds. Also see Table ~\ref{tab:periods} for a summary of results. 
