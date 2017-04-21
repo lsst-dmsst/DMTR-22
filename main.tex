@@ -21,7 +21,6 @@ and the PDAC team.}
 \date{\today}
 \setDocRevision{TBD}
 \setDocStatus{draft}
-
 \setDocAbstract{%
 A report on user experience of  the Preliminary Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements. 
 }
@@ -33,6 +32,8 @@ A report on user experience of  the Preliminary Data Access Center (PDAC). We te
 \addtohist{1}{2017-02-15}{First draft.}{Krzysztof Suberlak}
 \addtohist{2}{2017-03-10}{Reordered sections.}{Krzysztof Suberlak}
 \addtohist{3}{2017-04-03}{Added Time Series UI description.}{Krzysztof Suberlak}
+\addtohist{4}{2017-04-11}{Used new format for User Interface tests.}{Krzysztof Suberlak}
+\addtohist{5}{2017-04-20}{Edited infrastructure tests.}{Krzysztof Suberlak}
 }
 
 \begin{document}
@@ -77,7 +78,7 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/1_PDAC_interface}
-\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not yet available. The 'Name or Position' only resolves positive RA  (  0<RA<360 ), while using direct SQL query resolves both positive and negative RA ( -180 < RA < 180 ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
+\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not available. The 'Name or Position' only resolves positive RA  (  0\degree<RA<360\degree ), while using direct SQL query resolves both positive and negative RA ( -180\degree < RA < 180\degree ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
 \label{fig:PDAC_interface}
 \end{figure*}
 
@@ -97,14 +98,16 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
 \item Title : Range of input accepted by 'Name or Position' box  
    \begin{itemize}
        \item Description : We  test what is the range of RA, dec values and types of names accepted by the 'Name or Position' box (see Fig.~\ref{fig:PDAC_interface} 
-       \item Input : As input we use a set of coordinates, and names :  first in  -180 <RA< 180 convention (ra,dec) = (-7.530128,-1.171239), then the  same but in   0<RA<360 convention : (ra,dec)=(352.469872 , -1.171239) . Finally we use an objectId  = 216471849679198456, present in the DeepSource table when querying this  location with 2 arcsec radius. We Cone query DeepSource table with 2 arcsec search radius.
+       \item Input : As input we use a set of coordinates, and names :  first in  -180\degree <RA< 180\degree convention (ra,dec) = (-7.530128\degree,-1.171239\degree), then the  same but in   0\degree<RA<360\degree convention : (ra,dec)=(352.469872\degree , -1.171239\degree) . Finally we use an objectId  = 216471849679198456, present in the DeepSource table when querying this  location with 2 arcsec radius. We Cone query DeepSource table with 2\arcsec search radius.
        \item Results : Negative RA is not resolved (Fig.~\ref{fig:PDAC_test1}. Unless we use a name from NED / Simbad, the objectId  is not resolved, even though it is present in the queried table.)
+       \item Date: 2017/02/15
     \end{itemize}
  \item Title : Are all search options available in 'Method Search' ? 
      \begin{itemize}
      	\item Description: The 'Method Search' dialog box contains 'Cone', 'Elliptical', 'Box', 'Polygon', 'Multi-Object', 'All Sky' options. We test whether each method works with simple input. 
      	\item Input:  We employ coordinates (ra,dec)=(352.469872 , -1.171239) as search region center.  We use 'Cone' radius 2 arcsec, 'Elliptical' semi-major axis of 2 arcsec, 'Box' side of 2 arcsec, 'Polygon' default vertices (352.48041 -1.18156, 352.45985 -1.18156, 352.45984 -1.16073, 352.48040 -1.16073), 'Multi-Object': a list  of  two  ra, dec submitted as a text file in the format ra, dec : ( 352.469872 , -1.171239  | 342.469872 , -1.101239).  'All Sky' : we add and SQL constraint  id = 216471849679198456.  For all search methods we query DeepSource catalog. 
      	\item Results: 'Cone', 'Elliptical', 'Box', and 'Polygon' search methods return a list of objects in coadds for a given search region.  'Multi-Object' provided with the radec.txt file  returns an error 'Fail to load table. Error: edu.caltech.ipac.firefly.server.query.DataAccessException: DataAccessException:ERROR:Could not do Multi Object search, internal configuration wrong.: table should be a post search not a get from:unknown'.  It would be more informative if an information about unavailability of this search method was on the main page rather than returning a result after a user uploaded and prepared an radec.txt file.   The 'All Sky' method returns correct output (a list of selected fields where DeepSource.id =216471849679198456). 
+      \item Date: 2017/03/28
      \end{itemize}
 \end{enumerate}
 
@@ -124,7 +127,7 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
 
 \section{Infractructure : what is available and how to get it }
 \label{sec:infra}
-
+\subsection{Overview}
 
 As we described in Section~\ref{sec:ui}, the main user interface allows access to the internally stored (at NCSA) SDSS Stripe 82 data reprocessed during the Summer 2013~\footnote{\url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}} as part of Data Challange with the continuously developed LSST Stack~\footnote{\url{https://pipelines.lsst.io/index.html}}. 
 
@@ -144,37 +147,69 @@ Cone, elliptical, and box queries  return objects in a region of the sky bound b
 Any query returns a list of all objects within the given region (Fig.~\ref{fig:PDAC_cone_DS}).  
 
 
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
-\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10 arcseconds from the position ra=352.469872 , dec=-1.171239. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particular feature is described further in Sec.~\ref{sec:miniatures}}
-\label{fig:PDAC_cone_DS}
-\end{figure*}
+\subsection{Tests Performed}
+\subsubsection{Identification numbers in DeepSource and DeepForcedSource}
 
-A certain limitation of the main UI is inability to resolve id's from the database itself (see Fig.~\ref{fig:PDAC_interface}). Indeed, the only way to find which objects have been detected in a certain small region in DeepSource coadds, and download light curves only for one of them  from DeepForcedSource forced photometry catalog, is  to use an  SQL constraint.   For example,  we performed cone query against DeepSource table for ra,dec = 0.283437, 1.178522, 2 arcsec search radius (this is the RR Lyrae ID=13350 also investigated in Sec.~\ref{sec:periodogram}). Limiting the results to [\verb|id , coord_ra , coord_decl, flux_psf , coadd_id  , coadd_filter_id|], we find that there is a coadd for each filter (denoted with \verb|coadd_filter_id|). The identification in i-band coadd (\verb|coadd_filter_id=3|) is id=3588818166880604.  Note that while DeepSource has a separate id for a coadd in each band, only id's for  i-band coadd are inherited by DeepForcedSource  catalog. The DeepSource.id == DeepForcedSource.objectId,  because  DeepForcedSource.id  stands for forced photometry detection id, which is unique for each epoch. Therefore a single object has one DeepSource.id,  equal to DeepForcedSource.objectId, but  multiple  DeepForcedSource.id  - we recommend to highlight this in the metadata for it is a potential area for confusion. The only way to currently recover a lightcurve for a single object from DeepForcedSource is to  first select the detection id  in DeepSource, and use that as a constraint when using cone query  on DeepForcedSource (see Fig.~\ref{fig:PDAC_cone_DFS})
+A certain limitation of the main UI is inability to resolve id's from the database itself (see Fig.~\ref{fig:PDAC_interface}). Indeed, the only way to find which objects have been detected in a certain small region in DeepSource coadds, and download light curves only for one of them  from DeepForcedSource forced photometry catalog, is  to use an  SQL constraint.   For example,  we performed cone query against DeepSource table for ra,dec = 0.283437\degree, 1.178522\degree, 2\arcsec search radius (this is the RR Lyrae ID=13350 also investigated in Sec.~\ref{sec:periodogram}). Limiting the results to [\verb|id , coord_ra , coord_decl, flux_psf , coadd_id  , coadd_filter_id|], we find that there is a coadd for each filter (denoted with \verb|coadd_filter_id|). The identification in i-band coadd (\verb|coadd_filter_id=3|) is id=3588818166880604.  Note that while DeepSource has a separate id for a coadd in each band, only id's for  i-band coadd are inherited by DeepForcedSource  catalog. The DeepSource.id == DeepForcedSource.objectId,  because  DeepForcedSource.id  stands for forced photometry detection id, which is unique for each epoch. Therefore a single object has one DeepSource.id,  equal to DeepForcedSource.objectId, but  multiple  DeepForcedSource.id  - we recommend to highlight this in the metadata for it is a potential area for confusion. The only way to currently recover a lightcurve for a single object from DeepForcedSource is to  first select the detection id  in DeepSource, and use that as a constraint when using cone query  on DeepForcedSource (see Fig.~\ref{fig:PDAC_cone_DFS})
+
+\begin{enumerate}
+    \item Title : Ease of selecting a light curve for a single object 
+    \begin{itemize}
+    	\item Description : we test how  difficult it is to select forced photometry light curve for only one object.
+    	\item Input : Cone query DeepForcedSource catalog for  ra,dec = 0.283437\degree, 1.178522\degree, with 2\arcsec  search radius. Select forced photometry data products for a single object within the search radius.  
+    	\item Result : There is no option to show which objectId's are present in a given DeepForcedSource query, and somehow select only one.  The simplest workaround is to query  DeepSource against given coordinates,   adding SQL constraint  \verb|'coadd_filter_id  = 3'| to return only i-band id's (because id's corresponding to coadds in other filters were not a seed of forced photometry, and only  for i-band there is a correspondence DeepSource.id = DeepForcedSource.objectId). The i-band DeepSource.id is  3588818166880604. We then query DeepForcedSource against the same coordinates, adding SQL constraint \verb|'objectId' = 3588818166880604'|. This is quite confusing (id means something different for DeepSource and DeepForcedSource), and may cause some problems to users willing to download forced photometry for only one object within a given space region. 
+      \item Date : 2017/04/03
+    \end{itemize}
+\end{enumerate}
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/4_PDAC_cone_DeepForcedSource}
-\caption{The correct way to select a light curve for a  particular object from the forced photometry DeepForcedSource catalog.  Here we first queried against the DeepSource catalog to find  id's for objects detected in coadds in a small region within 2 arcsec from ra,dec =  0.283437, 1.178522. For i-band there is only one id :  3588818166880604. Since DeepSource.id =  DeepForcedSource.objectId,  we require objectId to be equal to  3588818166880604. Thus we are able to acces forced photometry for precisely one object.  Otherwise, obtaining a light curve from a direct spatial  query of DeepForcedSource would provide all photometry for all objects detected in coadds within the search radius, which may not be the desired beavior for analysis of Time Series. We recommend that the result of spatial quary against RunDeepForcedSource should contain a summary of which unique objectId's are present,  with an ability to select only one object (with multi-band photometry), if more than one is present in the search region. Otherwise it becomes a long-winded process to first find what id's were detected in coadds (DeepSource), to then select id for i-band coadd, and select only rows corresponding to that objectId in RunDeepForcedSource.}
+\caption{The correct way to select a light curve for a  particular object from the forced photometry DeepForcedSource catalog.  Here we first queried against the DeepSource catalog to find  id's for objects detected in coadds in a small region within 2\arcsec from ra,dec =  0.283437\degree, 1.178522\degree. For i-band there is only one id :  3588818166880604. Since DeepSource.id =  DeepForcedSource.objectId,  we require objectId to be equal to  3588818166880604. Thus we are able to acces forced photometry for precisely one object.  Otherwise, obtaining a light curve from a direct spatial  query of DeepForcedSource would provide all photometry for all objects detected in coadds within the search radius, which may not be the desired beavior for analysis of Time Series. We recommend that the result of spatial quary against RunDeepForcedSource should contain a summary of which unique objectId's are present,  with an ability to select only one object (with multi-band photometry), if more than one is present in the search region. Otherwise it becomes a long-winded process to first find what id's were detected in coadds (DeepSource), to then select id for i-band coadd, and select only rows corresponding to that objectId in RunDeepForcedSource.}
 \label{fig:PDAC_cone_DFS}
 \end{figure*}
 
-
-% figure with screenshot from Evernote... 
-
-
-\subsection{Postage Stamp Miniatures }
+\subsubsection{Postage Stamp Miniatures }
 \label{sec:miniatures}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
+\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10\arcsec from the position ra=352.469872\degree , dec=-1.171239\degree. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particular feature is described further in Sec.~\ref{sec:miniatures}}
+\label{fig:PDAC_cone_DS}
+\end{figure*}
+
+
 We compared the postage stamp miniatures showing the overview of the region against which a given query was performed. We find that the miniature image does not always come from the catalog we query against.  In fact, the "coverage" image comes from IRAS, DSS, 2MASS, or WISE -  the survey is chosen depending on the size of the region needed to be shown [Xiuqin Wu, priv.comm., 2017].  Indeed, as the query region is increased,  the shown image changes unexpectedly from DSS to IRAS or WISE, without issuing a relevant information to the user.  A recommendation is to display information about which sky survey a particular image is coming from.  
 
-As a concrete example, we execute a cone query against the Deep Source table,  expecting to find  a point source: a star at ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878967464526 ,  1.020496777615987 degrees), with search radius of 2, 10, 100 and 1000 arcseconds . We find that the queried region only sometimes has the postage stamp miniature aligned with the query region. 
 
-We also consider a galaxy located at ra,dec =  40.433,  0.449. A 10 arcsec cone query only sometimes is centered on the galaxy. 
+\begin{enumerate}
+    \item Title : comparing the miniature images to SDSS DR13 Sky Server for a point source
+    \begin{itemize}
+      \item Description : we test how  well does a coverage image reflect the queried region.  
+      \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 2\arcsec, 10\arcsec, 100\arcsec, or 1000\arcsec. Each time, compare the coverage to the SDSS DR13 Sky Server \url{http://skyserver.sdss.org/dr13/en/tools/chart/navi.aspx}. 
+      \item Result : we expected that the coverage image would be centered on a star, and indeed it was at 2\arcsec, 10\arcsec, 100\arcsec search radii. However, at 1000\arcsec radius (and larger), the image miniature drastically switches to using a different imaging survey without informing the user. It is much more blurry than before, impossible to recognize features that should be present at that scale as compated to the SDSS DR13 Sky Server. 
+      \item Date: 2017/03/07
+    \end{itemize}
+
+     \item Title : comparing the miniature images to SDSS DR13 Sky Server for an extended source 
+    \begin{itemize}
+      \item Description : we test how  well does a coverage image reflect the queried region for an extended source (a galaxy) at ra,dec =  40.433\degree,  0.449\degree
+      \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 2\arcsec, 10\arcsec, 100\arcsec, or 1000\arcsec. Each time, compare the coverage to the SDSS DR13 Sky Server \url{http://skyserver.sdss.org/dr13/en/tools/chart/navi.aspx}. 
+      \item Result : we expected that the coverage image would be centered on a star, and indeed it was at 2\arcsec, 10\arcsec, 100\arcsec search radii. However, at 1000\arcsec radius (and larger), the image miniature drastically switches to using a different imaging survey without informing the user. It is much more blurry than before, impossible to recognize features that should be present at that scale as compared to the SDSS DR13 Sky Server. 
+      \item Date: 2017/03/07
+    \end{itemize}
+\end{enumerate}
+
+
+As a concrete example, we execute a cone query against the Deep Source table,  expecting to find  a point source: a star at  We find that the queried region only sometimes has the postage stamp miniature aligned with the query region. 
+
+We also consider a galaxy located at ra,dec =  40.433\degree,  0.449\degree. A 10\arcsec cone query only sometimes is centered on the galaxy. 
 
 
 \subsection{Time Series : periodogram}
 \label{sec:periodogram}
 
-We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \cite{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
+We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \citep{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
 
 As a test case we consider a RR Lyrae star ID=13350, located at  ra, dec = 0.283437\degree, 1.178522\degree. \cite{sesar2010} did detailed template fitting, finding the period to be 0.547987 days.
 To analyze the light curve of this object, we Cone query the Deep Source catalog to find objectId within this location. 
