@@ -34,6 +34,7 @@ A report on user experience of  the Preliminary Data Access Center (PDAC). We te
 \addtohist{3}{2017-04-03}{Added Time Series UI description.}{Krzysztof Suberlak}
 \addtohist{4}{2017-04-11}{Used new format for User Interface tests.}{Krzysztof Suberlak}
 \addtohist{5}{2017-04-20}{Edited infrastructure tests.}{Krzysztof Suberlak}
+\addtohist{5}{2017-05-02}{Added External Images and Catalogs sections.}{Krzysztof Suberlak}
 }
 
 \begin{document}
@@ -99,7 +100,7 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
    \begin{itemize}
        \item Description : We  test what is the range of RA, dec values and types of names accepted by the 'Name or Position' box (see Fig.~\ref{fig:PDAC_interface} 
        \item Input : As input we use a set of coordinates, and names :  first in  -180\degree <RA< 180\degree convention (ra,dec) = (-7.530128\degree,-1.171239\degree), then the  same but in   0\degree<RA<360\degree convention : (ra,dec)=(352.469872\degree , -1.171239\degree) . Finally we use an objectId  = 216471849679198456, present in the DeepSource table when querying this  location with 2 arcsec radius. We Cone query DeepSource table with 2\arcsec search radius.
-       \item Results : Negative RA is not resolved (Fig.~\ref{fig:PDAC_test1}. Unless we use a name from NED / Simbad, the objectId  is not resolved, even though it is present in the queried table.)
+       \item Results : Negative RA is not resolved (Fig.~\ref{fig:PDAC_test1}). Unless we use a name from NED / Simbad, the objectId  is not resolved, even though it is present in the queried table.)
        \item Date: 2017/02/15
     \end{itemize}
  \item Title : Are all search options available in 'Method Search' ? 
@@ -193,17 +194,137 @@ We compared the postage stamp miniatures showing the overview of the region agai
 
      \item Title : comparing the miniature images to SDSS DR13 Sky Server for an extended source 
     \begin{itemize}
-      \item Description : we test how  well does a coverage image reflect the queried region for an extended source (a galaxy) at ra,dec =  40.433\degree,  0.449\degree
-      \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 2\arcsec, 10\arcsec, 100\arcsec, or 1000\arcsec. Each time, compare the coverage to the SDSS DR13 Sky Server \url{http://skyserver.sdss.org/dr13/en/tools/chart/navi.aspx}. 
+      \item Description : we test how  well does a coverage image reflect the queried region for an extended source (a galaxy) 
+      \item Input : perform cone query against the Deep Source table, using coordinates of a Galaxy  ra,dec =  40.433\degree, 0.449\degree \arcsec. Each time, compare the coverage to the SDSS DR13 Sky Server \url{http://skyserver.sdss.org/dr13/en/tools/chart/navi.aspx}. 
       \item Result : we expected that the coverage image would be centered on a star, and indeed it was at 2\arcsec, 10\arcsec, 100\arcsec search radii. However, at 1000\arcsec radius (and larger), the image miniature drastically switches to using a different imaging survey without informing the user. It is much more blurry than before, impossible to recognize features that should be present at that scale as compared to the SDSS DR13 Sky Server. 
       \item Date: 2017/03/07
     \end{itemize}
 \end{enumerate}
 
 
-As a concrete example, we execute a cone query against the Deep Source table,  expecting to find  a point source: a star at  We find that the queried region only sometimes has the postage stamp miniature aligned with the query region. 
 
-We also consider a galaxy located at ra,dec =  40.433\degree,  0.449\degree. A 10\arcsec cone query only sometimes is centered on the galaxy. 
+\subsubsection{Database linkage : obtaining magnitudes}
+\label{sec:linkage_magnitudes}
+A user querying a database would be very likely interested in obtaining calibrated magnitudes. We test the ease of obtaining coadd magnitudes  for sources in a given location,  and for obtaining lightcurves for a particular object. 
+
+
+\begin{enumerate}
+    \item Title : obtaining the calibrated magnitudes for coadd images (Deep Source catalog)
+    \begin{itemize}
+      \item Description : we test how easy it is to access with the user interface calibrated magnitudes for coadds  for sources  within a certain region.
+      \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 10\arcsec.  Seek to select magnitudes from the available field. 
+      \item Result : negative.  We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. Currently, one can only obtain magnitudes via a direct SQL query (see \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#PDACsamplequeriesandtestcases-Forreturningthemagnitude:})
+      \item Date: 2017/04/27
+    \end{itemize}
+
+     \item Title : obtaining the calibrated magnitudes for forced photometry images (Deep Forced Source catalog)
+    \begin{itemize}
+      \item Description : we test how easy it is to access with the user interface calibrated magnitudes for forced photometry lightcurves  for sources  within a certain region.
+      \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 10\arcsec.  Seek to select magnitudes from the available field. 
+      \item Result : negative. We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. As in the case of coadd images,  we can only obtain magnitudes via a direct SQL query (see \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#PDACsamplequeriesandtestcases-Forreturningthemagnitude:})
+      \item Date: 2017/04/27
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{External Images}
+\label{sec:ext_images}
+Apart from Stripe 82 reprocessed data via External Images tab the user can access image data from 2MASS, WISE, SDSS, MSX, DSS, IRAS (see Fig.~\ref{fig:ext_images})
+
+\begin{enumerate}
+   \item Title : are the miniatures from External Images properly centered ?
+    \begin{itemize}
+      \item Description : we test how  well the object is rendered when querying for an image from External Images catalogs
+      \item Input : perform a NED resolved  query  for M3 globular cluster  in Extended Images. Select  'Create  New Plot'.  Query SDSS   u-band. 
+      \item Result : we expected that the image would be centered on M3. In fact, it isn't - M3 appears off the center (see Fig.~\ref{fig:ext_images_m3}).  
+      \item Date: 2017/04/25
+    \end{itemize}
+
+
+    \item Title : are the miniatures from External Images properly rotated ?
+    \begin{itemize}
+      \item Description : we test how  well the large-scale extended object is rendered when querying for an image from various External Images catalogs
+      \item Input : perform a NED resolved  query  for M81  in Extended Images. Select  'Create  New Plot'.  Query WISE, 2MASS, SDSS and DSS  surveys.
+      \item Result : we expected that all miniatures would be centered on M81. The miniatures are only approximately centered, and the SDSS image is rotated with respect to WISE or 2MASS. A different angular scale is seemingly shown in tiled view. (see Fig.~\ref{fig:ext_images_m81}) 
+      \item Date: 2017/04/23
+    \end{itemize}
+
+    \item Title : does the  option  of creating new color image from selected RGB frames work properly? 
+    \begin{itemize}
+      \item Description : we test the ease of use of Extended Images - 'Create New Plot - 3 Colors' user interface. 
+      \item Input : in Extended Images: Create New Plot - 3 Colors,  query for M81, and select SDSS R,G,U bands to stand for red, green, blue colors. 
+      \item Result : the frames are properly added and the ability to select frames from other surveys (such as infrared) is really useful. However, the SDSS image still appears off-center (see Fig.~\ref{fig:ext_images_rgb} and ~\ref{fig:ext_images_rgb_query})
+      \item Date: 2017/04/24
+    \end{itemize}
+\end{enumerate}
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_menu.png}
+\caption{External Images User Interface. The radio buttons on the top allow to create a new image, add another panel to an image created by the previous query, or create a three-color image. In this example, described in Sec.~\ref{sec:ext_images}, we query for an image of M81 , with the expected size of the image of 0.139 degrees. }
+\label{fig:ext_images}
+\end{figure*}
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_m81_query.png}
+\caption{External Images User Interface : a succession of queries against WISE, 2MASS, SDSS and DSS catalogs for an image miniature of M81. The SDSS miniatures are rotated with respect to the other catalogs. }
+\label{fig:ext_images_m81}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_rgb.png}
+\caption{External Images : 'Create New Plot - 3 Colors' main menu.  }
+\label{fig:ext_images_rgb}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_rgb_query.png}
+\caption{External Images :  the result of query for M81 in SDSS R,G,U filter data shown as RGB colors.}
+\label{fig:ext_images_rgb_query}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_m3.png}
+\caption{External Images : querying for an SDSS image of M3 Globular Cluster. It appears off the image center.}
+\label{fig:ext_images_m3}
+\end{figure*}
+
+
+
+\subsubsection{External Catalogs}
+\label{sec:ext_catalogs}
+
+The existing interface allows one to obtain data from External Catalogs, i.e. data not physically present at the NCSA, but parsed through IRSA. We test the ease of obtaining GAIA and WISE data for simple NED-resolved locations. 
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_catalogs_menu.png}
+\caption{External Catalogs:  main menu. The user can select one of many projects (see Fig.~\ref{fig:PDAC_external_cat}) : Gaia, WISE, 2MASS, SPITZER, IRAS< Planck, MSX, COSMOS, BOLOCAM, AKARI, USNO, DENIS, HERSCHEL, PTF, and others. Some projects have more than one associated catalog (eg WISE includes AllWISE, NeoWISE, etc). }
+\label{fig:ext_catalogs}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_catalogs_menu.png}
+\caption{External Catalogs:  the result of querying for Gaia detections around  the location of M81. }
+\label{fig:ext_catalogs_m81}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_catalogs_m33.png}
+\caption{External Catalogs:  the result of querying AllWISE Source Catalog in the cone query around location of M33 - the Triangulum Galaxy.  Note that the miniature image may be in infrared, which is why the spiral features are not easily discernible (compare to Fig.~\ref{fig:skyserver_m33}  - the 2MASS cutout from SDSS Sky Server).  }
+\label{fig:ext_catalogs_m33}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_catalogs_m33_SkyServer.png}
+\caption{SDSS DR13  Sky Server : image showing the 2MASS image of the region around the position of M33 galaxy : ra,dec = 23.46204, 30.66022.  Compare that to the query against the location of M33 for AllWISE detections shown on Fig.~\ref{fig:ext_catalogs_m33}. }
+\label{fig:skyserver_m33}
+\end{figure*}
 
 
 \subsection{Time Series : periodogram}
@@ -293,8 +414,7 @@ Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exo
 
 \subsection{Positional comparison : box query }
 
-We compare the ra,dec of objects found within  a given region in PDAC S82 to the analoguous data stored at UW (DeepSource tables). Regardless of photometry, for a given objectId, the ra,dec should agree. An issue encountered here  
-
+% select deep source id's within  a certain region, and 
 
 \subsection{Light curve comparison : multiple cone queries }
 \label{sec:rr_lyrae}
