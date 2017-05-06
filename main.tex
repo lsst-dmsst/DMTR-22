@@ -8,7 +8,7 @@
 % Local commands go here
 
 %% Journal abbreviations
-\bibliographystyle{aasjournal}
+%\bibliographystyle{aasjournal}
 
 \title[PDAC report]{Preliminary Data Access Center : User Report}
 
@@ -34,7 +34,8 @@ A report on user experience of  the Preliminary Data Access Center (PDAC). We te
 \addtohist{3}{2017-04-03}{Added Time Series UI description.}{Krzysztof Suberlak}
 \addtohist{4}{2017-04-11}{Used new format for User Interface tests.}{Krzysztof Suberlak}
 \addtohist{5}{2017-04-20}{Edited infrastructure tests.}{Krzysztof Suberlak}
-\addtohist{5}{2017-05-02}{Added External Images and Catalogs sections.}{Krzysztof Suberlak}
+\addtohist{6}{2017-05-02}{Added External Images and Catalogs sections.}{Krzysztof Suberlak}
+\addtohist{7}{2017-05-04}{Edited time domain tests.}{Krzysztof Suberlak}
 }
 
 \begin{document}
@@ -69,6 +70,10 @@ We test a variety of aspects of PDAC : the user interface, infrastructure, and d
 \section{User Interface: what we see}
 \label{sec:ui}
 \subsection{UI overview}
+
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
 In order to access PDAC we 	follow the directions\textsuperscript{~\ref{note1}} that include logging to NCSA via VPN \url{https://vpn.ncsa.illinois.edu/} using Cisco AnyConnect Secure Mobile Client, and opening in the web browser \url{http://lsst-sui-proxy01.ncsa.illinois.edu/suit}. This opens the main interface screen, which allows to select the database, and perform the desired query. 
 
 Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST Data' (see Fig.~\ref{fig:PDAC_interface}) includes the Summer 2013 DM-stack reprocessed SDSS Stripe 82 data (database \verb|sdss_stripe82_00|), hosted at the NCSA on the LSST prototype ("integration cluster") hardware, in Qserv [Gregory Dubois-Felsmann, priv.comm. 02-20-2017, slack].  The only other locally stored database (as of March 2017), is  WISE catalog, that is not yet accessible via the graphical user interface (it can be queried as Data Base \verb|wise_00|, with catalogs 'Object' containing objects (like DeepSource in S82 above), and 'ForcedSource' containing forced photometry (like DeepForcedSource in S82)). 
@@ -77,24 +82,9 @@ Currently, PDAC v1,  in the upper-left corner of the interface, under tab 'LSST 
 The upper-left corner of the interface also leads to 'External Images' and 'External Catalogs'. The Catalogs are all NASA/IPAC\footnote{Infrared Processing and Analysis Center, \url{http://www.ipac.caltech.edu/project/lsst}}  Infrared Science Archive(IRSA) publicly accessible catalogs, including GAIA, WISE, 2MASS, SPITZER, etc. (see Fig.~\ref{fig:PDAC_external_cat}).
 
 
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/1_PDAC_interface}
-\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not available. The 'Name or Position' only resolves positive RA  (  0\degree<RA<360\degree ), while using direct SQL query resolves both positive and negative RA ( -180\degree < RA < 180\degree ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
-\label{fig:PDAC_interface}
-\end{figure*}
-
-\begin{figure}
-\begin{centering}
-\includegraphics[width=0.5\columnwidth]{figs/2_PDAC_externals}
-\caption{IPAC- hosted catalogs , accessible via IRSA. }
-\label{fig:PDAC_external_cat}
-\end{centering}
-\end{figure}
-
-
-
-\subsection{Tests performed }
-
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
 \begin{enumerate}
 \item Title : Range of input accepted by 'Name or Position' box  
    \begin{itemize}
@@ -111,6 +101,25 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
       \item Date: 2017/03/28
      \end{itemize}
 \end{enumerate}
+
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/1_PDAC_interface}
+\caption{The main user interface of PDAC ver. 1. As of April 2017, Multi-Object and All Sky queries are not available. The 'Name or Position' only resolves positive RA  (  0\degree<RA<360\degree ), while using direct SQL query resolves both positive and negative RA ( -180\degree < RA < 180\degree ). Currently this is an inconsistency that we recommend to be addressed in the future. Furthermore, the names resolved have to be consistent with those present in NED or  Simbad databases - any id's from the database queried (eg. 'id' in RunDeepSource, or  'objectId' in RunDeepForcedSource) are not yet resolved.}
+\label{fig:PDAC_interface}
+\end{figure*}
+
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.5\columnwidth]{figs/2_PDAC_externals}
+\caption{IPAC- hosted catalogs , accessible via IRSA. }
+\label{fig:PDAC_external_cat}
+\end{centering}
+\end{figure}
+
+
 
 \begin{figure*}
 \includegraphics[width = \textwidth]{figs/1_PDAC_interface_a}
@@ -129,6 +138,7 @@ The upper-left corner of the interface also leads to 'External Images' and 'Exte
 \section{Infractructure : what is available and how to get it }
 \label{sec:infra}
 \subsection{Overview}
+
 
 As we described in Section~\ref{sec:ui}, the main user interface allows access to the internally stored (at NCSA) SDSS Stripe 82 data reprocessed during the Summer 2013~\footnote{\url{https://confluence.lsstcorp.org/display/DM/Properties+of+the+2013+SDSS+Stripe+82+reprocessing}} as part of Data Challange with the continuously developed LSST Stack~\footnote{\url{https://pipelines.lsst.io/index.html}}. 
 
@@ -150,9 +160,14 @@ Any query returns a list of all objects within the given region (Fig.~\ref{fig:P
 
 \subsection{Tests Performed}
 \subsubsection{Identification numbers in DeepSource and DeepForcedSource}
-
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
 A certain limitation of the main UI is inability to resolve id's from the database itself (see Fig.~\ref{fig:PDAC_interface}). Indeed, the only way to find which objects have been detected in a certain small region in DeepSource coadds, and download light curves only for one of them  from DeepForcedSource forced photometry catalog, is  to use an  SQL constraint.   For example,  we performed cone query against DeepSource table for ra,dec = 0.283437\degree, 1.178522\degree, 2\arcsec search radius (this is the RR Lyrae ID=13350 also investigated in Sec.~\ref{sec:periodogram}). Limiting the results to [\verb|id , coord_ra , coord_decl, flux_psf , coadd_id  , coadd_filter_id|], we find that there is a coadd for each filter (denoted with \verb|coadd_filter_id|). The identification in i-band coadd (\verb|coadd_filter_id=3|) is id=3588818166880604.  Note that while DeepSource has a separate id for a coadd in each band, only id's for  i-band coadd are inherited by DeepForcedSource  catalog. The DeepSource.id == DeepForcedSource.objectId,  because  DeepForcedSource.id  stands for forced photometry detection id, which is unique for each epoch. Therefore a single object has one DeepSource.id,  equal to DeepForcedSource.objectId, but  multiple  DeepForcedSource.id  - we recommend to highlight this in the metadata for it is a potential area for confusion. The only way to currently recover a lightcurve for a single object from DeepForcedSource is to  first select the detection id  in DeepSource, and use that as a constraint when using cone query  on DeepForcedSource (see Fig.~\ref{fig:PDAC_cone_DFS})
 
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
 \begin{enumerate}
     \item Title : Ease of selecting a light curve for a single object 
     \begin{itemize}
@@ -163,6 +178,9 @@ A certain limitation of the main UI is inability to resolve id's from the databa
     \end{itemize}
 \end{enumerate}
 
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/4_PDAC_cone_DeepForcedSource}
 \caption{The correct way to select a light curve for a  particular object from the forced photometry DeepForcedSource catalog.  Here we first queried against the DeepSource catalog to find  id's for objects detected in coadds in a small region within 2\arcsec from ra,dec =  0.283437\degree, 1.178522\degree. For i-band there is only one id :  3588818166880604. Since DeepSource.id =  DeepForcedSource.objectId,  we require objectId to be equal to  3588818166880604. Thus we are able to acces forced photometry for precisely one object.  Otherwise, obtaining a light curve from a direct spatial  query of DeepForcedSource would provide all photometry for all objects detected in coadds within the search radius, which may not be the desired beavior for analysis of Time Series. We recommend that the result of spatial quary against RunDeepForcedSource should contain a summary of which unique objectId's are present,  with an ability to select only one object (with multi-band photometry), if more than one is present in the search region. Otherwise it becomes a long-winded process to first find what id's were detected in coadds (DeepSource), to then select id for i-band coadd, and select only rows corresponding to that objectId in RunDeepForcedSource.}
@@ -173,16 +191,14 @@ A certain limitation of the main UI is inability to resolve id's from the databa
 \label{sec:miniatures}
 
 
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
-\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10\arcsec from the position ra=352.469872\degree , dec=-1.171239\degree. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particular feature is described further in Sec.~\ref{sec:miniatures}}
-\label{fig:PDAC_cone_DS}
-\end{figure*}
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
+We compared the postage stamp miniatures showing the overview of the region against which a given query was performed. We find that the miniature image does not always come from the catalog we query against.  In fact, the "coverage" image comes from IRAS, DSS, 2MASS, or WISE -  the survey is chosen depending on the size of the region needed to be shown [Xiuqin Wu, priv.comm., 2017].  Indeed, as the query region is increased,  the shown image changes unexpectedly from DSS to IRAS or WISE, without issuing a relevant information to the user.  A recommendation is to display information about the origin of the miniature images. 
 
-
-We compared the postage stamp miniatures showing the overview of the region against which a given query was performed. We find that the miniature image does not always come from the catalog we query against.  In fact, the "coverage" image comes from IRAS, DSS, 2MASS, or WISE -  the survey is chosen depending on the size of the region needed to be shown [Xiuqin Wu, priv.comm., 2017].  Indeed, as the query region is increased,  the shown image changes unexpectedly from DSS to IRAS or WISE, without issuing a relevant information to the user.  A recommendation is to display information about which sky survey a particular image is coming from.  
-
-
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
 \begin{enumerate}
     \item Title : comparing the miniature images to SDSS DR13 Sky Server for a point source
     \begin{itemize}
@@ -201,19 +217,34 @@ We compared the postage stamp miniatures showing the overview of the region agai
     \end{itemize}
 \end{enumerate}
 
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/3_PDAC_cone_DeepSource}
+\caption{Example cone query against Deep Source table, returning all objects detected within a radius of 10\arcsec from the position ra=352.469872\degree , dec=-1.171239\degree. Note that the background image (postage stamp miniature) does not show the actual S82 coadds. This particular feature is described further in Sec.~\ref{sec:miniatures}}
+\label{fig:PDAC_cone_DS}
+\end{figure*}
+
 
 
 \subsubsection{Database linkage : obtaining magnitudes}
 \label{sec:linkage_magnitudes}
+
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
 A user querying a database would be very likely interested in obtaining calibrated magnitudes. We test the ease of obtaining coadd magnitudes  for sources in a given location,  and for obtaining lightcurves for a particular object. 
 
-
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
 \begin{enumerate}
     \item Title : obtaining the calibrated magnitudes for coadd images (Deep Source catalog)
     \begin{itemize}
       \item Description : we test how easy it is to access with the user interface calibrated magnitudes for coadds  for sources  within a certain region.
       \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 10\arcsec.  Seek to select magnitudes from the available field. 
-      \item Result : negative.  We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. Currently, one can only obtain magnitudes via a direct SQL query (see \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#PDACsamplequeriesandtestcases-Forreturningthemagnitude:})
+      \item Result : negative.  We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. Currently, one can only obtain magnitudes via a direct SQL query\footnote{\url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases}\label{note2}}
       \item Date: 2017/04/27
     \end{itemize}
 
@@ -221,15 +252,24 @@ A user querying a database would be very likely interested in obtaining calibrat
     \begin{itemize}
       \item Description : we test how easy it is to access with the user interface calibrated magnitudes for forced photometry lightcurves  for sources  within a certain region.
       \item Input : perform cone query against the Deep Source table, using coordinates of ra,dec = 23h30m57.31s, +1d1m13.8s  ( or 352.73878\degree ,  1.02049\degree ), with search radii of 10\arcsec.  Seek to select magnitudes from the available field. 
-      \item Result : negative. We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. As in the case of coadd images,  we can only obtain magnitudes via a direct SQL query (see \url{https://confluence.lsstcorp.org/display/DM/PDAC+sample+queries+and+test+cases#PDACsamplequeriesandtestcases-Forreturningthemagnitude:})
+      \item Result : negative. We expected to find a field 'g magnitude', or similar, to find magnitudes in a given filter.  However, such field is not present. As in the case of coadd images,  we can only obtain magnitudes via a direct SQL query\textsuperscript{~\ref{note2}}
+
+      
       \item Date: 2017/04/27
     \end{itemize}
 \end{enumerate}
 
 \subsubsection{External Images}
 \label{sec:ext_images}
+
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
 Apart from Stripe 82 reprocessed data via External Images tab the user can access image data from 2MASS, WISE, SDSS, MSX, DSS, IRAS (see Fig.~\ref{fig:ext_images})
 
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
 \begin{enumerate}
    \item Title : are the miniatures from External Images properly centered ?
     \begin{itemize}
@@ -243,14 +283,14 @@ Apart from Stripe 82 reprocessed data via External Images tab the user can acces
     \item Title : are the miniatures from External Images properly rotated ?
     \begin{itemize}
       \item Description : we test how  well the large-scale extended object is rendered when querying for an image from various External Images catalogs
-      \item Input : perform a NED resolved  query  for M81  in Extended Images. Select  'Create  New Plot'.  Query WISE, 2MASS, SDSS and DSS  surveys.
-      \item Result : we expected that all miniatures would be centered on M81. The miniatures are only approximately centered, and the SDSS image is rotated with respect to WISE or 2MASS. A different angular scale is seemingly shown in tiled view. (see Fig.~\ref{fig:ext_images_m81}) 
+      \item Input : perform a NED resolved  query  for M81  in External Images. Select  'Create  New Plot'.  Query WISE, 2MASS, SDSS and DSS  surveys.
+      \item Result : we expected that all miniatures would be centered on M81. The miniatures are only approximately centered, and the SDSS image is rotated with respect to WISE or 2MASS. A different angular scale is seemingly shown in tiled view. (see Fig.~\ref{fig:ext_images_m81}). Update: selecting WCS option (see Fig.~\ref{fig:ext_images_m81_wcs}) shows that images are approximately properly rotated, but are still not oriented in the same fashion.
       \item Date: 2017/04/23
     \end{itemize}
 
     \item Title : does the  option  of creating new color image from selected RGB frames work properly? 
     \begin{itemize}
-      \item Description : we test the ease of use of Extended Images - 'Create New Plot - 3 Colors' user interface. 
+      \item Description : we test the ease of use of External Images - 'Create New Plot - 3 Colors' user interface. 
       \item Input : in Extended Images: Create New Plot - 3 Colors,  query for M81, and select SDSS R,G,U bands to stand for red, green, blue colors. 
       \item Result : the frames are properly added and the ability to select frames from other surveys (such as infrared) is really useful. However, the SDSS image still appears off-center (see Fig.~\ref{fig:ext_images_rgb} and ~\ref{fig:ext_images_rgb_query})
       \item Date: 2017/04/24
@@ -258,7 +298,9 @@ Apart from Stripe 82 reprocessed data via External Images tab the user can acces
 \end{enumerate}
 
 
-
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/external_images_menu.png}
 \caption{External Images User Interface. The radio buttons on the top allow to create a new image, add another panel to an image created by the previous query, or create a three-color image. In this example, described in Sec.~\ref{sec:ext_images}, we query for an image of M81 , with the expected size of the image of 0.139 degrees. }
@@ -271,6 +313,12 @@ Apart from Stripe 82 reprocessed data via External Images tab the user can acces
 \includegraphics[width=\textwidth]{figs/external_images_m81_query.png}
 \caption{External Images User Interface : a succession of queries against WISE, 2MASS, SDSS and DSS catalogs for an image miniature of M81. The SDSS miniatures are rotated with respect to the other catalogs. }
 \label{fig:ext_images_m81}
+\end{figure*}
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/external_images_m81_query_wcs.png}
+\caption{External Images User Interface : a follow-up to Fig.~\ref{fig:ext_images_m81}, showing tiles of WISE, 2MASS, SDSS u, DSS images. Selecting  the 'WCS match' option, and clicking buttons to add grid layer to the image, and show the directions of Equatorial J2000 North and East, we see that the images are not all oriented in the same fashion. Using the ruler button we show the same distance on each tile to give a sense of scale.}
+\label{fig:ext_images_m81_wcs}
 \end{figure*}
 
 
@@ -297,10 +345,35 @@ Apart from Stripe 82 reprocessed data via External Images tab the user can acces
 \subsubsection{External Catalogs}
 \label{sec:ext_catalogs}
 
-The existing interface allows one to obtain data from External Catalogs, i.e. data not physically present at the NCSA, but parsed through IRSA. We test the ease of obtaining GAIA and WISE data for simple NED-resolved locations. 
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
+The existing interface allows one to obtain data from External Catalogs, i.e. data not physically present at the NCSA, but parsed through IRSA. We test the ease of obtaining Gaia and WISE data for simple NED-resolved locations. 
 
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
+\begin{enumerate}
+   \item Title : can we obtain data from Gaia for a region specified by the cone query around a NED-resolved object? 
+    \begin{itemize}
+      \item Description : we test whether the data obtained from Gaia matches the location specified by the user. We choose M81 as our target for the ease of comparison to the  miniature image shown in the results.  
+      \item Input : perform a NED resolved  query for M81 galaxy in External Catalog, with 100 arcsec search radius. 
+      \item Result : positve. We see detections around M81 , and the miniature at this scale properly displays the queried region (see Fig.~\ref{fig:ext_catalogs_m81}). 
+      \item Date: 2017/05/03
+    \end{itemize}
 
+    \item Title : can we obtain WISE data from External Catalogs for a crowded field ? 
+    \begin{itemize}
+      \item Description : we test how  the WISE data can be accessed via the UI. 
+      \item Input : perform a NED resolved  cone query  for M33  in Extended Catalogs, selecting AllWISE Source Catalog, and 100 arcsec search radius.
+      \item Result : positive. The miniature image is approximately centered on M33, and it is in the infrared (as we can see from comparing Fig.~\ref{fig:ext_catalogs_m33} to 2MASS image from SDSS SkyServer on Fig.~\ref{fig:skyserver_m33}
+      \item Date: 2017/05/03
+    \end{itemize}
+\end{enumerate}
 
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/external_catalogs_menu.png}
 \caption{External Catalogs:  main menu. The user can select one of many projects (see Fig.~\ref{fig:PDAC_external_cat}) : Gaia, WISE, 2MASS, SPITZER, IRAS< Planck, MSX, COSMOS, BOLOCAM, AKARI, USNO, DENIS, HERSCHEL, PTF, and others. Some projects have more than one associated catalog (eg WISE includes AllWISE, NeoWISE, etc). }
@@ -309,7 +382,7 @@ The existing interface allows one to obtain data from External Catalogs, i.e. da
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{figs/external_catalogs_menu.png}
+\includegraphics[width=\textwidth]{figs/external_catalogs_m81.png}
 \caption{External Catalogs:  the result of querying for Gaia detections around  the location of M81. }
 \label{fig:ext_catalogs_m81}
 \end{figure*}
@@ -330,65 +403,166 @@ The existing interface allows one to obtain data from External Catalogs, i.e. da
 \subsection{Time Series : periodogram}
 \label{sec:periodogram}
 
-We compare the g-band time-series of a few objects, taking as the ground truth periodicities reported by \citep{sesar2010}. We record the execution time, and describe in detail the experience of exploring the periodogram tool.   
+%%%%%%%%%%%%%%%
+% INTRODUCTION 
+%%%%%%%%%%%%%%%
+Ability to view the time series of any object is very useful for exploring the variability characteristic. The result of a query into Forced Deep Source table allows to plot as x vs y  any two columns, which could include time vs flux.  The advantage of the Time Series View in the PDAC UI is that it also performs the cross-match against the Science CCD Exposure table to find the calibrated magnitudes for 
+(see on confluence 'PDAC sample queries and test cases' for an example SQL query that can be performed to the same effect). 
 
-As a test case we consider a RR Lyrae star ID=13350, located at  ra, dec = 0.283437\degree, 1.178522\degree. \cite{sesar2010} did detailed template fitting, finding the period to be 0.547987 days.
-To analyze the light curve of this object, we Cone query the Deep Source catalog to find objectId within this location. 
- A cone query with search radius of 2 arcseconds brings us to a lightcurve view, from where it is possible to open the Time Series view (see Fig.\ref{fig:time_series1}). Figs.~\ref{fig:time_series2} and ~\ref{fig:time_series3} guide through the steps allowed by this UI to calculate the correct period of this RR Lyrae star.  The backend of the periodogram tool is a clone of the NASA Exoplanet Archive [Xiuqin Wu 2017, priv.comm.]. The PDAC implementation has been internally tested to comply with that original toolset, but there are is no documentation about details of the algorithm used to compute the periodogram powers beyond  \url{http://exoplanetarchive.ipac.caltech.edu/docs/pgram/pgram_parameters.html}. We recommend that there would be a link to this page to provide the user of the periodogram information about the content of what is plotted in the UI. 
+Here we test the overall navigation experience in the Time Series User Interface - the ease of narrowing down periodicities in the Lomb-Scargle calculation,  of folding the light curve on an accepted period, and changing the band in which the light curve is folded. We execute queries for objects known to be variable  from  catalogs of RR Lyrae \citep{sesar2010}  and other variables %\citep{drake2014}.
+%%%%%%%%%
+% TESTS 
+%%%%%%%%%
+\begin{enumerate}
+   \item Title : can we access the Time Series View easily?
+    \begin{itemize}
+      \item Description : we test the access to the Time Series View: is the button always responsive, do we get the same result if querying twice? 
+      \item Input : cone query the Deep Source catalog for a known RR Lyrae (ID=13350 in the catalog of \citep{sesar2010} ),  at ra,dec = 0.283437\degree, 1.178522\degree, with 2 arcsec search radius, to find objectIds at this location  in i-band (since only i-band coadd was the seed for forced photometry in all bands).  To select only i-band coadd we need to  add an SQL constraint \verb|coadd_filter_id = 3|.  We find that the only objectId in i-band is 'id=3588818166880604'.  We  cone query Run Deep Forced Source table at the same position and search radius, adding an SQL constraint  'objectId = 3588818166880604' (since RunDeepSource.id == RunDeepForcedSource.objectId). We then select 'View Time Series' button (see Fig.~\ref{fig:time_series_cone_result}).  
+      \item Result : positive. In most cases the Time Series View appears,  with the three bottom windows missing any plots : a message 'Plot Failed = Could not create plot' appears (see Fig.~\ref{fig:time_series_viewer_initial}).  It is not clear what the three windows were meant to display. It is easy to select a light curve in a different band for the same image with the radio buttons in the upper left corner. 
+      \item Date: 4/7/2017
+    \end{itemize}
 
-Using the periodogram tool we find that there are a few glitches awaiting improvement, eg. the period slider ticklabels not adapting well to changing the period limits. Also, setting the Periodogram minimum and maximum period does not automatically set the slider bounds.  
+   \item Title : can we recover the period of an RR Lyrae star using the Lomb-Scargle periodogram with default settings? 
+    \begin{itemize}
+      \item Description : the tool becomes useful if it can provide meaningful results.  We test whether it is possible to find the true period of a known RR Lyrae star using the default  settings. 
+      \item Input : as in the 'can we access the Time Series View easily?' test,  we cone query Deep Forced Source table for ra,dec = 0.283437\degree, 1.178522\degree, with 2 arcsec search radius, adding SQL constraint 'objectId = 3588818166880604'. Click 'View Time Series', select SDSS band 'g' (the default is u), click 'Find Period'. Select Periodogram Type 'Lomb-Scargle', Period Step Method 'Fixed Frequency'. Leave Number of Peaks at 50. Click 'Periodogram Calculation' (Fig.~\ref{fig:period_finder_initial}). 
+      \item Result : negative. The default grid stretches too many possible periods, and does not recover the true period of 0.546 days (see Fig.~\ref{fig:period_finder_default}). We recommend implementing  Periodograms for Multiband Astronomical Time Series (as in \cite{vanderplas2015}) to utilize the presence of near-simultaneous multi-band observations. Another way to improve is to allow several different present grid spacing settings,  eg.  AstroML-like, super-Nyquist, etc.  
+      \item Date: 4/7/2017
+    \end{itemize}
 
-To find the correct period for the test case RR Lyrae star we needed to guide the Periodogram tool by entering the minimum and maximum periods - using the defaults we fail to recover the correct period  (Fig.~\ref{fig:time_series4f}) .  We set the periodogram minimum and maximum search period using the known  range of periods for RR Lyrae in ~\cite{sesar2010}.  In this study we set  $P_{min}$ as 90 \% of the smallest period, and $P_{max}$ as 110 \% of the largest period :  $P_{min} = 0.9 * 0.254 = 0.229 $ and  $P_{max} = 1.1 * 0.907 = 0.998 $ days.  Using these bounds we recover the correct period with the Time Series View periodogram tool (see Fig.~\ref{fig:time_series4g}). 
+   \item Title : can we recover the period of an RR Lyrae  star using the Lomb-Scargle periodogram with custom settings? 
+    \begin{itemize}
+      \item Description :  we test whether it is possible to find the true period of a known RR Lyrae star using the custom  settings. Given our knowledge  of the range of true RR Lyrae periods, we constrain the maximum and minimum  periods (frequency) for  Lomb-Scargle Periodogram calculation.
+      \item Input : as in the 'can we access the Time Series View easily?' test,  we cone query Deep Forced Source table for ra,dec = 0.283437\degree, 1.178522\degree, with 2 arcsec search radius, adding SQL constraint 'objectId = 3588818166880604'. Click 'View Time Series', select SDSS band 'g' (the default is u), click 'Find Period'. Select Periodogram Type 'Lomb-Scargle', Period Step Method 'Fixed Frequency'. Leave Number of Peaks at 50, enter Period Min = 0.229,  and Period Max = 0.998  [days]. Click 'Periodogram Calculation'. Try also 0.29-0.9  range. 
+      \item Result : positive. One of the major periodogram peaks corresponds to the true period of 0.546 days (see Fig.~\ref{fig:period_finder_custom}). By judiciously constraining the minimum and maximum periods searched (based on our knowledge of periods for this type of RR Lyrae stars) we can recover the correct period. However, the method is very sensitive to chosen frequency grid - small change in bounds leads to dramatic improvement / degradation in usefulness of periodogram (see Fig.~\ref{fig:period_finder_best_bounds}). We also recommend that the method used ('Fixed Frequency' or 'Fixed Period') should be displayed in the Viewer.
+      \item Date: 4/7/2017
+    \end{itemize}
+
+
+   \item Title : is there a documentation describing the algorithms used to calculate the periodogram ?  
+    \begin{itemize}
+      \item Description : we look for documentation so that the user can better understand which flavor of Lomb-Scargle is used, since it would affect the outcome of the calculation
+      \item Input : search the Time Series view, or the results of the periodogram calculation, for any documentation. 
+      \item Result : negative. We find no reference to which specific algorithms were used. From the PDAC team we found that the backend of the periodogram tool is a clone of the NASA Exoplanet Archive [Xiuqin Wu 2017, priv.comm.]. The PDAC implementation has been internally tested to comply with that original toolset,  and the original documentation of NASA Exoplanet Archive is available at \url{http://exoplanetarchive.ipac.caltech.edu/docs/pgram/pgram_parameters.html}. We recommend that there be a link to this page providing the user with this crucial information. 
+      \item Date: 5/4/17 
+    \end{itemize}
+
+   \item Title : does the period selection bar correctly  update limits and values? 
+    \begin{itemize}
+      \item Description : we test in selecting minimum and maximum periods in the Periodogram calculation whether the x-ticks of the period selection slider bar update correctly, and whether it is easy to change the values manually. 
+      \item Input : as in "can we recover the period of an RR Lyrae  star using the Lomb-Scargle periodogram with custom settings?". Check whether the x-ticks are appropriately updated (selected minimum on the far left of the slider bar,  and selected maximum on the far right). Enter a different minimum value : 0.4 instead of 0.229, and check the behavior. 
+      \item Result : negative.  As in Fig.~\ref{fig:period_finder_default}, the minimum and maximum of the slider bar is always 0.001, 365 days. Furthermore, as in Fig.~\ref{fig:period_finder_custom}, we see that the period slider bar x-ticks do not correctly update to the custom-chosen period range. 
+      \item Date: 5/4/17
+    \end{itemize}
+
+
+   \item Title : is it easy to fold the light curve on an accepted period in a different band ?
+    \begin{itemize}
+      \item Description : we test whether it is possible to fold the light curve on an accepted period found with one band (eg.u) but using the data from a different band (eg. g).  This is useful because there should be approximately the same period detected throughout bands for many sources (eg. RR Lyrae). 
+      \item Input : follow the steps as in "can we recover the period of an RR Lyrae  star using the Lomb-Scargle periodogram with custom settings?".  Choose the period closest to 0.5467 days. Click 'Accept period' in the lower right corner.  In the new 'Viewer' window, click on a radio button corresponding to a different band (eg. r). Observe if the light curve in r-band is folded on the accepted period. 
+      \item Result : negative.  Once the period is accepted, we are brought to a 'Viewer' window, which shows the light curve folded in the original band on an accepted period. Clicking on r-band instead of folding the light curve in r-band on that period (as seems intuitive), shows the raw photometry, with no way of folding it on any period (see Fig.~\ref{fig:period_viewer_click_r}).  Furthermore, the actual value of the accepted period is not displayed anywhere in the 'Viewer' window. We recommend:   
+      a) once  the user clicks 'accept period', clicking in the 'Viewer' window on radio buttons of u,g,r,i or z  band would simply fold the light curve  using the data from the selected band on the chosen period .  
+      b) the accepted period ought be displayed somewhere in the 'Viewer' window, eg. on top of the plot, saying 'Accepted period = .... [days]'. 
+      c) the windows on the bottom do not show anything informative - it would be useful if the user was informed what are they supposed to show. 
+      d) the parameters used for  periodogram calculation (minimum, maximum period) to be remembered within a single object Time Series View.
+      \item Date: 5/3/17
+    \end{itemize}
+
+ \item Title : is the periodogram tool very sensitive to boundary values? 
+    \begin{itemize}
+      \item Description : we test whether the current implementation of the periodogram tool is sensitive to the boundary values chosen for period. 
+      \item Input : as in "can we recover the period of an RR Lyrae  star using the Lomb-Scargle periodogram with custom settings?". Cone query the Deep Forced Source table for ra,dec = 0.283437\degree, 1.178522\degree, with 2 arcsec search radius, adding SQL constraint 'objectId = 3588818166880604'. Click 'View Time Series', select SDSS band 'g' (the default is u), click 'Find Period'. Select Periodogram Type 'Lomb-Scargle', leave Number of Peaks at 50, set Period Step Method to 'Fixed Frequency'. Enter Period Min = 0.22,  and Period Max = 0.9  [days]. Click 'Periodogram Calculation'. Try also 0.3-0.9, and 0.29-0.9  range. Try changing to 'Fixed Period', using the same period bounds (0.22-0.9,  0.3-0.9, 0.29-0.9). 
+      \item Result : positive. The periodogram tool is very sensitive to changes in boundaries: compare Figs. ~\ref{fig:period_finder_custom} and ~\ref{fig:period_finder_best_bounds} : 0.229-0.998 vs  0.29-0.9.  We find that with the same bounds, the period step method yield also different results: compare pairs of  0.22-0.9  and 0.3-0.9 (left panel is  'Fixed Frequency', right is 'Fixed Period'). Surprisingly, even if the range itself is smaller, we may be less sensitive to the true period: compare 0.29-0.9 to 0.22-0.9 (Figs.~\ref{fig:period_finder_best_bounds} and ~\ref{fig:period_finder_0.22-0.9}) - the latter has a more dense grid, and yet the performance is strikingly different. We recommend to warn the user that at best the periodogram tool may help confirm the period, and that the default periodogram number of peaks may be insufficient. 
+      \item Date: 5/5/17
+    \end{itemize}
+
+\end{enumerate}
+
+
+
+%%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%%
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/PDAC_cone_result}
+\caption{A result of cone query against Run Deep Forced Source table ( containing S82 S13 data), with (ra,dec,radius = 0.283437, 1.178522, 0.00055 degrees). We circle the 'View Time Series' button that links to the Time Series UI  shown on Fig.~\ref{fig:time_series_viewer_initial}. }
+\label{fig:time_series_cone_result}
+\end{figure*}
 
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series1}
-\caption{A result of cone query against Run Deep Forced Source table ( containing S82 S13 data), with (ra,dec,radius = 0.283437, 1.178522, 0.00055 degrees). We circle the 'View Time Series' button that links to the Time Series UI  shown on Fig.~\ref{fig:time_series2}. }
-\label{fig:time_series1}
+\includegraphics[width=\textwidth]{figs/PDAC_viewer_initial}
+\caption{Time Series Viewer for an objectId=3588818166880604, at ra, dec = 0.283437\degree, 1.178522\degree . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow  to intuitively select SDSS filter for the periodogram calculation. We choose g-band, and click 'Find Period', marked with the red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:period_finder_initial}) }
+\label{fig:time_series_viewer_initial}
 \end{figure*}
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series2}
-\caption{Time Series view for an RR Lyrae ID=13350 star at ra, dec = 0.283437\degree, 1.178522\degree . Note that initially on the bottom there are three empty panels. The radio buttons in the upper left corner allow intuitively to select SDSS filter for lightcurve periodogram calculation (multi-band periodogram as in ~\citep{vanderplas2015}.) We select 'Find Period', marked with red oval, to calculate Lomb-Scargle periodogram for that band (this takes the user to Fig~\ref{fig:time_series3}) }
-\label{fig:time_series2}
-\end{figure*}
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series3}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350 at  ra, dec = 0.283437\degree, 1.178522\degree . The slider in the upper left corner allows to fold the lightcurve on the chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle as Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). If we don't choose anything for maximum and minimum periods, the calculation will proceed with defaults, which for this RR Lyra fail  to detect the true period (Fig.~\ref{fig:time_series4f}). If we choose the minimum and maximum periods knowing what period to expect for a given class of object, we are more likely to detect the true period (~\ref{fig:time_series4g}). For this particular RR Lyrae we chose 0.229, 0.998 days as limits  on period, which corresponds to the range of periodicities in ~\citep{sesar2010} sample of 483 RR Lyrae.   Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method }
-\label{fig:time_series3}
-\end{figure*}
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series4_fail}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437\degree, 1.178522\degree . Not choosing the minimum and maximum, but letting the backend choose the defaults, does not recover the true underlying period of 0.547987 days. }
-\label{fig:time_series4f}
-\end{figure*}
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series4_good}
-\caption{Calculating Lomb-Scargle periodogram for RR Lyrae ID=13350  at  ra, dec = 0.283437\degree, 1.178522\degree . When we appropriately constrain the periodicities for which the LS power is calculated, we recover the true period of  0.547987 days.  One choice of bounds is to  set $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, which are 90\% of the smallest and 110 \% of the largest RR Lyrae periods in ~\citep{sesar2010} sample. Note that as of April 2017, the minimum and maximum value of a slider allowing to interactively fold the lightcurve on any period does not update to the values used in the Periodogram search. Clicking 'Accept Period' takes the user to Fig.~\ref{fig:time_series5}}
-\label{fig:time_series4g}
+\includegraphics[width=\textwidth]{figs/Period_finder_initial}
+\caption{Calculating Lomb-Scargle periodogram for an objectId=3588818166880604, at ra, dec = 0.283437\degree, 1.178522\degree. The slider in the upper left corner allows to fold the light curve on a chosen period. Clicking 'Calculate Periodogram' button opens the dialog window 'Periodogram'. Currently it contains only the Lomb-Scargle Periodogram Type. Period Step Method include Fixed Frequency or Fixed Period, similar to the NASA Exoplanet Periodogram Tool (Fig.~\ref{fig:exoplanet_archive}). If we don't choose anything for maximum and minimum periods, the calculation will proceed with defaults, which for this RR Lyrae fails to detect the true period (Fig.~\ref{fig:period_finder_default}). If we choose the minimum and maximum periods knowing what period to expect for a given class of object, we are more likely to detect the true period (~\ref{fig:period_finder_custom}), although the method itself is very sensitive to frequency grid. Clicking on 'Periodogram Calculation' proceeds with evaluating Lomb-Scargle periodogram with chosen Period Step Method using the default frequency grid (see Fig.~\ref{fig:period_finder_default}) }
+\label{fig:period_finder_initial}
 \end{figure*}
 
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series5}
-\caption{The result of accepting the period found by limiting the periodogram bounds by $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, for an RR Lyrae ID=13350 (RunDeepForcedSource.objectId = 3588818166880604 ). Note that the image coverage does not show the search region - we recommend improvements in this area. Furthermore, this view shows the light curve folded on u-band data, even though  the period was found using g-band data. We recommend that once period is accepted, the lightcurve should fold on the same band as what was used to calculate the periodogram. A surprising behavior here is that clicking on one of the radio buttons instead of folding the lightcurve in that band  on the accepted period, it displays the raw data for that band (Fig.~\ref{fig:time_series6})  }
-\label{fig:time_series5}
+\includegraphics[width=\textwidth]{figs/Period_finder_defaults}
+\caption{Calculating Lomb-Scargle periodogram for  an objectId=3588818166880604, at ra, dec = 0.283437\degree, 1.178522\degree. Using the default settings  does not recover the true underlying period of 0.547987 days. See Fig.~\ref{fig:period_finder_custom} for a more appropriate choice of period range.}
+\label{fig:period_finder_default}
+\end{figure*}
+
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Period_finder_fix_freq_0229-0998}
+\caption{Calculating Lomb-Scargle periodogram for an objectId=3588818166880604 at  ra, dec = 0.283437\degree, 1.178522\degree . When we appropriately constrain the frequency grid on which the powers of periodogram are evaluated, we recover the period close to the true period of  0.547987 days.  On this figure we choose fixed frequency method,  with $P_{min} =  0.229 $ and $P_{max} = 0.998$ days, which are 90\% of the smallest and 110 \% of the largest RR Lyrae periods in ~\citep{sesar2010} sample. Note that as of April 2017, the minimum and maximum value of a slider allowing to interactively fold the lightcurve on any period does not update to the values used in the Periodogram search. However, slight change of frequency range can drastically improve the calculation: see Fig~\ref{fig:period_finder_best_bounds}. }
+\label{fig:period_finder_custom}
+\end{figure*}
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Period_finder_fix_freq_029-09_best}
+\caption{Calculating Lomb-Scargle periodogram for an objectId=3588818166880604 at  ra, dec = 0.283437\degree, 1.178522\degree. Slight change of frequency grid can heavily affect the outcome  : here we use fixed frequency, with period chosen between 0.29 and 0.9 days. 
+Clicking 'Accept Period' takes the user to Fig.~\ref{fig:period_viewer_accept_period}.}
+\label{fig:period_finder_best_bounds}
+\end{figure*}
+
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Period_viewer_fix_freq_029-09_best}
+\caption{The result of accepting the period found by limiting the periodogram bounds by $P_{min} =  0.29 $ and $P_{max} = 0.9$ days, for an RR Lyrae ID=13350 (RunDeepForcedSource.objectId = 3588818166880604 , at  ra, dec = 0.283437\degree, 1.178522\degree). It is not clear what the miniatures show : different epochs?  The light curve is correctly folded on g-band data. A surprising behavior here is that selecting a different band (eg 'r'), instead of folding the lightcurve in that band  on the accepted period, the raw data is displayed (Fig.~\ref{fig:period_viewer_click_r})  }
+\label{fig:period_viewer_accept_period}
 \end{figure*}
 
 
 \begin{figure*}
-\includegraphics[width=\textwidth]{figs/PDAC_time_series6}
-\caption{The result of clicking on the radio button for the g-band data. Instead of showing the light curve folded on the accepted period in the g-band, we see the raw g-band data. Clicking the 'Find Period' button does not 'remember' the result of the previous search on the same data. We recommend the parameters used for  periodogram calculation to be remembered within a single object Time Series View.  }
-\label{fig:time_series6}
+\includegraphics[width=\textwidth]{figs/Period_viewer_fix_freq_029-09_best_click_r}
+\caption{The result of clicking on the radio button for the r-band data. Instead of showing the r-band light curve folded on the accepted period, we see the raw r-band data. Clicking the 'Find Period' button does not 'remember' the result of the previous search on the same data.   }
+\label{fig:period_viewer_click_r}
 \end{figure*}
+
+
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Period_finder_022-09_freq_period}
+\caption{Calculating Lomb-Scargle periodogram for an objectId=3588818166880604 at  ra, dec = 0.283437\degree, 1.178522\degree. With bounds 0.22-0.9 days in period, the left panel used 'Fixed Frequency', and the right panel 'Fixed Period'.}
+\label{fig:period_finder_0.22-0.9}
+\end{figure*}
+
+
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Period_finder_03-09_freq_period}
+\caption{Calculating Lomb-Scargle periodogram for an objectId=3588818166880604 at  ra, dec = 0.283437\degree, 1.178522\degree. With bounds 0.30.9 days in period, the left panel used 'Fixed Frequency', and the right panel 'Fixed Period'.}
+\label{fig:period_finder_0.22-0.9}
+\end{figure*}
+
+
+
 
 
 Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exoplanet Archive Periodogram\footnote{http://exoplanetarchive.ipac.caltech.edu/cgi-bin/Pgram/nph-pgram} (see Fig.~\ref{fig:exoplanet_archive}). Using few RR Lyrae PDAC g-band  lightcurves, each calculation is allocated time slot of approximately 15 seconds. Also see Table ~\ref{tab:periods} for a summary of results. 
@@ -411,89 +585,105 @@ Finally, we compare the PDAC Time Series User Interface to that of the  NASA Exo
 \section{Database Ingestion : is what we get what we expected to get? }
 \label{sec:dg}
 
+\subsection{Single forced photometry light curve}
+We compare a forced photometry light curve for a single object at PDAC, versus the raw light curve for the same object from the same dataset (S82 S13)  stored locally at the UW. 
 
 \subsection{Positional comparison : box query }
+We test whether source density is what would be expected, comparing the number of sources  in a given box region in the PDAC Deep Source data, compared to the same dataset (S13 S82) stored locally at the UW.  Due to the exponentially increasing number of faint sources, we  impose limits of    17 < i < 21 . 
 
-% select deep source id's within  a certain region, and 
+% \begin{enumerate}
+%    \item Title : 
+%     \begin{itemize}
+%       \item Description : 
+%       \item Input : 
+%       \item Result :
+%       \item Date: 
+%     \end{itemize}
 
+% \end{enumerate}
+
+
+
+% select deep source id's within  a certain region
 \subsection{Light curve comparison : multiple cone queries }
 \label{sec:rr_lyrae}
 
-We perform multiple cone queries given known coordinates of well-classified sources.  We take as ground truth  484 RR Lyrae stars from   \cite{sesar2010} , which were identified by color cuts, Lomb-Scargle periodogram and then confirmed by template fitting.  Thus the periods from that work are considered to be reliable (see  RR Lyrae 'ground truth'  period distribution on Fig.\ref{fig:RRLyr_distribution}). Both fit parameters and  SDSS lightcurves used in ~\cite{sesar2010}  are publicly accessible in the online version of the journal.
 
-We perform individual SQL  cone queries  against PDAC for each RR Lyrae, allowing a generous 2 arcsec search radius (see Appendix A). Location of these RR Lyrae on the sky is shown on Fig.~\ref{fig:PDAC_query_ra_dec}. 
- % \footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}
+% \begin{enumerate}
+%    \item Title : 
+%     \begin{itemize}
+%       \item Description : 
+%       \item Input : 
+%       \item Result :
+%       \item Date: 
+%     \end{itemize}
 
+% \end{enumerate}
+
+We assess whether the Lomb-Scargle periodogram can be safely used to determine periods for the data similar in cadence and sparseness to the  S82 S13. This may inform the choice of  preset settings for the Period Search tool in the Time Series View in PDAC UI. 
+We use as the 'true' period the best-fit results from detailed template fitting \cite{sesar2010} . Both fit parameters and  SDSS DR2 lightcurves used in \cite{sesar2010}  are publicly accessible in the online version of the journal. 
+%\footnote{\url{http://iopscience.iop.org/article/10.1088/0004-637X/708/1/717/meta#apj326724t2}}.
+
+ We obtain the S82 S13 calibrated g-magnitude light curves from PDAC. This requires simultaneous cone query of Deep Forced Source catalog at the given position, and cross-matching against Science CCD Exposure, currently only available via SQL query.  As shown on Fig.~\ref{fig:PDAC_query_ra_dec}, only 343 of 483 RR Lyrae are at locations within the PDAS S82 S13 dataset. For each ligh curve, using the {\it astroML} python module \citep{astroML}, we calculate the Lomb-Scargle periodogram powers on a uniform frequency grid of 5000 frequencies spanning between $\omega_{min} = 0.9 ( 2 \pi / P_{max})$, $\omega_{max} = 1.1 ( 2 \pi / P_{min})$, where  $P_{min}$ and $P_{max}$ correspond to $90 \%$ of the smallest and $110\%$ of the largest periods in the catalog. Thus we are constraining the periodicities searched exactly where we expect them to be. For periodogram we assess  the significance of the peak by performing 500 bootstrap resamplings\footnote{\url{http://www.astroml.org/book\_figures/chapter10/index.html}}. We use the generalized Lomb-Scargle as the calculation  mode,  following the defaults in {\it astroML} (see also Eq.20 in \cite{zechmeister2009}, and Section 10.3.2 in \cite{ivezic2014}).   
+
+
+Lomb-Scargle periodogram does not always find the 'true' period - it is subject to non-uniform sampling,  aliasing,  and necessity of choosing well the frequency sample on which periodogram powers are evaluated (see ~\cite{vanderplas2017} for a recent overview). We nevertheless perform few simple sanity checks : 
+\begin{enumerate}
+  \item  Does the PDAC lightcurve folded on the 'true' period look physical? 
+  \item  Using naive Lomb-Scargle, can we find this period using the SDSS DR2 data originally used by Sesar+2010 ?  
+  \item  Using naive Lomb-Scargle, can we find this period using the S82 S13 PDAC data?
+\end{enumerate}
+
+
+We show that even with such a densely sampled  Lomb-Scargle periodogram (100 times denser than the default 50 powers calculated in the PDAC Time Series Viewer), choosing a very appropriate frequency range we are able to recover the true period only for about a half of the tested stars (see Fig.~\ref{fig:RRLyr_period_ratios})
+
+We summarize the results of Lomb-Scargle calculation on SDSS DR2 data into following groups: where with the LS we find the same period (Fig.~\ref{fig:RRLyr_13350_Sesar}), a smaller period (Fig.~\ref{fig:RRLyr_4099_Sesar}), , or a bigger period  (Fig.~\ref{fig:RRLyr_470994_Sesar}) than the ground truth. This proves that with SDSS DR2 data it would be hard to use solely LS for period finding. 
+
+
+
+Using the PDAC S82 S13 data  we also calculate LS periodogram for the same objects -  see Figs. ~\ref{fig:RRLyr_13350_PDAC}, \ref{fig:RRLyr_4099_PDAC} and ~\ref{fig:RRLyr_470994_PDAC}.
+
+%%%%%%%%%%
+% FIGURES 
+%%%%%%%%%%
+
+
+% need figures : 
+
+% 1)  LC from PDAC 4-panel plot  (folding on  the LS period on PDAC  and folding on the true period )
+% 2)  LC from DR2 (Sesar+2010) (folding on the LS period on DR2,  and folding on the true period )
+
+
+% Use the same star for 1) and 2) .  1) will have likely more points, whereas 2) less, since 2) was taken much earlier ( DR2  vs DR9 ) 
+
+% We want to show that the true period is 'real', and that it can be recovered with LS, although there may be cases where it fails.  
+
+
+% RR Lyrae periods 
 \begin{figure}
 \includegraphics[width=0.7\columnwidth]{figs/Fig_1_Sesar_2010_RRLyr}
 \caption{ Distribution of RR Lyrae periods  for 483 objects in \citep{sesar2010}. Note the bimodal distribution, reflecting two main RR Lyrae types : 309 RRab (right) and 104 RRc (left) (see also Fig.16 in \citep{sesar2010}).}
 \label{fig:RRLyr_distribution}
 \end{figure}
 
-Lomb-Scargle periodogram does not always find the 'true' period - it is subject to non-uniform sampling,  aliasing,  and necessity of choosing well the frequency sample on which periodogram powers are evaluated (see ~\cite{vanderplas2017} for a recent overview). We nevertheless perform few simple sanity checks : 
-\begin{enumerate}
-	\item  Does the PDAC lightcurve folded on 'true' period look real? 
-	\item  Using naive Lomb-Scargle, do we find the same period with the S82 Summer 2013 locally-stored data, and PDAC-hosted equivalent dataset?  
-	\item  Using naive Lomb-Scargle, do we find the same period with the \cite{sesar2010} data and PDAC data?
-	
-\end{enumerate}
-
-
-Question 3 is less direct than  questions 1 and 2 , since \cite{sesar2010} used an earlier SDSS Data Release than what was used to create the S82 S13 reprocessed dataset.  However,  question 1 test solely  whether the same object is stored in PDAC as we would assume (since it is unlikely that a random object would be well-represented by an RR Lyrae period). Similarly, Question 2 employs datasets that should be identical, and therefore we would assume that Lomb-Scargle tests would yield identical periodograms.  
-
-Assuming that the periods for the 483 RR Lyrae  in \cite{sesar2010} are correct, we attempt to download PDAC data for these objects, compute periodograms, and fold them on the true periods.  This serves both to confirm that the periods are correct, and that the objects themselves are indeed RR Lyrae (see Sec. ~\ref{sec:rr_lyrae})
-
-
-
- Using {\it astroML} python module \citep{astroML}, we sample the uniformly spaced frequency grid with N=5000 samples span between the smallest and the largest frequency reported in Table 1 of \cite{sesar2010} $\pm 10\%$, i.e. $\omega_{min} = 0.9 ( 2 \pi / P_{min})$, $\omega_{max} = 1.1 ( 2 \pi / P_{min})$. We use the default {\it astroML} Lomb Scargle periodogram settings, namely generalized LS (see Eq.20 in \cite{zechmeister2009}, and Section 10.3.2 in \cite{ivezic2014}).   
-
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g}
-\caption{ An example of the  {\it astroML} Lomb Scargle periodogram performance,  calculated for RR Lyr ID=13350  in SDSS g band (following Table 2 in \citep{sesar2010}), using the SDSS data from \citep{sesar2010}.  It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw  SDSS lightcurve data. The upper right panel shows the phased lightcurve constructed with a cited period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram on  a uniform frequency grid (5000 bins), where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega_{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days,  corresponding to the highest peak, $P_{fit} = 2 \pi / \omega_{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$  significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url{http://www.astroml.org/book\_figures/chapter10/index.html}). The same object, but pulling the data from PDAC, is shown on Fig.~\ref{fig:RRLyr_13350_PDAC} }
-\label{fig:RRLyr_13350_Sesar}
-\end{figure*}
-
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g}
-\caption{A periodogram, raw and folded lightcurve using SDSS data from \citep{sesar2010}  for RR Lyr ID =4099 (the same object with PDAC data is shown on Fig.~\ref{fig:RRLyr_4099_PDAC}). It is an example of a failure of naive single Lomb Scargle periodogram performance -  the ratio of $\omega_{true} / \omega_{fit} = 0.437$.  The 'true' period from \citep{sesar2010} is  0.641754 days, whereas the naive Lomb-Scargle periodogram approach yields the 'fit' period of 0.280827  days.  Note that here $\omega_{fit}$ and $\omega_{true}$ significantly differ for this RR Lyr,  and the 'true' frequency, backed-up by the full lightcurve fitting of \citep{sesar2010}, appears as only one of insignificant periodogram peaks. Everything else as on Fig.~\ref{fig:RRLyr_13350_Sesar}.}
-\label{fig:RRLyr_4099_Sesar}
-\end{figure*}
-
-
-\begin{figure*}
-\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g}
-\caption{Same as Fig.~\ref{fig:RRLyr_4099_Sesar}, using the SDSS data pulled  from \citep{sesar2010}, with $\omega_{true} / \omega_{fit} = 1.53$. Here  RR Lyr ID=470994 has a cited period of 0.346794  days ('$P_{true}$'), whereas period derived from the Lomb-Scargle periodogram is 0.531667. It may be a  good example of aliasing. }
-\label{fig:RRLyr_470994_Sesar}
-\end{figure*}
-
-
-Using the same frequency grid for all 483 RR Lyrae, we compute Lomb-Scargle periodograms, and determine the best-fit period from the highest frequency peak (see eg. Fig.~\ref{fig:RRLyr_4099_Sesar}).  We find that for about half of the SDSS lightcurves from \cite{sesar2010}, the Lomb-Scargle periodogram fitting single-term Fourier Series (LS) is sufficient to find the 'true' period, (see Fig.~\ref{fig:RRLyr_period_ratios}). We illustrate examples of RR Lyrae falling into each group : where with the naive LS we find the same period (Fig.~\ref{fig:RRLyr_13350_Sesar}), a smaller period (Fig.~\ref{fig:RRLyr_4099_Sesar}), , or a bigger period  (Fig.~\ref{fig:RRLyr_470994_Sesar}) than the ground truth. For the same objects we also show PDAC lightcurves for which we also computed LS periodogram  -  see Figs. ~\ref{fig:RRLyr_13350_PDAC}, \ref{fig:RRLyr_4099_PDAC} and ~\ref{fig:RRLyr_470994_PDAC}, respectively. 
-
-
+% how well LS works using DR2  data 
 \begin{figure}
 \begin{centering}
 \includegraphics[width=0.5\columnwidth]{figs/Fig_3_RRLyr_omega_ratio}
-\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$, where $\omega_{true}$ is inferred directly from the 'ground truth' - period cited in Table 2 of \citep{sesar2010}. We take the same SDSS data from the paper (Table 1 in \citep{sesar2010}), and calculate the Lomb-Scargle single-term generalized periodogram. The frequency corresponding to the highest peak is  $\omega_{fit}$. Thus, wherever  this ratio is approximately equal to 1, this means that the naive  LS approach is able to recover the 'true' period.  However,  where the highest  frequency peak is not the same as $\omega_{true}$, the ratio will be smaller or bigger from 1. This may be caused by the inherent simplicity of the simple single-term Fourier Series fitting. Indeed, some RR Lyrae lightcurves may have shapes that are insufficiently described by a single sinusoid (as on Fig.10.18  in \citep{ivezic2014}). }
+\caption{The distribution of the ratio of $\omega_{true}$ to $\omega_{fit}$.  $\omega_{true} = 2 \pi / P_{true}$, is the frequency corresponding to the 'true' period as found by Sesar+2010 (see Table 2 in \citep{sesar2010}).  $\omega_{fit} = 2 \pi / P_{fit}$ corresponds to the highest peak in the Lomb-Scargle periodogram evaluated on Sesar+2010 data  - SDSS DR2.  $\omega_{true} /  \omega_{fit}$ is approximately equal to 1, when the naive  LS approach is able to recover the 'true' period.  When this ratio is smaller or greater than 1, it means that the period recovered from the LS method is  respectively shorter or longer than the 'true' period. This may be caused by the inherent simplicity of the simple single-term Fourier Series fitting. Indeed, some RR Lyrae lightcurves may have shapes that are insufficiently described by a single sinusoid (as on Fig.10.18  in \citep{ivezic2014}). See Figs.~\ref{fig:RRLyr_13350_Sesar}, ~\ref{fig:RRLyr_4099_Sesar} and~\ref{fig:RRLyr_470994_Sesar} for details of evaluating LS on SDSS DR2 lightcurves.}
 \label{fig:RRLyr_period_ratios}
 \end{centering}
 \end{figure}
 
-
-
-
-Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we positionally query the PDAC  \verb|RunDeepForcedSource| database (Cone Search), to find objects within 2 arcsec radius. As shown on Fig.~\ref{fig:PDAC_query_ra_dec}, not all objects have a match.  For the 343 stars with a PDAC match, we obtain calibrated g-magnitude lightcurves querying the \verb|RunDeepForcedSource| and \verb|Science_Ccd_Exposure| for the zero point magnitudes per exposure. For these PDAC lightcurves we also calculate Lomb-Scargle periodogram and find the frequency with most-significant power. %On Fig.~\ref{fig:RRLyr_PDAC_vs_SDSS} we compare the period found from LS periodogram on PDAC lightcurves to the period found from LS periodogram on SDSS \cite{sesar2010}. 
-
-
+% which RR Lyr we could test 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/missing_and_recovered_RR_Lyr_PDAC}
 \caption{Results of positional query against 483 RR Lyrae stars from ~\citep{sesar2010}, using their $\mathrm{RA}, \mathrm{Dec}$. Blue dots are 343 stars that have a match in the PDAC S82 dataset within 2 arcsec, and red crosses are 140 stars that did not. Increasing the search radius to 3 arcsec does not alter this result. }
 \label{fig:PDAC_query_ra_dec}
 \end{figure}
 
+
+% SDSS DR2   vs   PDAC DR9  data ... 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/Sesar_vs_PDAC_lc_4099}
 \caption{Comparison of RR Lyr ID=4099  from  ~\citep{sesar2010}  (red crosses), and PDAC (blue crosses).  The two lightcurves have different length : 59 vs 162 points, respectively.}
@@ -502,13 +692,39 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 
 
+% DR2 data : success of LS 
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_13350_g}
+\caption{ An example of the  {\it astroML} Lomb Scargle periodogram performance,  calculated for RR Lyr ID=13350  in SDSS g band (following Table 2 in \citep{sesar2010}), using the SDSS data from \citep{sesar2010}.  It took 18.6 miliseconds on a laptop to calculate this periodogram. The upper left panel depicts the raw data. The upper right panel shows the phased lightcurve constructed with the 'true'  period of 0.547987 days ('$P_{true}$'). The lower left panel shows the Lomb Scargle periodogram, where the orange and magenta vertical lines mark the location of the highest periodogram peak, and the frequency based on the reported period ($\omega_{true} = 2 \pi / P_{true}$). The lower right panel shows the phased lightcurve constructed with the Lomb-Scargle Periodogram period of 0.547161 days,  corresponding to the highest peak, $P_{fit} = 2 \pi / \omega_{fit}$. The horizontal red and green lines mark the $5\%$ and $1\%$  significance levels for the highest peak, as found from 500 bootstrap resamplings ( See \url{}). The same object, but using the PDAC S82 S13 data is shown on Fig.~\ref{fig:RRLyr_13350_PDAC} }
+\label{fig:RRLyr_13350_Sesar}
+\end{figure*}
 
+
+% DR2 data : failure of LS 
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_4099_g}
+\caption{An example of a failure of naive single Lomb Scargle periodogram performance -  the ratio of $\omega_{true} / \omega_{fit} = 0.437$.  In these four panels we use  SDSS DR2  data for RR Lyr ID =4099 from  \citep{sesar2010} . Upper-left panel:  raw data.  Upper-right panel : raw data folded on the true period.  Bottom-left panel : Lomb-Scargle periodogram with significance levels.  Bottom-right panel : the raw data folded  on the LS period corresponding to the highest peak. The 'true' period from \citep{sesar2010} is  0.641754 days, whereas the naive Lomb-Scargle periodogram approach yields the 'fit' period of 0.280827  days. Here $\omega_{fit}$ and $\omega_{true}$ significantly differ for this RR Lyr,  and the 'true' frequency  appears as only one of many insignificant periodogram peaks.  We show the PDAC S82 S13 data used for this object on Fig.~\ref{fig:RRLyr_4099_PDAC}).  Everything else as on Fig.~\ref{fig:RRLyr_13350_Sesar}.}
+\label{fig:RRLyr_4099_Sesar}
+\end{figure*}
+
+
+% DR2 data : failure of LS 
+\begin{figure*}
+\includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_470994_g}
+\caption{Same as Fig.~\ref{fig:RRLyr_4099_Sesar}, using the SDSS DR2 data from \citep{sesar2010}.  This RR Lyr ID=470994, has a cited period of 0.346794  days ('$P_{true}$'), whereas the period derived from the Lomb-Scargle periodogram is 0.531667 days ('$P_{fit}$').  Thus  $\omega_{true} / \omega_{fit} = 1.53$. It may be a  good example of aliasing. }
+\label{fig:RRLyr_470994_Sesar}
+\end{figure*}
+
+
+% PDAC data : success of LS 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_13350_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_13350_Sesar}, but using data downloaded using PDAC. Using PDAC data, the RR Lyr ID=13350 has a best-fit period of 0.547969 days, almost identical to true period of  0.547987 from \citep{sesar2010}. Panels the same as on Fig.~\ref{fig:RRLyr_4099_Sesar}}
 \label{fig:RRLyr_13350_PDAC}
 \end{figure*}
 
+
+% PDAC data : success of LS 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_4099_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_4099_Sesar}, but using data downloaded using PDAC. Calculating a naive LS periodogram using PDAC data for RR Lyr ID=4099 we find the  best-fit period (frequency with highest power) of 0.280827 days, almost identical to the period found using LS  periodogram on the SDSS \citep{sesar2010} data of 0.280827 days. Both are discrepant with respect to the 'true' period of 0.641754 days from \citep{sesar2010}. Panels the same as on Fig.~\ref{fig:RRLyr_13350_Sesar}}
@@ -517,6 +733,7 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 
 
+% PDAC data : failure of LS 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Fig_2_RRLyr_LS_periodogram_ID_470994_gPDAC}
 \caption{ The same object as Fig.~\ref{fig:RRLyr_470994_Sesar}, but using data downloaded from PDAC. Calculating a naive LS periodogram using PDAC data for RR Lyr ID=470994 we find the  best-fit period (frequency with highest power) of 0.531667  days, almost twice as high as the 'true'  period of 0.346794 days from  \citep{sesar2010}. For this star we get an identical period if we use LS periodogram on SDSS data from \citep{sesar2010} as opposed to PDAC. Panels the same as on Fig.~\ref{fig:RRLyr_13350_Sesar}}
@@ -524,6 +741,7 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 \end{figure*}
 
 
+% PDAC  vs   SDSS DR2 data : quality assessment ... 
 \begin{figure}
 \includegraphics[width=\columnwidth]{figs/Fig_PDAC_sesar_compare}
 \caption{Comparison of the original ~\citep{sesar2010}  lightcurves (green) against data for the same objects  pulled from PDAC (blue). For each of the 383 lightcurves in SDSS $g$-band, without any pre-processing or clipping, we calculated the median, weighted mean, mean, and $chi^{2}_{DOF}$. }
@@ -535,18 +753,17 @@ Using the $\mathrm{RA}, \mathrm{Dec}$ for the RR Lyrae  from \cite{sesar2010} we
 
 \begin{table}
 \centering
-\caption{Comparison of RR Lyrae periods obtained with different methods. First, P(S) is the 'ground truth' -  period resulting from detailed template fitting by ~\citep{sesar2010}. Second, P(LS) is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram  (LS) computed on the SDSS lightcurve for a given object pulled from online journal data in ~\citep{sesar2010}. Third, P(EXO) uses the same SDSS data from ~\citep{sesar2010} in g-band, to find the best period with the NASA Exoplanet Archive Periodogram service.  Fourth, P(PDAC) uses the data pulled from PDAC, for which we find  the best period using  LS periodogram (same method as P(LS)).}
+\caption{Comparison of RR Lyrae periods obtained with different methods. First column - 'true',is the 'ground truth' -  period resulting from detailed template fitting by ~\citep{sesar2010}. Second column - DR2 LS, is the period corresponding to the most prominent frequency in the Lomb-Scargle periodogram  computed on the SDSS DR2 lightcurve from ~\citep{sesar2010}. Third column - DR2 EXO, shows the period found for SDSS DR2 data of  ~\citep{sesar2010}  with the NASA Exoplanet Archive Periodogram service.  Fourth column - PDAC LS, is the period found using Lomb-Scargle periodogram  on PDAC S82 S13 data.}
 \label{tab:periods}
 \begin{tabular}{ l|rrrr } 
 \hline
- ID      & P(S)         & P(LS)      & P(EXO)       & P(PDAC) \\ 
+ ID      & true        & DR2 LS      & DR2 EXO      &  PDAC LS  \\ 
 \hline
  4099    & 0.641754     & 0.280827   & 0.64175      &  0.280827 \\ 
  13350   & 0.547987     & 0.547161   & 0.35365      &  0.547969  \\ 
  470994  & 0.346794     & 0.531667   & 0.34679      &  0.531667  \\ 
 \end{tabular}
 \end{table}
-
 
 
 
