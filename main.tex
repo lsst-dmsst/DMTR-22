@@ -59,6 +59,13 @@ An online tool that can serve as an interface between the user and the data is n
 
 This report details tests performed on the PDAC implementation of SUIT, including screenshots and data-based plots.  A shorter summary of monthly progress is released every month at the github repository of the LSST System Science Team : \url{https://github.com/lsst-dmsst/PDAC_report}. 
 
+
+% Science Platform and PDAC development and deployment in 2017
+% https://confluence.lsstcorp.org/display/DM/Science+Platform+and+PDAC+development+and+deployment+in+2017
+
+% PDAC Meeting notes 
+% https://confluence.lsstcorp.org/display/DM/PDAC+Meeting+Minutes 
+
 \section{Overview of performed tests}
 
 We test a variety of aspects of PDAC : the user interface, infrastructure, and database ingestion, focusing on the Sloan Digital Sky Survey Stripe 82 Forced Photometry LSST reprocessed dataset. In Section~\ref{sec:ui} we describe the functionality available through user interface. In Section~\ref{sec:infra} we describe the structure of  available data : both datasets available directly from the NCSA (internal catalogs) , and data that is available from IRSA (external catalogs).  In that section we also provide an overview of query and analysis methods available directly through the User Interface,  as well as through SQL.  Finally, in Section~\ref{sec:dg} we consider the quality of database ingestion, answering the question of how well was a given dataset loaded into PDAC. In particular we compare the S82 dataset, an outcome of the Summer 2013 reprocessing, to the same data stored locally at the University of Washington. 
@@ -708,30 +715,32 @@ We compare the source density between the PDAC and UW S82 datasets.  This is a s
   \begin{itemize}
     \item Description: we compare the source density in the S82 dataset using PDAC Run Deep Source catalog and the locally hosted (UW) Deep Source catalog. The local catalog is cut at i < 23.5 mag.  The two should agree on the number of sources in the same area of the sky.
     \item Input: Use box query against the PDAC S82 data. The query box in the SQL \verb|qserv_areaspec_box| function requires minimum and maximum ra,dec bounds.  Use 325 $\degree$, 325+D$\degree$, and -0.7$\degree$, -0.7+D$\degree$, with D=[0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ]. This specifies box queries with increasing area (see Fig.~\ref{fig:box_area_illustrate}). Measure the query speed including the download of  parent id and object id,  i-band coadd magnitude and error. Limit the query depth to i< 23.5 to mirror the UW data. Select only i-band coadd by specifying \verb|RunDeepSource.coadd_filter_id = 3 |. Measure the time it takes to query the QSERV and download the data. Count the number of unique id in the query. Compare to the number of objects in the same area from the UW S82 Deep Source catalog. 
-    \item Result: negative. Number of sources in PDAC per chosen area, constrained in the same way as the UW catalog, is $\approx15\% $ higher (see Tab.~\ref{tab:source_count} for detailed results). This is the result of choosing whether to include secondary sources (\verb|detect_is_primary = 0| flag), or only primary sources (\verb|detect_is_primary = 1| flag). We recommend that this issue  be explained to the user in more detail, in particular the meaning of  \verb|parent|, or \verb|deblend_n_child| column names. Otherwise searches for objects within a certain area may yield unexpected results.  As predicted, the measured query  time increases with the size of the queried area (Fig.~\ref{fig:box_query_time}), allowing within less than a minute to investigate the area of a few square degrees. See Sec.~\ref{sec:sql_box} for an example of an SQL query used. 
+    \item Result: negative. Number of sources in PDAC per chosen area, constrained in the same way as the UW catalog, is $\approx15\% $ higher (see Tab.~\ref{tab:source_count} for detailed results). This is the result of choosing whether to include deblender parents. In all cases, we find that the 'id' of extra sources at the same location as sources matched to UW catalog are the same as 'parentDeepSourceId' in the UW catalog.   We recommend that this issue  be explained to the user in more detail, in particular the meaning of  \verb|parent|, or \verb|deblend_n_child| column names. Otherwise searches for objects within a certain area may yield unexpected results.  As predicted, the measured query  time increases with the size of the queried area (Fig.~\ref{fig:box_query_time}), allowing within less than a minute to investigate the area of a few square degrees. See Sec.~\ref{sec:sql_box} for an example of an SQL query used. 
     \item Date: 5/29/2017
     \end{itemize}
 \end{enumerate}
 
 \begin{table}
 \centering
-\caption{Comparison of the number of sources in the same area between PDAC and UW hosted versions of the Deep Source Coadd catalogs. The number of unique id's is considered to be a proxy for the number of sources.}
+\caption{Comparison of the number of sources in the same area between PDAC and UW hosted versions of the Deep Source Coadd catalogs. The number of unique id's is considered to be a proxy for the number of sources. If we exclude objects that are parents of the UW sources at the same location, we come closer to resolving  the discrepancy (we remove rows where   'id' is the same as a 'parent' of another object). However, there are still objects which may or may not have any match in the UW catalog. Those could be 'parent' sources of 'child' sources that are too faint to be included in the query (i<23.5 limit). }
 \label{tab:source_count}
-\begin{tabular}{ l|rr} 
+\begin{tabular}{ l|rrr} 
 \hline
-Area [sq.deg]  & N(PDAC)   & N(UW)  \\ 
+Area [sq.deg]  & N(PDAC)   & N(UW)  &  N(PDAC) no parents \\ 
 \hline
-0.01    & 731       & 562    \\ 
-0.04    & 3020      & 2273   \\ 
-0.16    & 12320     & 9170   \\ 
-0.36    & 25854     & 19154  \\ 
-0.64    & 44880     & 33074  \\ 
-1.00    & 69374     & 51077  \\ 
-1.44    & 98871     & 72876  \\  
-1.96    & 133916    & 99007  \\ 
+0.01    & 731       & 562    &  583    \\
+0.04    & 3020      & 2273   & 2350    \\
+0.16    & 12320     & 9170   & 9533    \\
+0.36    & 25854     & 19154  & 19909   \\
+0.64    & 44880     & 33074  & 34371   \\
+1.00    & 69374     & 51077  & 52989   \\
+1.44    & 98871     & 72876  &  75506  \\
+1.96    & 133916    & 99007  & 102630  \\
 \end{tabular}
 \end{table}
 
+
+% Explanation  
 
 %%%%%%%%%%%
 % FIGURES 
@@ -740,21 +749,21 @@ Area [sq.deg]  & N(PDAC)   & N(UW)  \\
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Box_area_comparison}
-\caption{The area of comparison between PDAC and UW S82 Deep Coadd catalog. In the background the S82 counts from UW catalog. Each box corresponds to the query area.}
+\caption{The area of comparison between the PDAC and UW S82 Deep Coadd catalogs. In the background the S82 source counts from the UW catalog. Each black square illustrates the query area.}
 \label{fig:box_area_illustrate}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Box_query_deepsource_i_lt_235}
-\caption{Result of a box query against PDAC S82 dataset with increasing box size. We plot query area in square degrees and the number of sources in PDAC contained in that area against  query time. There is a scatter in query time corresponding to fluctuating network speed uplink and downlink, thus we fit the polynomial to the median query time to highlight the increasing trend. }
+\caption{Result of a box query against PDAC S82 dataset with increasing box size. We plot query area in square degrees and the number of sources in PDAC contained in that area against  query time. There is a scatter in query time corresponding to fluctuating network speed, thus we fit the polynomial to the median query time to highlight the increasing trend. This also emphasizes the importance of allowing the user to limit the query magnitude : otherwise the number of sources resulting from a query may be prohibitively large. }
 \label{fig:box_query_time}
 \end{figure*}
 
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{figs/Box_compare_sources}
-\cprotect\caption{Comparing sources in a very small area (1.44 square arcminutes) between PDAC and UW hosted Deep Source catalogs, bounded by a Polygon with vertices (325.0  -0.7,  325.02  -0.7, 325.02  -0.68, 325.0   -0.68).  Blue dots represent sources with id shared between the two catalogs. Orange dots represent sources with id only present in the PDAC sources catalog. These are child sources with a parent at the same location. For example, consider sources id = 217571363454454701 and 217571363454457757, both located within 1 arcsec from ra,dec = 325.008953599611, -0.6820032359336851 . Both are brighter than i = 23.5 mag, but 217571363454454701 is the parent, and also has 4 other deblend children ( \verb|deblend_nchild = 5| for 217571363454454701), that are fainter than i = 23.5 mag.}
+\cprotect\caption{Comparing sources in a very small area (1.44 square arcminutes) between PDAC and UW hosted Deep Source catalogs, bounded by a Polygon with vertices (325.0  -0.7,  325.02  -0.7, 325.02  -0.68, 325.0   -0.68).  Blue dots represent sources with id shared between the two catalogs. Orange dots represent sources with id only present in the PDAC sources catalog. These are child sources with a parent at the same location. For example, consider sources id = 217571363454454701 and 217571363454457757, both located within 1 arcsec from ra,dec = 325.008953599611, -0.6820032359336851 . Both are brighter than i = 23.5 mag, but 217571363454454701 is the parent, and also has 4 other deblender children ( \verb|deblend_nchild = 5| for 217571363454454701), that are fainter than i = 23.5 mag.}
 \label{fig:box_deblended_sources}
 \end{figure*}
 
