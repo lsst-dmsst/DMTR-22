@@ -11,7 +11,7 @@
 %% Journal abbreviations
 %\bibliographystyle{aasjournal}
 
-\title[PDAC report]{Preliminary Data Access Center : User Report}
+\title[PDAC report]{Prototype Data Access Center : User Report}
 
 \author{
 K.~Suberlak,
@@ -23,7 +23,7 @@ and the PDAC team.}
 \setDocRevision{TBD}
 \setDocStatus{draft}
 \setDocAbstract{%
-A report on user experience of  the Preliminary Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements.
+A report on user experience of  the Prototype Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements.
 }
 
 % Change history defined here. Will be inserted into
@@ -50,7 +50,7 @@ A report on user experience of  the Preliminary Data Access Center (PDAC). We te
 
 \section{Introduction}
 
-This is a document to report on the user experience testing of the Preliminary Data Access Center  on  macOS Sierra Version 10.12.3 (16D32), using the Safari Version 10.0.3 (12602.4.8).
+This is a document to report on the user experience testing of the Prototype Data Access Center  on  macOS Sierra Version 10.12.3 (16D32), using the Safari Version 10.0.3 (12602.4.8).
 
  The Large Scale Synoptic Telescope (LSST) will produce a big volume of data. Such unprecedented data stream poses new challenges  to provide an easy access for users, in such a way that they can quickly find what they need, and thus be able to focus on the science goal that they would like to achieve.  The detailed description of  technical requirements and a vision for teh Science User Interface and Tools is outlined in documents LDM-130 (SUIT requirements)\footnote{\url{https://docushare.lsstcorp.org/docushare/dsweb/ServicesLib/LDM-130/History}}  and LDM-492  (SUIT Vision)\footnote{\url{https://docushare.lsstcorp.org/docushare/dsweb/ServicesLib/LDM-492/History}}, as well as confluence pages\footnote{\url{https://confluence.lsstcorp.org/display/DM/Science+User+Interface+and+Tools}}. Current Prototype Data Access Center implementation of SUIT is described on the Guide to PDAC\footnote{\url{https://confluence.lsstcorp.org/display/DM/Guide+to+PDAC+version+1}\label{note1}}
 
@@ -935,7 +935,7 @@ Using the PDAC S82 S13 data  we also calculate LS periodogram for the same objec
 
 \section{Conclusions}
 
-The Preliminary Data Access Center readily implements  many requirements for SUIT, as outlined in the LDM-130 document. We find that the overall structure of the interface is very intuitive, building on the strengths of NASA/IPAC IRSA and SDSS CasJobs. Multiple ways of defining the query region, and resolving names of objects with NED helps quickly access the data, and adding SQL constraints makes it possible to reduce the amount of displayed information.  An innovative Time Series View,  relying on the robust back-end of the NASA Exoplanet Archive Periodogram Tool,  has a great potential to aid rapid analysis of time series data.  Easy access to external image catalogs allows overlaying information across a range of wavelengths, including a very well designed RGB-making  toolbox. The QSERV responds to complicated SQL queries, and scisql functions help to execute very quick joins between catalogs to obtain needed information.
+The Prototype Data Access Center readily implements  many requirements for SUIT, as outlined in the LDM-130 document. We find that the overall structure of the interface is very intuitive, building on the strengths of NASA/IPAC IRSA and SDSS CasJobs. Multiple ways of defining the query region, and resolving names of objects with NED helps quickly access the data, and adding SQL constraints makes it possible to reduce the amount of displayed information.  An innovative Time Series View,  relying on the robust back-end of the NASA Exoplanet Archive Periodogram Tool,  has a great potential to aid rapid analysis of time series data.  Easy access to external image catalogs allows overlaying information across a range of wavelengths, including a very well designed RGB-making  toolbox. The QSERV responds to complicated SQL queries, and scisql functions help to execute very quick joins between catalogs to obtain needed information.
 
 There is a number of areas with possible improvements,  including aspects of the User Interface, as well as the SQL query engine. First, certain information, such as calibrated fluxes or magnitudes, is only available via Time Series view or a direct SQL query, while a user may be interested in accessing this information more directly.  Furthermore, allowing to query any catalog by an objectId, without the need to specify the coordinates, would make it easier to find information for a particular object.  Search capabilities will become more versatile once AllSky and Multiple object queries are supported.  Ability to select limiting magnitude of the query would aid efficiency, avoiding the neccessity to display or download faint, and perhaps not desirable, measurements or objects.  We also recommend expanding the educational aspect of the user interface  : providing more explanatory metadata about column content, relating the available data to the image processing pipeline, and explaining the details of algorithms used in calculation of calibrated fluxes and magnitudes, as well as Lomb-Scargle periodogram (like ~\cite{vanderplas2017}). On the level of the QSERV engine,  errors currently provided  experience a degradation of the error message quality, and it would be very beneficial to provide a meaningful error to the user interacting with PDAC. This would make it easier to debug the SQL queries, and streamline the data access.
 
