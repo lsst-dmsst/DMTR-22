@@ -1,4 +1,4 @@
-\documentclass[DM,lsstdraft,toc]{lsstdoc}
+\documentclass[DM,toc]{lsstdoc}
 
 % Package imports go here
 \usepackage{amsmath}	% Advanced maths commands
@@ -19,7 +19,7 @@ and the PDAC team.}
 
 \setDocRef{DMTR-22}
 \setDocUpstreamLocation{\url{https://github.com/lsst-dmsst/DMTR-22}}
-\date{\today}
+\date{2017-07-11}
 \setDocAbstract{%
 A report on user experience of  the Prototype Data Access Center (PDAC). We test the quality and ease of access to the data. PDAC will pave the way to the Science User Interface and Tools  (SUIT).   We employ both in-detail study of individual objects, and a statistical study of an ensemble of objects. We evaluate user-friendliness of the current interface, and make recommendations for  its future improvements.
 }
@@ -29,6 +29,7 @@ A report on user experience of  the Prototype Data Access Center (PDAC). We test
 % OLDEST FIRST: VERSION, DATE, DESCRIPTION, OWNER NAME
 \setDocChangeRecord{%
 \addtohist{1.0}{2017-05-28}{Report complete.}{Krzysztof Suberlak}
+\addtohist{1.1}{2017-07-11}{Release as DMTR-22}{T.~Jenness}
 }
 
 \begin{document}
@@ -47,7 +48,7 @@ This is a document to report on the user experience testing of the Prototype Dat
 An online tool that can serve as an interface between the user and the data is not a new idea.  There is indeed a number of websites that serve such purpose, such as  Aladin\footnote{\url{http://aladin.u-strasbg.fr}},  Sloan Digital Sky Survey (SDSS) Sci Server including CasJobs\footnote{\url{http://www.sciserver.org/tools/}},  NASA/IPAC  InfraRed  Science Archive (IRSA) \footnote{\url{https://irsa.ipac.caltech.edu/frontpage/}},  Mikulsky NASA Archive\footnote{\url{https://archive.stsci.edu}}, NASA Extragalactic Databased (NED)\footnote{\url{https://ned.ipac.caltech.edu}}. These allow a user to query for data (either via SQL query, or with the interactive user interface), returning the data table. Some user interfaces (eg. IRSA) have some rudimentary plotting capabilities.  SUIT stands at the forefront of user interface development, that would go beyond displaying the time series, spectrum, and other static information, but would also allow to analyze the data on the cloud. For instance,  a jupyter notebook could be employed to run machine learning models, and use the output to further select objects based on feature analysis. Currently National Optical Astronomy Observatory (NOAO)  DataLab\footnote{\url{http://datalab.noao.edu}} is an example of a tool that can help explore the data in an interactive way, using allocated computational resources. Similar developments are advocated at the MIT Astroinformatics / Geoinformatics group \citep{Pankratius:7515118,Coster:2014:ION}.
 
 
-This report details tests performed on the PDAC implementation of SUIT, including screenshots and data-based plots.  A shorter summary of monthly progress is released every month at the github repository of the LSST System Science Team: \url{https://github.com/lsst-dmsst/PDAC_report}.
+This report details tests performed on the PDAC implementation of SUIT, including screenshots and data-based plots.  A shorter summary of monthly progress is released every month at the github repository of the LSST System Science Team: \url{https://github.com/lsst-dmsst/DMTR-22}.
 
 
 % Science Platform and PDAC development and deployment in 2017
